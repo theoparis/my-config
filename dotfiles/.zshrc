@@ -18,4 +18,4 @@ alias gad="git add"
 alias gch="git checkout"
 alias gchb="git checkout -b"
 # Open url in browser
-alias gvo="xdg-open $(git config --get remote.origin.url)"
+alias gro="xdg-open $(git config --get remote.origin.url)"
