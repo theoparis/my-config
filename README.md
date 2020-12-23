@@ -3,7 +3,7 @@
 ## Vim
 
 I am using some code from Ben Awad's [vscode setup video](https://www.youtube.com/watch?v=gnupOrSEikQ). 
-S[ee my vimrc for more information](dotfiles/.vimrc).
+[See my vimrc for more information](dotfiles/.vimrc).
 
 ## Shell
 
