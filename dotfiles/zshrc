@@ -4,8 +4,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # https://starship.rs/
 eval "$(starship init zsh)"
 # VIM ftw
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 # Git alias shortcuts
 alias gbr="git branch"
 alias gps="git push"
