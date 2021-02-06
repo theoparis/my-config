@@ -1,9 +1,9 @@
-# Node.js
-# Added by n-install (see http://git.io/n-install-repo).
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(git docker)
 export PATH="$HOME/.local/bin:$PATH"
 # https://starship.rs/
 eval "$(starship init zsh)"
+# VIM ftw
 export EDITOR="vim"
 export VISUAL="vim"
 # Git alias shortcuts
@@ -17,5 +17,5 @@ alias gdf="git diff"
 alias gad="git add"
 alias gch="git checkout"
 alias gchb="git checkout -b"
-# Open url in browser
+# Open git repo url in browser
 alias gro="xdg-open $(git config --get remote.origin.url)"
