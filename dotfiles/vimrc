@@ -10,6 +10,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ntk148v/vim-horizon'
 Plug 'itchyny/lightline.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 "Settings
@@ -85,3 +86,5 @@ let g:lightline = {
     \ },
 \ }
 
+"Markdown preview
+nmap <C-p> <Plug>MarkdownPreviewToggle
