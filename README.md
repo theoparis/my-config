@@ -15,7 +15,7 @@ I have listed some of the main extensions I use in VSCode below:
 ### NeoVim
 
 I am using some code from Ben Awad's [vscode setup video](https://www.youtube.com/watch?v=gnupOrSEikQ). 
-[See my vimrc for more information](dotfiles/.vimrc).
+[See my vimrc for more information](dotfiles/vimrc).
 
 ## Shell
 
@@ -30,7 +30,5 @@ I am using the zsh shell along with [Starship Prompt](https://starship.rs/).
 
 I am running KUbuntu, alongside Windows 10 Pro. I use KUbuntu as my main linux distrobution for Programming. 
 For gaming and VR, I use my windows 10 installation.
-
-
 
 

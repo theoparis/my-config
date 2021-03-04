@@ -36,6 +36,9 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 "right arrow next line basically
 set whichwrap+=<,>,[,]
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 "coc config
 let g:coc_global_extensions = [
@@ -46,12 +49,16 @@ let g:coc_global_extensions = [
     \ "coc-prettier",
     \ "coc-json",
     \ "coc-git",
+    \ "coc-yaml",
     \ ]
 "Nerd tree
 let g:NERDTreeIgnore = ['^node_modules$']
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+"jsonc
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 "Nerd Commenter
 vmap <C-_> \c<space><CR>gv
@@ -88,3 +95,4 @@ let g:lightline = {
 
 "Markdown preview
 nmap <C-p> <Plug>MarkdownPreviewToggle
+

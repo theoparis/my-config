@@ -1,3 +1,4 @@
-[submodule "lib/zsh-autocomplete"]
-	path = lib/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete
+
+[submodule "lib/fzf-tab"]
+	path = lib/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

@@ -1,8 +1,9 @@
-export ZSH="$HOME/.oh-my-zsh"
+source ~/.zplug/init.zsh
 
-plugins=(git docker zsh-lazyload zsh-autosuggestions)
+# zsh plugins
+zplug "Aloxaf/fzf-tab", use:"*.zsh"
+
 zmodload zsh/zprof
-
 export PATH="$HOME/.local/bin:$PATH"
 # https://starship.rs/
 eval "$(starship init zsh)"
@@ -22,7 +23,21 @@ alias gch="git checkout"
 alias gchb="git checkout -b"
 # Open git repo url in browser
 alias gro="xdg-open $(git config --get remote.origin.url)"
-# Comment out if using normal docker
-alias docker="podman"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+for file in ../user/*.zsh; do
+    if [[ -a "$file" ]]; then
+        source "$file"
+    fi
+done
+
