@@ -9,7 +9,8 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(starship init zsh)"
 # VIM ftw
 export EDITOR="nvim"
-export VISUAL="nvim"
+export VISUAL="$EDITOR"
+export GIT_EDITOR="$EDITOR"
 # Git alias shortcuts
 alias gbr="git branch"
 alias gps="git push"
@@ -24,6 +25,8 @@ alias gchb="git checkout -b"
 # Open git repo url in browser
 alias gro="xdg-open $(git config --get remote.origin.url)"
 
+#source ./keybindings.sh
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -35,9 +38,5 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-for file in ../user/*.zsh; do
-    if [[ -a "$file" ]]; then
-        source "$file"
-    fi
-done
+export PATH="$HOME/.nimble/bin:$PATH"
 

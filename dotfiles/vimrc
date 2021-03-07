@@ -1,9 +1,10 @@
+set nocompatible
 "Vim plugins
 call plug#begin('~/.vim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
@@ -11,6 +12,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ntk148v/vim-horizon'
 Plug 'itchyny/lightline.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'leafgarland/typescript-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'alaviss/nim.nvim'
 call plug#end()
 
 "Settings
@@ -36,9 +40,15 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 "right arrow next line basically
 set whichwrap+=<,>,[,]
-set tabstop=4
-set shiftwidth=4
 set expandtab
+
+autocmd BufRead,BufNewFile *.nim set foldlevel=100
+
+" .parcelrc should be json5
+autocmd BufNewFile,BufRead .parcelrc set syntax=json5
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 "coc config
 let g:coc_global_extensions = [
@@ -50,7 +60,9 @@ let g:coc_global_extensions = [
     \ "coc-json",
     \ "coc-git",
     \ "coc-yaml",
+    \ "coc-toml",
     \ ]
+
 "Nerd tree
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -95,4 +107,13 @@ let g:lightline = {
 
 "Markdown preview
 nmap <C-p> <Plug>MarkdownPreviewToggle
+
+let g:user_emmet_settings = {
+\   'html': {
+\       'snippets': {
+\           'html:5': '!!!+html>(head>(meta[charset=${charset}]+meta[name="viewport" content="width=device-width,initial-scale=1.0"]+meta[http-equiv="X-UA-Compatible" content="ie=edge"]+title +body'
+    \   }
+ \  }
+\}
+
 
