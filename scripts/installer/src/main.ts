@@ -9,7 +9,7 @@ import { getDistroName } from "./sys/mod.ts";
     >()
         .name("my-config")
         .version("0.0.1")
-        .description("Command line tool to gfor Denoenerate dotfiles")
+        .description("Command line tool to generate dotfiles")
         .option(
             "-p, --packages <val>",
             "Install system packages such as zsh",
