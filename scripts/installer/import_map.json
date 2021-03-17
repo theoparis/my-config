@@ -1,0 +1,7 @@
+{
+    "imports": {
+        "cli/": "https://deno.land/x/cliffy@v0.18.1/",
+        "ink/": "https://deno.land/x/ink/",
+        "std/": "https://deno.land/x/std@0.90.0/"
+    }
+}

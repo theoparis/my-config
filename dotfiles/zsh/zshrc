@@ -40,3 +40,8 @@ zplug load --verbose
 
 export PATH="$HOME/.nimble/bin:$PATH"
 
+export GO111MODULE=auto
+export DENO_INSTALL="$HOME/.deno"
+export DPRINT_INSTALL="$HOME/.dprint"
+export PATH="$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$PATH"
+
