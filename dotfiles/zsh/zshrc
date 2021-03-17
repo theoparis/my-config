@@ -31,12 +31,23 @@ alias gro="xdg-open $(git config --get remote.origin.url)"
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
-        echo; zplug install
+        echo
+        zplug install
     fi
 fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-export PATH="$HOME/.nimble/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$HOME/my-config/scripts/bin:$PATH"
 
+# TODO: load all files from ~/my-config/user
+source ~/my-config/user/global.zsh
+source $HOME/.cargo/env
+
+export DENO_INSTALL="$HOME/.deno"
+export DPRINT_INSTALL="$HOME/.dprint"
+export GOPATH=~/go
+export PATH="$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$GOPATH/bin:$PATH"
+# Load macchina (neofetch alternative)
+macchina
