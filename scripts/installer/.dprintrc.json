@@ -1,0 +1,11 @@
+{
+    "projectType": "openSource",
+    "typescript": {
+        "useBraces": "whenNotSingleLine"
+    },
+    "includes": ["**/*.{ts,tsx,js,jsx,mjs}"],
+    "plugins": ["https://plugins.dprint.dev/typescript-0.41.0.wasm"],
+    "lineWidth": 80,
+    "indentWidth": 4,
+    "useTabs": false
+}
