@@ -3,6 +3,11 @@
         "cli/": "https://deno.land/x/cliffy@v0.18.1/",
         "ink/": "https://deno.land/x/ink/",
         "std/": "https://deno.land/x/std@0.90.0/",
+<<<<<<< Updated upstream
         "cfg": "https://esm.sh/@theoparis/config"
+=======
+        "ky/": "https://deno.land/x/ky@v0.23.0/",
+        "zod": "https:/esm.sh/zod"
+>>>>>>> Stashed changes
     }
 }

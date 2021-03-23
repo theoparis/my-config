@@ -10,7 +10,7 @@ import { ConfigInstaller } from "./installer/index.ts";
     >()
         .name("my-config")
         .version("0.0.1")
-        .description("Command line tool to generate dotfiles")
+        .description("Command line tool to generatea dotfiles")
         .option(
             "-c, --config <path>",
             "Specify my-config.yaml path",

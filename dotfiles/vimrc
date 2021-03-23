@@ -6,6 +6,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lervag/vimtex'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'w0rp/ale'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'preservim/nerdtree'
@@ -68,7 +69,7 @@ autocmd BufNewFile,BufRead .parcelrc set syntax=json5
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-"coc language server config
+"coc config
 let g:coc_global_extensions = [
     \ "coc-snippets",
     \ "coc-pairs",
@@ -144,3 +145,4 @@ let g:user_emmet_settings = {
 
 let g:latex_view_general_viewer = "zathura"
 let g:vimtex_view_method = "zathura"
+

@@ -4,7 +4,7 @@ source ~/.zplug/init.zsh
 zplug "Aloxaf/fzf-tab", use:"*.zsh"
 
 zmodload zsh/zprof
-export PATH="$HOME/.local/bin:$PATH"
+export SHELL=$(which zsh)
 # https://starship.rs/
 eval "$(starship init zsh)"
 # VIM ftw
@@ -39,18 +39,25 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-export PATH="$HOME/.nimble/bin:$HOME/my-config/scripts/bin:$PATH"
-
 # TODO: load all files from ~/my-config/user
 # source ~/my-config/user/global.zsh
-source $HOME/.cargo/env
+if [ -f "$HOME/.cargo/env" ]; then
+    source $HOME/.cargo/env
+fi
+
+if [ -f "/usr/share/chruby/chruby.sh" ]; then
+
+    source /usr/share/chruby/chruby.sh
+fi
 
 export GO111MODULE=auto
 export GOPATH=~/go
 export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
-export PATH="$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$GOPATH/bin:$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/lib/dart/bin"
+export N_PREFIX="$HOME/.n"
+export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local:$GOPATH/bin:$HOME/.nimble/bin:$PATH"
 
 # Load macchina (neofetch alternative)
 macchina
+
