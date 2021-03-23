@@ -55,7 +55,7 @@ export GOPATH=~/go
 export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
-export N_PREFIX="$HOME/.n"
+export N_PREFIX="$HOME/n"
 export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local:$GOPATH/bin:$HOME/.nimble/bin:$PATH"
 
 # Load macchina (neofetch alternative)
