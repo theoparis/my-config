@@ -1,46 +1,64 @@
 set nocompatible
 "Vim plugins
 call plug#begin('~/.vim/plugged')
+Plug 'neovimhaskell/haskell-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
+Plug 'dbeniamine/cheat.sh-vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ntk148v/vim-horizon'
 Plug 'itchyny/lightline.vim'
+Plug 'hugolgst/vimsence'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'leafgarland/typescript-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'alaviss/nim.nvim'
+Plug 'mhinz/vim-startify'
+Plug 'vimwiki/vimwiki'
+Plug 'kevinhwang91/rnvimr'
+Plug 'chrisbra/Colorizer'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 call plug#end()
 
-"Settings
+"General Settings
 set encoding=UTF-8
-set whichwrap+=<,>,[,]
-let g:ale_fixers = {
- \ 'javascript': ['eslint'],
- \ 'typescript': ['eslint'],
- \ 'css': ['prettier'],
- \ 'scss': ['prettier'],
- \ }
 set noshowmode
+"right arrow next line basically
+set whichwrap+=<,>,[,]
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
 
 "Theme
 syntax on
 set termguicolors
 colorscheme horizon
+
+" Auto color highlight
+au BufEnter * :ColorHighlight<CR>
+
+" Ale
+let g:ale_fixers = {
+   \ 'javascript': ['eslint'],
+   \ 'typescript': ['eslint'],
+   \ 'css': ['prettier'],
+   \ 'scss': ['prettier'],
+   \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-
-"right arrow next line basically
-set whichwrap+=<,>,[,]
-set expandtab
 
 autocmd BufRead,BufNewFile *.nim set foldlevel=100
 
@@ -50,7 +68,7 @@ autocmd BufNewFile,BufRead .parcelrc set syntax=json5
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
-"coc config
+"coc language server config
 let g:coc_global_extensions = [
     \ "coc-snippets",
     \ "coc-pairs",
@@ -62,6 +80,8 @@ let g:coc_global_extensions = [
     \ "coc-yaml",
     \ "coc-toml",
     \ "coc-css",
+    \ "coc-pyright",
+    \ "coc-vimtex",
     \ ]
 
 "Nerd tree
@@ -69,6 +89,10 @@ let g:NERDTreeIgnore = ['^node_modules$']
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <C-o> :RnvimrToggle<CR>
+inoremap <C-o> :RnvimrToggle<CR>
+vnoremap <C-o> :RnvimrToggle<CR>
 
 "jsonc
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -109,6 +133,7 @@ let g:lightline = {
 "Markdown preview
 nmap <C-p> <Plug>MarkdownPreviewToggle
 
+"Better html template (more like VSCode)
 let g:user_emmet_settings = {
 \   'html': {
 \       'snippets': {
@@ -117,4 +142,5 @@ let g:user_emmet_settings = {
  \  }
 \}
 
-
+let g:latex_view_general_viewer = "zathura"
+let g:vimtex_view_method = "zathura"

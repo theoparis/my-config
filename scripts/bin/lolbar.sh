@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+# fonts : https://github.com/xero/figlet-fonts
+# figlet : https://github.com/cmatsuoka/figlet
+# lolcat : https://github.com/busyloop/lolcat
+# to get urxvt working with 256 colors use
+# sudo apt-get install rxvt-unicode-256color
+
+toilet -f pagga "$1" | lolcat
