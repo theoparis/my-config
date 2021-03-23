@@ -5,6 +5,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lervag/vimtex'
 Plug 'w0rp/ale'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'preservim/nerdtree'
@@ -22,6 +23,8 @@ Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'kevinhwang91/rnvimr'
 Plug 'chrisbra/Colorizer'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 call plug#end()
 
 "General Settings
@@ -30,6 +33,11 @@ set noshowmode
 "right arrow next line basically
 set whichwrap+=<,>,[,]
 set expandtab
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
 
 "Theme
 syntax on
@@ -72,6 +80,8 @@ let g:coc_global_extensions = [
     \ "coc-yaml",
     \ "coc-toml",
     \ "coc-css",
+    \ "coc-pyright",
+    \ "coc-vimtex",
     \ ]
 
 "Nerd tree
@@ -132,4 +142,5 @@ let g:user_emmet_settings = {
  \  }
 \}
 
-
+let g:latex_view_general_viewer = "zathura"
+let g:vimtex_view_method = "zathura"

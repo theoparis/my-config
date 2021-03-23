@@ -49,7 +49,8 @@ export GO111MODULE=auto
 export GOPATH=~/go
 export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
-export PATH="$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$PATH"
+export PATH="$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$GOPATH/bin:$HOME/.local/bin:$PATH"
+export PATH="$PATH:/usr/lib/dart/bin"
 
 # Load macchina (neofetch alternative)
 macchina

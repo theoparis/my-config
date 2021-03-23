@@ -1,20 +1,29 @@
+import { WriteConfig } from "https://esm.sh/@theoparis/config";
 import * as fs from "std/fs/mod.ts";
 import * as path from "std/path/mod.ts";
 import { PrefixedConsoleLogger } from "../logger/console.ts";
+import { getDistroName } from "../sys/mod.ts";
+import { Config } from "./config.ts";
 
 export class ConfigInstaller {
     logger: PrefixedConsoleLogger;
 
     constructor(
         public dir: string,
-        public os: string,
+        public config: WriteConfig<Config>,
         public homeDir = Deno.env.get("HOME"),
     ) {
-        this.os = os;
         this.dir = dir.startsWith("~/")
             ? dir.replace("~/", `${homeDir}/`)
             : dir;
         this.logger = new PrefixedConsoleLogger("Installer");
+    }
+
+    async run() {
+        const { dotfiles, packages } = this.config.toObject();
+
+        await this.installPackages(packages);
+        await this.createDotfiles(dotfiles);
     }
 
     async createDotfiles(dotfiles: string[]) {
@@ -40,7 +49,9 @@ export class ConfigInstaller {
                     );
                     await Deno.link(tmuxFile, `${this.homeDir}/.tmux.conf`);
                 } catch (err) {
-                    this.logger.warn(`Could not create ${this.homeDir}/.tmux.conf: ${err}`);
+                    this.logger.warn(
+                        `Could not create ${this.homeDir}/.tmux.conf: ${err}`,
+                    );
                 }
             } else if (dot === "neovim") {
                 await fs.ensureDir(`${this.homeDir}/.config/nvim`);
@@ -130,22 +141,28 @@ export class ConfigInstaller {
 
     async installPackages(packages: string[]) {
         if (packages.length === 0) return;
+
+        const os = this.config.toObject().os || await getDistroName();
+
         this.logger.info("Installing packages...");
 
         for await (const pkg of packages) {
-            this.logger.info(`Attempting to install: ${pkg} on ${this.os}...`);
+            this.logger.info(`Attempting to install: ${pkg} on ${os}...`);
 
-            if (this.os === "Ubuntu") {
+            if (os === "Ubuntu") {
                 await this._runPkgCmd(
                     ["sudo", "apt", "install", "-y"],
                     pkg,
                 );
-            } else if (this.os === "ArchLinux" || this.os === "ManjaroLinux") {
+            } else if (
+                os === "ArchLinux" || os === "ManjaroLinux"
+                || os === "Artix"
+            ) {
                 await this._runPkgCmd(
-                    ["yay", "-S", "--noconfirm"],
+                    ["sudo", "pacman", "-Sy", "--noconfirm"],
                     pkg,
                 );
-            } else if (this.os === "MacOS") {
+            } else if (os === "MacOS") {
                 await this._runPkgCmd(["brew", "install"], pkg);
             } else {
                 this.logger.error(
