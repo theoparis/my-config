@@ -7,7 +7,7 @@ echo "Attempting to initialize config from ${MY_CFG}.";
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sh -c "cd $HOME/.tmux/plugins/tpm && git pull"
 
-mkdir -p $/.config/nvim
+mkdir -p $HOME/.config/nvim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
 	       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
