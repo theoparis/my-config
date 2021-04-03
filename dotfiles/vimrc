@@ -18,6 +18,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'hugolgst/vimsence'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'alaviss/nim.nvim'
 Plug 'mhinz/vim-startify'
@@ -25,7 +27,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'kevinhwang91/rnvimr'
 Plug 'chrisbra/Colorizer'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 "General Settings
@@ -54,6 +57,7 @@ let g:ale_fixers = {
    \ 'typescript': ['eslint'],
    \ 'css': ['prettier'],
    \ 'scss': ['prettier'],
+   \ "kotlin": ["ktlint"],
    \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠️'
@@ -83,6 +87,8 @@ let g:coc_global_extensions = [
     \ "coc-css",
     \ "coc-pyright",
     \ "coc-vimtex",
+    \ "coc-kotlin",
+    \ "coc-java"
     \ ]
 
 "Nerd tree
@@ -94,6 +100,10 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-o> :RnvimrToggle<CR>
 inoremap <C-o> :RnvimrToggle<CR>
 vnoremap <C-o> :RnvimrToggle<CR>
+
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
 
 "jsonc
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -132,7 +142,7 @@ let g:lightline = {
 \ }
 
 "Markdown preview
-nmap <C-p> <Plug>MarkdownPreviewToggle
+nmap <leader>p <Plug>MarkdownPreviewToggle
 
 "Better html template (more like VSCode)
 let g:user_emmet_settings = {
