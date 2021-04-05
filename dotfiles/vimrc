@@ -4,7 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovimhaskell/haskell-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 Plug 'lervag/vimtex'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'w0rp/ale'
@@ -21,7 +23,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'alaviss/nim.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'vimwiki/vimwiki'
 Plug 'kevinhwang91/rnvimr'
@@ -34,6 +35,7 @@ call plug#end()
 "General Settings
 set encoding=UTF-8
 set noshowmode
+set completeopt=menuone,noselect
 "right arrow next line basically
 set whichwrap+=<,>,[,]
 set expandtab
@@ -41,7 +43,6 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set softtabstop=4
-set mouse=a
 
 "Theme
 syntax on
@@ -91,6 +92,41 @@ let g:coc_global_extensions = [
     \ "coc-java"
     \ ]
 
+"New lsp config
+lua << EOF
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.kotlin_language_server.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.texlab.setup{}
+require'lspconfig'.hls.setup{}
+require'lspconfig'.denols.setup{}
+require'lspconfig'.yamlls.setup{}
+require'lspconfig'.sourcekit.setup{}
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+  };
+}
+EOF
+
 "Nerd tree
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -100,10 +136,21 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nnoremap <C-o> :RnvimrToggle<CR>
 inoremap <C-o> :RnvimrToggle<CR>
 vnoremap <C-o> :RnvimrToggle<CR>
-
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <C-p> :GFiles<CR>
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <silent><expr> <C-f> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d> compe#scroll({ 'delta': -4 })
 
 "jsonc
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -112,11 +159,6 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 vmap <C-_> \c<space><CR>gv
 nmap <C-_> \c<space><CR>
 imap <C-_> <esc>\c<space><CR>i
-
-"Prettier
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-vmap <leader>f :Prettier<CR>
-nmap <leader>f :Prettier<CR>
 
 "Lightline status
 function! LightlineGitStatus() abort

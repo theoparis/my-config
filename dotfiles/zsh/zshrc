@@ -56,8 +56,10 @@ export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
 export N_PREFIX="$HOME/n"
-export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$PATH"
+export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$PATH"
 
 # Load macchina (neofetch alternative)
 macchina -H kernel
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

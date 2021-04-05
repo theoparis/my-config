@@ -4,7 +4,6 @@
     "python.linting.enabled": true,
     "python.linting.lintOnSave": true,
     "python.linting.flake8Enabled": true,
-    "coc.preferences.useQuickfixForLocations": true,
     "languageserver": {
         "haskell": {
             "command": "haskell-language-server-wrapper",
