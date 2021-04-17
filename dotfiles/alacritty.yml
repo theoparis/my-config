@@ -7,3 +7,7 @@ shell:
     program: /bin/zsh
     args:
         - --login
+font:
+    normal:
+        family: "Fira Code"
+

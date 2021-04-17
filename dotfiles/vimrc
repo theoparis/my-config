@@ -5,7 +5,9 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'ollykel/v-vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'hrsh7th/nvim-compe'
 Plug 'lervag/vimtex'
 Plug 'mzlogin/vim-markdown-toc'
@@ -101,7 +103,8 @@ require'lspconfig'.texlab.setup{}
 require'lspconfig'.hls.setup{}
 require'lspconfig'.denols.setup{}
 require'lspconfig'.yamlls.setup{}
-require'lspconfig'.sourcekit.setup{}
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.vls.setup{}
 require'compe'.setup {
   enabled = true;
   autocomplete = true;

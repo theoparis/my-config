@@ -56,10 +56,16 @@ export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
 export N_PREFIX="$HOME/n"
-export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$PATH"
+export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$PATH"
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # Load macchina (neofetch alternative)
 macchina -H kernel
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh 
 
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
