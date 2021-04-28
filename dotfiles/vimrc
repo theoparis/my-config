@@ -4,9 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovimhaskell/haskell-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
 Plug 'ollykel/v-vim'
-Plug 'neovim/nvim-lspconfig'
+"Plug 'neovim/nvim-lspconfig'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'hrsh7th/nvim-compe'
 Plug 'lervag/vimtex'
@@ -61,6 +61,7 @@ let g:ale_fixers = {
    \ 'css': ['prettier'],
    \ 'scss': ['prettier'],
    \ "kotlin": ["ktlint"],
+   \ "lua": ["luafmt"],
    \ }
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠️'
@@ -91,44 +92,11 @@ let g:coc_global_extensions = [
     \ "coc-pyright",
     \ "coc-vimtex",
     \ "coc-kotlin",
-    \ "coc-java"
+    \ "coc-java",
+    \ "coc-lua",
     \ ]
 
 "New lsp config
-lua << EOF
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.kotlin_language_server.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.texlab.setup{}
-require'lspconfig'.hls.setup{}
-require'lspconfig'.denols.setup{}
-require'lspconfig'.yamlls.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.vls.setup{}
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-  };
-}
-EOF
 
 "Nerd tree
 let g:NERDTreeIgnore = ['^node_modules$']
