@@ -5,6 +5,7 @@ return require("packer").startup(
         -- Packer can manage itself
         use "wbthomason/packer.nvim"
 
+        use "kabouzeid/nvim-lspinstall"
         use "neovim/nvim-lspconfig"
         use "glepnir/lspsaga.nvim"
         use "itchyny/lightline.vim"
@@ -19,9 +20,14 @@ return require("packer").startup(
         use "junegunn/fzf.vim"
         use "tiagofumo/vim-nerdtree-syntax-highlight"
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-        use "hrsh7th/nvim-compe"
+        use {
+            "nvim-telescope/telescope.nvim",
+            requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+        }
+        -- compe
         use "tjdevries/colorbuddy.nvim"
         use "vim-syntastic/syntastic"
         use "marko-cerovac/material.nvim"
+        use "hrsh7th/nvim-compe"
     end
 )

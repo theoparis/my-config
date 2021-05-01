@@ -1,20 +1,36 @@
 source ~/.zplug/init.zsh
-
 # zsh plugins
-zplug "Aloxaf/fzf-tab", use:"*.zsh"
-zplug romkatv/powerlevel10k, as:theme, depth:1
-zmodload zsh/zprof
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "Aloxaf/fzf-tab"
+# Load zsh plugins
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
 export SHELL=$(which zsh)
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# VIM ftw
+# Neovim ftw
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
-# Git alias shortcuts
+# Aliases
+if command -v exa &> /dev/null; then
+    alias ll "exa -l -g --icons"
+    alias lla "ll -a"
+fi
+
+## Git alias shortcuts
+alias g="git"
 alias gbr="git branch"
 alias gps="git push"
 alias gpl="git pull"
@@ -29,18 +45,6 @@ alias gchb="git checkout -b"
 alias gro="xdg-open $(git config --get remote.origin.url)"
 
 #source ./keybindings.sh
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo
-        zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load --verbose
 
 # TODO: load all files from ~/my-config/user
 # source ~/my-config/user/global.zsh
@@ -70,6 +74,6 @@ macchina -H kernel
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# Starship prompt
+eval "$(starship init zsh)"
+zplug load --verbose
