@@ -24,10 +24,8 @@ export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
 # Aliases
-if command -v exa &> /dev/null; then
-    alias ll "exa -l -g --icons"
-    alias lla "ll -a"
-fi
+alias ll="exa -l -g --icons"
+alias lla="ll -a"
 
 ## Git alias shortcuts
 alias g="git"
@@ -77,3 +75,23 @@ macchina -H kernel
 # Starship prompt
 eval "$(starship init zsh)"
 zplug load --verbose
+#compdef boop
+###-begin-boop-completions-###
+#
+# yargs command completion script
+#
+# Installation: boop completion >> ~/.zshrc
+#    or boop completion >> ~/.zsh_profile on OSX.
+#
+_boop_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" boop --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _boop_yargs_completions boop
+###-end-boop-completions-###
+

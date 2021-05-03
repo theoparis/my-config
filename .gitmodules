@@ -2,3 +2,6 @@
 [submodule "lib/fzf-tab"]
 	path = lib/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "scripts/bin/myrmidon"]
+	path = scripts/bin/myrmidon
+	url = https://github.com/creepinson/myrmidon

@@ -35,6 +35,5 @@ return require("packer").startup(
         use "marko-cerovac/material.nvim"
         use "hrsh7th/nvim-compe"
         use "nvim-lua/lsp-status.nvim"
-        use "neoclide/jsonc.vim"
     end
 )

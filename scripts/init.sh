@@ -41,5 +41,7 @@ ln -s $MY_CFG/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -s $MY_CFG/dotfiles/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/alacritty/
 ln -s $MY_CFG/dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s $MY_CFG/scripts/bin/myrmidon/myrmidon.sh ~/bin/myrmidon.sh
+ln -s $MY_CFG/scripts/bin/myrmidon/confirm.sh ~/bin/confirm.sh
 echo "Done."
 

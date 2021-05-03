@@ -2,4 +2,5 @@ vim.api.nvim_set_keymap("n", "<C-_>", ":call NERDComment(0, 'toggle')<CR>", {nor
 vim.api.nvim_set_keymap("v", "<C-_>", ":call NERDComment(0, 'toggle')<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<C-n>", ":NERDTreeToggle<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<silent><leader>ca", ":Lspsaga code_action<CR>", {noremap = true})
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require\'telescope-config\'.project_files()<CR>", {noremap = true})
 
