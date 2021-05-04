@@ -34,7 +34,7 @@ vim.o.shiftwidth = 4
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
 vim.o.completeopt = "menuone,noselect"
 -- Color scheme
-require("colorbuddy").colorscheme("material")
+require("colorbuddy").colorscheme("onebuddy")
 vim.g.material_style = "darker"
 
 -- Ale linter

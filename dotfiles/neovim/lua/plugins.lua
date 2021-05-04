@@ -32,7 +32,7 @@ return require("packer").startup(
         -- compe
         use "tjdevries/colorbuddy.nvim"
         use "vim-syntastic/syntastic"
-        use "marko-cerovac/material.nvim"
+        use "Th3Whit3Wolf/onebuddy"
         use "hrsh7th/nvim-compe"
         use "nvim-lua/lsp-status.nvim"
         use "neoclide/jsonc.vim"
