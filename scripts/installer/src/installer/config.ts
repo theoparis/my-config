@@ -13,8 +13,8 @@ export const configSchema = z.object({
         "zsh",
         "tmux",
         "neovim",
-        "coc",
         "starship",
+        "alacritty"
     ]), // TODO: more options such as vim plugins
 });
 

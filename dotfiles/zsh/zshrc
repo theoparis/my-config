@@ -23,16 +23,20 @@ fi
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
+export TERMINAL="alacritty"
 # Aliases
-alias ll="exa -l -g --icons"
-alias lla="ll -a"
+alias ls="exa -l -g --icons"
+alias lsa="ls -a"
+alias nnn="nnn -Rdae"
+alias ll="nnn"
+alias N='sudo -E nnn'
 
 ## Git alias shortcuts
 alias g="git"
 alias gbr="git branch"
 alias gps="git push"
 alias gpl="git pull"
-alias gcm="git commit -m"
+alias gc="git commit"
 alias gcam="git commit -a -m"
 alias gst="git status"
 alias gdf="git diff"
@@ -62,6 +66,9 @@ export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
 export N_PREFIX="$HOME/n"
 export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$PATH"
+# nnn (cli file browser)
+export NNN_PLUG="t:_|alacritty*;v:preview-tabbed"
+export NNN_USE_EDITOR=1
 
 # Load macchina (neofetch alternative)
 macchina -H kernel

@@ -13,7 +13,10 @@ local function setup_servers()
 
     local servers = require "lspinstall".installed_servers()
     for _, server in pairs(servers) do
-        require "lspconfig"[server].setup {}
+        local srv = require "lspconfig"[server]
+        if srv then
+            srv.setup {}
+        end
     end
 end
 
@@ -45,7 +48,11 @@ vim.g.ale_fixers = {
     css = {"prettier"},
     scss = {"prettier"},
     kotlin = {"ktlint"},
-    lua = {"luafmt"}
+    lua = {"luafmt"},
+    yaml = {"prettier"},
+    json5 = {"prettier"},
+    json = {"prettier"},
+    jsonc = {"prettier"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
@@ -139,3 +146,5 @@ lsp_status.config(
 )
 
 lsp_status.register_progress()
+
+vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")

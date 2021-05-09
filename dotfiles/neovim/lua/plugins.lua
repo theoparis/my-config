@@ -36,5 +36,9 @@ return require("packer").startup(
         use "hrsh7th/nvim-compe"
         use "nvim-lua/lsp-status.nvim"
         use "neoclide/jsonc.vim"
+        use "cespare/vim-toml"
+        use "fhill2/floating.nvim"
+        --use "creepinson/nvim-proj"
+        use "~/Documents/Code/nvim-proj"
     end
 )

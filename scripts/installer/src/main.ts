@@ -1,6 +1,6 @@
 import { Command } from "cli/command/mod.ts";
 import { Checkbox, prompt } from "cli/prompt/mod.ts";
-import { readFile } from "https://esm.sh/@theoparis/config";
+import { readFile } from "cfg";
 import { Config, configSchema } from "./installer/config.ts";
 import { ConfigInstaller } from "./installer/index.ts";
 
