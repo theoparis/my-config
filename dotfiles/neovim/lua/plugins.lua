@@ -17,7 +17,7 @@ return require("packer").startup(
         use "itchyny/lightline.vim"
         use "w0rp/ale"
         use "preservim/nerdtree"
-        use "hugolgst/vimsence"
+        use "andweeb/presence.nvim"
         use "ntk148v/vim-horizon"
         use "scrooloose/nerdcommenter"
         use "mattn/emmet-vim"
@@ -34,11 +34,18 @@ return require("packer").startup(
         use "vim-syntastic/syntastic"
         use "Th3Whit3Wolf/onebuddy"
         use "hrsh7th/nvim-compe"
+        use "ray-x/lsp_signature.nvim"
         use "nvim-lua/lsp-status.nvim"
         use "neoclide/jsonc.vim"
         use "cespare/vim-toml"
         use "fhill2/floating.nvim"
         --use "creepinson/nvim-proj"
-        use "~/Documents/Code/nvim-proj"
+        --use "~/Documents/Code/nvim-proj"
+        use {
+            "glacambre/firenvim",
+            run = function()
+                vim.fn["firenvim#install"](0)
+            end
+        }
     end
 )

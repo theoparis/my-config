@@ -22,7 +22,7 @@ end
 
 setup_servers()
 
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+--Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 require "lspinstall".post_install_hook = function()
     setup_servers() -- reload installed servers
     vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
@@ -52,7 +52,8 @@ vim.g.ale_fixers = {
     yaml = {"prettier"},
     json5 = {"prettier"},
     json = {"prettier"},
-    jsonc = {"prettier"}
+    jsonc = {"prettier"},
+    go = {"gofmt"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
@@ -147,4 +148,5 @@ lsp_status.config(
 
 lsp_status.register_progress()
 
-vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
+--vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
+--vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")

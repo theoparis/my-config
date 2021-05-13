@@ -43,8 +43,9 @@ alias gdf="git diff"
 alias gad="git add"
 alias gch="git checkout"
 alias gchb="git checkout -b"
+alias gl=" git log --graph --abbrev-commit --date=local --name-status"
 # Open git repo url in browser
-alias gro="xdg-open $(git config --get remote.origin.url)"
+alias gro="xdg-open $(git remote get-url origin)"
 
 #source ./keybindings.sh
 
@@ -65,7 +66,7 @@ export DENO_INSTALL="$HOME/.deno"
 export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
 export N_PREFIX="$HOME/n"
-export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$HOME/bin:$PATH"
 # nnn (cli file browser)
 export NNN_PLUG="t:_|alacritty*;v:preview-tabbed"
 export NNN_USE_EDITOR=1
@@ -102,3 +103,5 @@ _boop_yargs_completions()
 compdef _boop_yargs_completions boop
 ###-end-boop-completions-###
 
+GO111MODULE=on
+alias luamake=$HOME/build/lua-language-server/3rd/luamake/luamake
