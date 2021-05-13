@@ -41,6 +41,7 @@ return require("packer").startup(
         use "fhill2/floating.nvim"
         --use "creepinson/nvim-proj"
         --use "~/Documents/Code/nvim-proj"
+        use "ThePrimeagen/git-worktree.nvim"
         use {
             "glacambre/firenvim",
             run = function()

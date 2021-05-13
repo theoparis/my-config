@@ -7,7 +7,7 @@ echo "Attempting to initialize config from ${MY_CFG}.";
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sh -c "cd ~/.tmux/plugins/tpm && git pull"
 
-FORCE=true sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+FORCE=true sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --bin-dir ~/bin
 
 mkdir -p ~/bin
 mkdir -p ~/.config/zsh
@@ -24,7 +24,7 @@ git clone https://github.com/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 cd  ~/.local/share/nvim/site/pack/packer/start/packer.nvim && git pull
 
-# Zsh plugins
+curl -L https://github.com/jszczerbinsky/ptSh/releases/download/latest/install.sh | sh
 
 # Symlinks
 ln -s $MY_CFG/dotfiles/neovim ~/.config/nvim

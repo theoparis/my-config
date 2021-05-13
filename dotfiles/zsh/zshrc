@@ -25,7 +25,6 @@ export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
 export TERMINAL="alacritty"
 # Aliases
-alias ls="exa -l -g --icons"
 alias lsa="ls -a"
 alias nnn="nnn -Rdae"
 alias ll="nnn"
@@ -46,6 +45,13 @@ alias gchb="git checkout -b"
 alias gl=" git log --graph --abbrev-commit --date=local --name-status"
 # Open git repo url in browser
 alias gro="xdg-open $(git remote get-url origin)"
+
+# ptSh
+alias ls="ptls"
+alias pwd="ptpwd"
+alias mkdir="ptmkdir"
+alias touch="pttouch"
+alias cp="ptcp"
 
 #source ./keybindings.sh
 
@@ -81,7 +87,9 @@ macchina -H kernel
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # Starship prompt
-eval "$(starship init zsh)"
+if command -v starship; then
+    eval "$(starship init zsh)"
+fi
 zplug load --verbose
 #compdef boop
 ###-begin-boop-completions-###
@@ -105,3 +113,4 @@ compdef _boop_yargs_completions boop
 
 GO111MODULE=on
 alias luamake=$HOME/build/lua-language-server/3rd/luamake/luamake
+
