@@ -73,6 +73,8 @@ export DPRINT_INSTALL="$HOME/.dprint"
 export PATH="$PATH:/usr/lib/dart/bin"
 export N_PREFIX="$HOME/n"
 export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$HOME/bin:$PATH"
+# Homebrew
+export PATH="$HOME/usr/local/bin:$HOME/usr/local/opt:$PATH"
 # nnn (cli file browser)
 export NNN_PLUG="t:_|alacritty*;v:preview-tabbed"
 export NNN_USE_EDITOR=1
