@@ -20,13 +20,70 @@ local function setup_servers()
     end
 end
 
-setup_servers()
+--setup_servers()
+
+-- Language server
+local lsp = require("lspconfig")
+lsp.tsserver.setup(
+    {
+        cmd = {
+            "typescript-language-server",
+            "--stdio"
+        }
+    }
+)
+lsp.yamlls.setup(
+    {
+        format = {
+            enable = false
+        }
+    }
+)
+lsp.sumneko_lua.setup({})
+lsp.kotlin_language_server.setup {}
+lsp.ccls.setup {
+    init_options = {
+        compilationDatabaseDirectory = "build",
+        index = {
+            threads = 0
+        },
+        clang = {
+            excludeArgs = {"-frounding-math"}
+        }
+    }
+}
+
+-- Treesitter
+require "nvim-treesitter.install".compilers = {"gcc", "clang"}
+
+require "nvim-treesitter.configs".setup {
+    ensure_installed = {
+        "bash",
+        "cpp",
+        "comment",
+        "css",
+        "graphql",
+        "html",
+        "javascript",
+        "jsdoc",
+        "json",
+        "lua",
+        "python",
+        "regex",
+        "tsx",
+        "vue",
+        "typescript"
+    },
+    highlight = {enable = true},
+    incremental_selection = {enable = true},
+    textobjects = {enable = true}
+}
 
 --Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require "lspinstall".post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+--require "lspinstall".post_install_hook = function()
+--setup_servers() -- reload installed servers
+--vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+--end
 
 -- Global options
 vim.g.mapleader = " "
@@ -42,9 +99,11 @@ vim.g.material_style = "darker"
 
 -- Ale linter
 vim.g.ale_fix_on_save = true
+vim.g.ale_javascript_prettier_options = "--plugin=prettier-plugin-toml"
+vim.g.ale_kotlin_ktlint_options = "--disabled_rules=no-unused-imports"
 vim.g.ale_fixers = {
-    javascript = {"eslint"},
-    typescript = {"eslint"},
+    javascript = {"eslint", "prettier"},
+    typescript = {"eslint", "prettier"},
     css = {"prettier"},
     scss = {"prettier"},
     kotlin = {"ktlint"},
@@ -53,7 +112,9 @@ vim.g.ale_fixers = {
     json5 = {"prettier"},
     json = {"prettier"},
     jsonc = {"prettier"},
-    go = {"gofmt"}
+    go = {"gofmt"},
+    -- Uses prettier-plugin-toml
+    toml = {"prettier"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
@@ -89,6 +150,13 @@ vim.g.user_emmet_settings = {
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc")
 
 -- Status bar
+require("lualine").setup(
+    {
+        options = {
+            theme = "onedark"
+        }
+    }
+)
 
 function LspStatus()
     if vim.lsp.buf_get_clients() > 0 then
@@ -97,42 +165,6 @@ function LspStatus()
 
     return ""
 end
-
-vim.g.lightline = {
-    colorscheme = "material",
-    component = {
-        lineinfo = "%3l/%1L:%-2c"
-    },
-    active = {
-        left = {
-            {
-                "mode",
-                "paste"
-            },
-            {
-                "readonly",
-                "filename"
-            }
-        },
-        right = {
-            {
-                "lineinfo"
-            },
-            {
-                "filetype"
-            },
-            {
-                "lsp_status"
-            }
-        }
-    },
-    component_function = {
-        filename = "LightlineFilename",
-        lsp_diagnostics_hints = "LspHints",
-        lsp_diagnostics_warnings = "LspWarnings",
-        lsp_status = "LspStatus"
-    }
-}
 
 local lsp_status = require("lsp-status")
 
@@ -150,3 +182,5 @@ lsp_status.register_progress()
 
 --vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
 --vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
+
+require("telescope").load_extension("git_worktree")

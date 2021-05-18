@@ -95,21 +95,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/floating.nvim"
   },
+  ["git-worktree.nvim"] = {
+    loaded = true,
+    path = "/home/theo/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
+  },
   ["jsonc.vim"] = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/jsonc.vim"
-  },
-  ["lightline.vim"] = {
-    loaded = true,
-    path = "/home/theo/.local/share/nvim/site/pack/packer/start/lightline.vim"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/theo/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/theo/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   nerdcommenter = {
     loaded = true,
@@ -127,13 +135,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
-  ["nvim-proj"] = {
-    loaded = true,
-    path = "/home/theo/.local/share/nvim/site/pack/packer/start/nvim-proj"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/theo/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   onebuddy = {
     loaded = true,
@@ -163,9 +171,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/theo/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  ["vim-devicons"] = {
+  ["todo-comments.nvim"] = {
+    config = { "\27LJ\1\2?\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\18todo-comments\frequire\0" },
     loaded = true,
-    path = "/home/theo/.local/share/nvim/site/pack/packer/start/vim-devicons"
+    path = "/home/theo/.local/share/nvim/site/pack/packer/start/todo-comments.nvim"
   },
   ["vim-horizon"] = {
     loaded = true,
@@ -187,6 +196,10 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
+-- Config for: todo-comments.nvim
+time("Config for todo-comments.nvim", true)
+try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
+time("Config for todo-comments.nvim", false)
 -- Config for: which-key.nvim
 time("Config for which-key.nvim", true)
 try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")

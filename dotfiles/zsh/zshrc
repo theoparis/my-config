@@ -42,16 +42,16 @@ alias gdf="git diff"
 alias gad="git add"
 alias gch="git checkout"
 alias gchb="git checkout -b"
-alias gl=" git log --graph --abbrev-commit --date=local --name-status"
+alias gl="git log --graph --abbrev-commit --date=local --name-status"
+# Git worktree
+alias gw="git worktree"
+alias gwa="git worktree add"
 # Open git repo url in browser
 alias gro="xdg-open $(git remote get-url origin)"
 
-# ptSh
-alias ls="ptls"
-alias pwd="ptpwd"
-alias mkdir="ptmkdir"
-alias touch="pttouch"
-alias cp="ptcp"
+if [ -x $(which prett) ]; then
+    alias ls="prett ls"
+fi
 
 #source ./keybindings.sh
 

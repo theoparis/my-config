@@ -11,10 +11,21 @@ return require("packer").startup(
                 require("which-key").setup {}
             end
         }
-        use "kabouzeid/nvim-lspinstall"
+        --use "kabouzeid/nvim-lspinstall"
         use "neovim/nvim-lspconfig"
         use "glepnir/lspsaga.nvim"
-        use "itchyny/lightline.vim"
+        -- Status Bar
+        use {
+            "hoob3rt/lualine.nvim",
+            requires = {"kyazdani42/nvim-web-devicons", opt = true}
+        }
+        --------------
+        use {
+            "folke/todo-comments.nvim",
+            config = function()
+                require("todo-comments").setup {}
+            end
+        }
         use "w0rp/ale"
         use "preservim/nerdtree"
         use "andweeb/presence.nvim"
@@ -22,14 +33,12 @@ return require("packer").startup(
         use "scrooloose/nerdcommenter"
         use "mattn/emmet-vim"
         use "editorconfig/editorconfig-vim"
-        use "ryanoasis/vim-devicons"
         use "tiagofumo/vim-nerdtree-syntax-highlight"
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
         use {
             "nvim-telescope/telescope.nvim",
             requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
         }
-        -- compe
         use "tjdevries/colorbuddy.nvim"
         use "vim-syntastic/syntastic"
         use "Th3Whit3Wolf/onebuddy"
@@ -41,7 +50,12 @@ return require("packer").startup(
         use "fhill2/floating.nvim"
         --use "creepinson/nvim-proj"
         --use "~/Documents/Code/nvim-proj"
-        use "ThePrimeagen/git-worktree.nvim"
+        use {
+            "ThePrimeagen/git-worktree.nvim",
+            config = function()
+                require("git-worktree").setup({})
+            end
+        }
         use {
             "glacambre/firenvim",
             run = function()
