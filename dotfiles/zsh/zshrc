@@ -25,10 +25,22 @@ export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
 export TERMINAL="alacritty"
 # Aliases
+## Navigation
 alias lsa="ls -a"
 alias nnn="nnn -Rdae"
 alias ll="nnn"
 alias N='sudo -E nnn'
+
+## fzf search for a folder, then cd into it
+function f() {
+    if [ ${1:-""} != "" ]; then
+        ls $1 | fzf | read f && cd "$1/$f"
+    else
+        ls | fzf | read f && cd $f
+    fi
+}
+## fzf search for a project in ~/dev
+alias d="f ~/dev"
 
 ## Git alias shortcuts
 alias g="git"
@@ -48,10 +60,6 @@ alias gw="git worktree"
 alias gwa="git worktree add"
 # Open git repo url in browser
 alias gro="xdg-open $(git remote get-url origin)"
-
-if [ -x $(which prett) ]; then
-    alias ls="prett ls"
-fi
 
 #source ./keybindings.sh
 

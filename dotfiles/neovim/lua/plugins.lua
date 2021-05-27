@@ -62,5 +62,6 @@ return require("packer").startup(
                 vim.fn["firenvim#install"](0)
             end
         }
+        use "sheerun/vim-polyglot"
     end
 )

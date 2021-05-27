@@ -40,7 +40,17 @@ lsp.yamlls.setup(
     }
 )
 lsp.sumneko_lua.setup({})
-lsp.kotlin_language_server.setup {}
+lsp.kotlin_language_server.setup {
+    settings = {
+        kotlin = {
+            compiler = {
+                jvm = {
+                    target = "1.8"
+                }
+            }
+        }
+    }
+}
 lsp.ccls.setup {
     init_options = {
         compilationDatabaseDirectory = "build",
@@ -72,7 +82,8 @@ require "nvim-treesitter.configs".setup {
         "regex",
         "tsx",
         "vue",
-        "typescript"
+        "typescript",
+        "kotlin"
     },
     highlight = {enable = true},
     incremental_selection = {enable = true},
@@ -99,8 +110,8 @@ vim.g.material_style = "darker"
 
 -- Ale linter
 vim.g.ale_fix_on_save = true
-vim.g.ale_javascript_prettier_options = "--plugin=prettier-plugin-toml"
 vim.g.ale_kotlin_ktlint_options = "--disabled_rules=no-unused-imports"
+vim.g.ale_lua_luafmt_options = "--stdin"
 vim.g.ale_fixers = {
     javascript = {"eslint", "prettier"},
     typescript = {"eslint", "prettier"},
@@ -114,7 +125,7 @@ vim.g.ale_fixers = {
     jsonc = {"prettier"},
     go = {"gofmt"},
     -- Uses prettier-plugin-toml
-    toml = {"prettier"}
+    html = {"prettier"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
