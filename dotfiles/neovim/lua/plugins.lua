@@ -16,8 +16,9 @@ return require("packer").startup(
         use "glepnir/lspsaga.nvim"
         -- Status Bar
         use {
-            "hoob3rt/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons", opt = true}
+            "glepnir/galaxyline.nvim",
+            requires = {"kyazdani42/nvim-web-devicons", opt = true},
+            branch = "main"
         }
         --------------
         use {
@@ -27,7 +28,7 @@ return require("packer").startup(
             end
         }
         use "w0rp/ale"
-        use "preservim/nerdtree"
+        use "kyazdani42/nvim-tree.lua"
         use "andweeb/presence.nvim"
         use "ntk148v/vim-horizon"
         use "scrooloose/nerdcommenter"
@@ -63,5 +64,6 @@ return require("packer").startup(
             end
         }
         use "sheerun/vim-polyglot"
+        use "metakirby5/codi.vim"
     end
 )

@@ -161,13 +161,6 @@ vim.g.user_emmet_settings = {
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc")
 
 -- Status bar
-require("lualine").setup(
-    {
-        options = {
-            theme = "onedark"
-        }
-    }
-)
 
 function LspStatus()
     if vim.lsp.buf_get_clients() > 0 then
@@ -195,3 +188,4 @@ lsp_status.register_progress()
 --vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
 
 require("telescope").load_extension("git_worktree")
+
