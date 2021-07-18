@@ -31,4 +31,3 @@ truncation_length = 8
 truncation_symbol = "…/"
 format = "📂 [$path]($style)[$read_only]($read_only_style) "
 
-

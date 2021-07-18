@@ -4,10 +4,6 @@
 
 module.exports = {
   config: {
-    hypercwd: {
-      initialWorkingDirectory: "~/",
-    },
-    confirmQuit: true,
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
@@ -16,7 +12,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: "SauceCodePro Nerd Font",
+    fontFamily: "'JetBrainsMono Nerd Font', monospace",
 
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
@@ -37,10 +33,10 @@ module.exports = {
     cursorAccentColor: "#000",
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
-    cursorShape: "UNDERLINE",
+    cursorShape: "BLOCK",
 
     // set to `true` (without backticks and without quotes) for blinking cursor
-    cursorBlink: true,
+    cursorBlink: false,
 
     // color of the text
     foregroundColor: "#fff",
@@ -95,6 +91,10 @@ module.exports = {
       lightWhite: "#FFFFFF",
     },
 
+    hyperBorder: {
+      borderWidth: "2px",
+    },
+
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
     //
@@ -112,10 +112,6 @@ module.exports = {
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
     shellArgs: ["--login"],
-
-    hyperline: {
-      plugins: ["hostname", "cpu", "spotify"],
-    },
 
     // for environment variables
     env: {},
@@ -143,30 +139,18 @@ module.exports = {
 
     // Whether to use the WebGL renderer. Set it to false to use canvas-based
     // rendering (slower, but supports transparent backgrounds)
-    webGLRenderer: false,
+    webGLRenderer: true,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },
+
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
   // examples:
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [
-    "hyperterm-paste",
-    "hypercwd",
-    "hyperlinks",
-    "hyper-confirm",
-    "hyper-material",
-    "hyper-search",
-    "hyper-pane",
-    "hyperterm-transparent-vibrancy",
-    "hyperpower",
-    "hyperborder",
-    "hyperterm-tab-icons",
-    "hyper-blink",
-  ],
+  plugins: ["hyperpower", "hyper-one-dark", "hyperborder"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here

@@ -3,11 +3,11 @@
 ## Requirements
 
 - Linux based OS
-- Latest version of neovim
+- [Neovim nightly version](https://github.com/neovim/neovim/releases/nightly)
 - [Starship Prompt](https://starship.rs)
-- ZSH Shell
+- [ZSH Shell](https://zsh.org)
 - [ZPlug](https://github.com/zplug/zplug)
-- fzf
+- fzf, tmux & stow
 
 ## Initialization
 
@@ -25,5 +25,4 @@ Next, run the init script that will link the config files from the local git rep
 cd ~/my-config
 ./scripts/init.sh
 ```
-
 

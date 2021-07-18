@@ -6,6 +6,6 @@ padding:
 shell:
     program: /usr/bin/zsh
 font:
-    size: 12
+    size: 14
     normal:
-        family: "Fira Code"
+        family: "JetbrainsMono Nerd Font"

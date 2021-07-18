@@ -61,6 +61,12 @@ alias gwa="git worktree add"
 # Open git repo url in browser
 alias gro="xdg-open $(git remote get-url origin)"
 
+# Markdown viewer
+## Requires lynx and pandoc
+md() {
+    pandoc "$1" | lynx -stdin
+}
+
 #source ./keybindings.sh
 
 # TODO: load all files from ~/my-config/user
@@ -101,26 +107,9 @@ if command -v starship; then
     eval "$(starship init zsh)"
 fi
 zplug load --verbose
-#compdef boop
-###-begin-boop-completions-###
-#
-# yargs command completion script
-#
-# Installation: boop completion >> ~/.zshrc
-#    or boop completion >> ~/.zsh_profile on OSX.
-#
-_boop_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" boop --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  _describe 'values' reply
-}
-compdef _boop_yargs_completions boop
-###-end-boop-completions-###
 
 GO111MODULE=on
 alias luamake=$HOME/build/lua-language-server/3rd/luamake/luamake
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
