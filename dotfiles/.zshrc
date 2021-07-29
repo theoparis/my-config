@@ -30,7 +30,7 @@ alias lsa="ls -a"
 alias nnn="nnn -Rdae"
 alias ll="nnn"
 alias N='sudo -E nnn'
-
+alias trm="trash"
 ## fzf search for a folder, then cd into it
 function f() {
     if [ ${1:-""} != "" ]; then

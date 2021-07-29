@@ -24,6 +24,7 @@ end
 
 -- Language server
 local lsp = require("lspconfig")
+lsp.rust_analyzer.setup{}
 lsp.tsserver.setup(
     {
         cmd = {
@@ -114,7 +115,7 @@ vim.g.ale_kotlin_ktlint_options = "--disabled_rules=no-unused-imports"
 vim.g.ale_lua_luafmt_options = "--stdin"
 vim.g.ale_fixers = {
     javascript = {"eslint", "prettier"},
-    typescript = {"eslint", "prettier"},
+    typescript = {"eslint"},
     css = {"prettier"},
     scss = {"prettier"},
     kotlin = {"ktlint"},
