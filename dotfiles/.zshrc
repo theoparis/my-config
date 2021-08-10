@@ -1,36 +1,14 @@
-source ~/.zplug/init.zsh
-# zsh plugins
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "Aloxaf/fzf-tab"
-# Load zsh plugins
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-export SHELL=$(which zsh)
-
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Neovim ftw
-export EDITOR="nvim"
-export VISUAL="$EDITOR"
-export GIT_EDITOR="$EDITOR"
-export TERMINAL="alacritty"
-# Aliases
-## Navigation
-alias lsa="ls -a"
-alias nnn="nnn -Rdae"
-alias ll="nnn"
-alias N='sudo -E nnn'
-alias trm="trash"
+
+# Functions
+fpath=( ~/.zfunc "${fpath[@]}" )
+
 ## fzf search for a folder, then cd into it
 function f() {
     if [ ${1:-""} != "" ]; then
@@ -39,77 +17,95 @@ function f() {
         ls | fzf | read f && cd $f
     fi
 }
-## fzf search for a project in ~/dev
-alias d="f ~/dev"
 
-## Git alias shortcuts
+# Exports
+export PATH="$PATH:~/.local/bin"
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export NVM_DIR="$HOME/.nvm"
+
+# Loading
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# Plugins
+# Download Znap, if it's not there yet.
+[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+    git clone https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+
+source ~/Git/zsh-snap/znap.zsh  # Start Znap
+
+znap source romkatv/powerlevel10k
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-completions
+znap source Aloxaf/fzf-tab
+
+# Projects Folder For Quick Navigation
+export DEV_FOLDER="$HOME/dev"
+
+[[ -f ~/.config/zsh/user.zsh ]] && source ~/.config/zsh/user.zsh
+
+# Aliases
+alias d="f $DEV_FOLDER"
+alias nnn="nnn -Rdae"
+alias ll="nnn"
+alias N="sudo -E nnn"
+alias l="ls -l"
+alias trm="trash"
 alias g="git"
-alias gbr="git branch"
+alias gbr="fzf-git-branch"
 alias gps="git push"
 alias gpl="git pull"
 alias gc="git commit"
+alias gcm="git commit -m"
 alias gcam="git commit -a -m"
 alias gst="git status"
 alias gdf="git diff"
 alias gad="git add"
-alias gch="git checkout"
+alias gch="fzf-git-checkout"
 alias gchb="git checkout -b"
 alias gl="git log --graph --abbrev-commit --date=local --name-status"
-# Git worktree
 alias gw="git worktree"
 alias gwa="git worktree add"
-# Open git repo url in browser
 alias gro="xdg-open $(git remote get-url origin)"
 
-# Markdown viewer
-## Requires lynx and pandoc
-md() {
-    pandoc "$1" | lynx -stdin
+# lm-sensors get specific sensor
+function sensor() {
+    sensors | grep $1 | cut -f2- -d: | tr -d ' 	'
 }
 
-#source ./keybindings.sh
+fzf-git-branch() {
+    git rev-parse HEAD > /dev/null 2>&1 || return
 
-# TODO: load all files from ~/my-config/user
-# source ~/my-config/user/global.zsh
-if [ -f "$HOME/.cargo/env" ]; then
-    source $HOME/.cargo/env
-fi
+    git branch --color=always --all --sort=-committerdate |
+        grep -v HEAD |
+        fzf --height 50% --ansi --no-multi --preview-window right:65%             --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
+        sed "s/.* //"
+}
 
-if [ -f "/usr/share/chruby/chruby.sh" ]; then
+fzf-git-checkout() {
+    git rev-parse HEAD > /dev/null 2>&1 || return
 
-    source /usr/share/chruby/chruby.sh
-fi
+    local branch
 
-export GO111MODULE=auto
-export GOPATH=~/go
-export DENO_INSTALL="$HOME/.deno"
-export DPRINT_INSTALL="$HOME/.dprint"
-export PATH="$PATH:/usr/lib/dart/bin"
-export N_PREFIX="$HOME/n"
-export PATH="$N_PREFIX/bin:$DENO_INSTALL/bin:$DPRINT_INSTALL/bin:$HOME/my-config/scripts/bin:$HOME/.local/bin:$GOPATH/bin:$HOME/.nimble/bin:$HOME/.local/bin/kt-server/bin:$HOME/.cargo/bin:$HOME/bin:$PATH"
-# Homebrew
-export PATH="$HOME/usr/local/bin:$HOME/usr/local/opt:$PATH"
-# nnn (cli file browser)
-export NNN_PLUG="t:_|alacritty*;v:preview-tabbed"
-export NNN_USE_EDITOR=1
+    branch=$(fzf-git-branch)
+    if [[ "$branch" = "" ]]; then
+        echo "No branch selected."
+        return
+    fi
 
-# Load macchina (neofetch alternative)
-macchina -H kernel
+    # If branch name starts with 'remotes/' then it is a remote branch. By
+    # using --track and a remote branch name, it is the same as:
+    # git checkout -b branchName --track origin/branchName
+    if [[ "$branch" = 'remotes/'* ]]; then
+        git checkout --track $branch
+    else
+        git checkout $branch;
+    fi
+}
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# Starship prompt
-if command -v starship; then
-    eval "$(starship init zsh)"
-fi
-zplug load --verbose
-
-GO111MODULE=on
-alias luamake=$HOME/build/lua-language-server/3rd/luamake/luamake
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet

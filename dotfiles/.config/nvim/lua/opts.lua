@@ -24,7 +24,58 @@ end
 
 -- Language server
 local lsp = require("lspconfig")
-lsp.rust_analyzer.setup{}
+lsp.rust_analyzer.setup {}
+lsp.dockerls.setup {}
+lsp.ansiblels.setup {}
+lsp.jsonls.setup {
+    settings = {
+        json = {
+            schemas = {
+                {
+                    description = "TypeScript compiler configuration file",
+                    fileMatch = {"tsconfig.json", "tsconfig.*.json"},
+                    url = "http://json.schemastore.org/tsconfig"
+                },
+                {
+                    description = "Lerna config",
+                    fileMatch = {"lerna.json"},
+                    url = "http://json.schemastore.org/lerna"
+                },
+                {
+                    description = "Babel configuration",
+                    fileMatch = {".babelrc.json", ".babelrc", "babel.config.json"},
+                    url = "http://json.schemastore.org/lerna"
+                },
+                {
+                    description = "ESLint config",
+                    fileMatch = {".eslintrc.json", ".eslintrc"},
+                    url = "http://json.schemastore.org/eslintrc"
+                },
+                {
+                    description = "Bucklescript config",
+                    fileMatch = {"bsconfig.json"},
+                    url = "https://bucklescript.github.io/bucklescript/docson/build-schema.json"
+                },
+                {
+                    description = "Prettier config",
+                    fileMatch = {".prettierrc", ".prettierrc.json", "prettier.config.json"},
+                    url = "http://json.schemastore.org/prettierrc"
+                },
+                {
+                    description = "Vercel Now config",
+                    fileMatch = {"now.json"},
+                    url = "http://json.schemastore.org/now"
+                },
+                {
+                    description = "Stylelint config",
+                    fileMatch = {".stylelintrc", ".stylelintrc.json", "stylelint.config.json"},
+                    url = "http://json.schemastore.org/stylelintrc"
+                }
+            }
+        }
+    }
+}
+
 lsp.tsserver.setup(
     {
         cmd = {
@@ -114,7 +165,7 @@ vim.g.ale_fix_on_save = true
 vim.g.ale_kotlin_ktlint_options = "--disabled_rules=no-unused-imports"
 vim.g.ale_lua_luafmt_options = "--stdin"
 vim.g.ale_fixers = {
-    javascript = {"eslint", "prettier"},
+    javascript = {"eslint"},
     typescript = {"eslint"},
     css = {"prettier"},
     scss = {"prettier"},
@@ -190,3 +241,7 @@ lsp_status.register_progress()
 
 require("telescope").load_extension("git_worktree")
 
+local saga = require("lspsaga")
+saga.init_lsp_saga {
+    border_style = "round"
+}

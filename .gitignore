@@ -3,3 +3,4 @@
 user
 node_modules
 .DS_Store
+packer_compiled.*

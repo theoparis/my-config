@@ -34,7 +34,6 @@ return require("packer").startup(
         use "scrooloose/nerdcommenter"
         use "mattn/emmet-vim"
         use "editorconfig/editorconfig-vim"
-        use "tiagofumo/vim-nerdtree-syntax-highlight"
         use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
         use {
             "nvim-telescope/telescope.nvim",

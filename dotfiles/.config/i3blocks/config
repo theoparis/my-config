@@ -1,0 +1,13 @@
+[hello]
+#short_text=hi
+command=echo 👋 $USER | sed -r 's/\<./\U&/g'
+interval=once
+
+[temperature]
+interval=5
+command=zsh ~/my-sensors.sh
+
+[date]
+interval=15
+command=date +"📅 %D ⌚ %I:%M %p"
+
