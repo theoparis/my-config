@@ -135,3 +135,6 @@ export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY
 
 export KUBECONFIG="$HOME/kubeconfig"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
