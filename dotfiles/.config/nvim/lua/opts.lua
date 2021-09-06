@@ -26,7 +26,7 @@ end
 local lsp = require("lspconfig")
 lsp.rust_analyzer.setup {}
 lsp.dockerls.setup {}
-lsp.ansiblels.setup {}
+lsp.pylsp.setup {}
 lsp.jsonls.setup {
     settings = {
         json = {
@@ -91,7 +91,7 @@ lsp.yamlls.setup(
         }
     }
 )
-lsp.sumneko_lua.setup({})
+--lsp.sumneko_lua.setup({})
 lsp.kotlin_language_server.setup {
     settings = {
         kotlin = {
@@ -177,28 +177,13 @@ vim.g.ale_fixers = {
     jsonc = {"prettier"},
     go = {"gofmt"},
     -- Uses prettier-plugin-toml
-    html = {"prettier"}
+    html = {"prettier"},
+    python = {"autopep8"},
+    cpp = {"clang-format"},
+    c = {"clang-format"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
-
-vim.g.coc_global_extensions = {
-    "coc-json",
-    "coc-git",
-    "coc-yaml",
-    "coc-tsserver",
-    "coc-deno",
-    "coc-html",
-    "coc-lua",
-    "coc-pyright",
-    "coc-eslint",
-    "coc-css",
-    "coc-stylelint",
-    "coc-go",
-    "coc-markdownlint",
-    "coc-rust-analyzer",
-    "coc-clangd"
-}
 
 vim.g.NERDTreeIgnore = {"^node_modules$"}
 vim.g.user_emmet_settings = {

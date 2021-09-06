@@ -6,9 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-# Functions
-fpath=( ~/.zfunc "${fpath[@]}" )
-
 ## fzf search for a folder, then cd into it
 function f() {
     if [ ${1:-""} != "" ]; then
@@ -18,8 +15,12 @@ function f() {
     fi
 }
 
+function gen-pass() {
+    tr -cd '[:alnum:]' < /dev/urandom | fold -w${1:-"32"} | head -n1
+}
+
 # Exports
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:~/.local/bin:/usr/lib/jvm/java-16-openjdk/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
@@ -69,9 +70,18 @@ alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro="xdg-open $(git remote get-url origin)"
 
+# curl speed test for a site
+function wst() {
+    curl -s -w 'Testing Website Response Time for :%{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nAppCon Time:\t\t%{time_appconnect}\nRedirect Time:\t\t%{time_redirect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null $1
+}
+
 # lm-sensors get specific sensor
 function sensor() {
     sensors | grep $1 | cut -f2- -d: | tr -d ' 	'
+}
+
+function genMacAddr() {
+    echo $(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//')
 }
 
 fzf-git-branch() {
@@ -109,3 +119,19 @@ fzf-git-checkout() {
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+export VULKAN_SDK="$HOME/vukan"
+
+# Load functions
+#for file in ~/.zfunc/*; do
+#    source "$file"
+#done
+
+export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
+export HISTFILE="~/.zsh_history"
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+setopt EXTENDED_HISTORY
+
+export KUBECONFIG="$HOME/kubeconfig"

@@ -8,7 +8,6 @@ sh -c "cd ~/.tmux/plugins/tpm && git pull"
 
 # Zsh plugins
 mkdir -p ~/.config/zsh
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 # Starship Prompt
 FORCE=true sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --bin-dir ~/.local/bin

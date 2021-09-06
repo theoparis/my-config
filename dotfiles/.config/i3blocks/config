@@ -11,3 +11,14 @@ command=zsh ~/my-sensors.sh
 interval=15
 command=date +"📅 %D ⌚ %I:%M %p"
 
+[docker]
+command=~/scripts/docker
+color=#0db7ed
+interval=10
+LABEL=🐳
+
+[battery2]
+command=~/scripts/battery2
+markup=pango
+interval=30
+
