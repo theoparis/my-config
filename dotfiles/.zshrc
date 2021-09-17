@@ -20,7 +20,7 @@ function gen-pass() {
 }
 
 # Exports
-export PATH="$PATH:~/.local/bin:/usr/lib/jvm/java-16-openjdk/bin"
+export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
@@ -40,6 +40,9 @@ znap source romkatv/powerlevel10k
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source Aloxaf/fzf-tab
+znap source agkozak/zsh-z
+
+zstyle ':completion:*' menu select
 
 # Projects Folder For Quick Navigation
 export DEV_FOLDER="$HOME/dev"
@@ -51,7 +54,7 @@ alias d="f $DEV_FOLDER"
 alias nnn="nnn -Rdae"
 alias ll="nnn"
 alias N="sudo -E nnn"
-alias l="ls -l"
+alias l="exa -l"
 alias trm="trash"
 alias g="git"
 alias gbr="fzf-git-branch"
@@ -136,5 +139,5 @@ setopt EXTENDED_HISTORY
 
 export KUBECONFIG="$HOME/kubeconfig"
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/emsdk:$HOME/emsdk/upstream/emscripten"
 

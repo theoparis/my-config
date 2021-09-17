@@ -13,3 +13,5 @@ map("n", "<leader>co", ":Codi!!<CR>", {noremap = true})
 map("n", "<C-K>", ":Lspsaga hover_doc<CR>", {noremap = true})
 map("i", "<C-k>", ":Lspsaga signature_help<CR>", {noremap = true})
 map("n", "<leader>gh", ":Lspsaga lsp_finder<CR>", {noremap = true})
+map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true})
+

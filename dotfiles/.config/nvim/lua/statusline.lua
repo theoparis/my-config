@@ -191,13 +191,7 @@ gls.right[7] = {
             local current_line = vim.fn.line(".")
             local total_line = vim.fn.line("$")
 
-            if current_line == 1 then
-                return "  Top "
-            elseif current_line == vim.fn.line("$") then
-                return "  Bot "
-            end
-            local result, _ = math.modf((current_line / total_line) * 100)
-            return "  " .. result .. "% "
+            return " " .. current_line .. " / " .. total_line .. " "
         end,
         highlight = {colors.green, colors.lightbg}
     }

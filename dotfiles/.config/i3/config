@@ -40,9 +40,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-bindsym $mod+d exec "rofi -combi-modi drun,ssh -modi combi -show combi"
+#bindsym $mod+d exec "rofi -combi-modi drun,ssh -modi combi -show combi"
 
 # Screenshot
 bindsym $mod+y exec "flameshot gui -r"

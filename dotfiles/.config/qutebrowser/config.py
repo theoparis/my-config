@@ -16,3 +16,5 @@ config.bind(",v", "spawn mpv {url}")
 # Search engine and start page
 config.set("url.searchengines", {"DEFAULT": "https://google.com/search?q={}"})
 config.set("url.start_pages", "https://google.com")
+
+config.set("colors.webpage.darkmode.enabled", True)
