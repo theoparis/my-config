@@ -1,7 +1,5 @@
 echo "Attempting to initialize config from $(pwd)";
 
-mkdir -p ~/.local/bin
-
 # Tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sh -c "cd ~/.tmux/plugins/tpm && git pull"
@@ -10,13 +8,13 @@ sh -c "cd ~/.tmux/plugins/tpm && git pull"
 mkdir -p ~/.config/zsh
 
 # Starship Prompt
-FORCE=true sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --bin-dir ~/.local/bin
+FORCE=true sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --bin-dir ~/bin
 
 # Node Version Manager
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
-curl https://raw.githubusercontent.com/jamesob/desk/master/desk > ~/.local/desk
-chmod +x ~/.local/bin/desk
+curl https://raw.githubusercontent.com/jamesob/desk/master/desk > ~/bin/desk
+chmod +x ~/bin/desk
 mkdir -p ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/desk
 curl https://raw.githubusercontent.com/jamesob/desk/master/shell_plugins/zsh/desk.plugin.zsh -o ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/desk/desk.plugin.zsh
 # Neovim plugin manager
