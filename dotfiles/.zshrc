@@ -51,11 +51,14 @@ export DEV_FOLDER="$HOME/dev"
 
 [[ -f ~/.config/zsh/user.zsh ]] && source ~/.config/zsh/user.zsh
 
+if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+fi
+
 # Aliases
 alias d="f $DEV_FOLDER"
-alias nnn="nnn -Rdae"
-alias l="nnn"
-alias N="sudo -E nnn"
+alias L="sudo -E n"
+alias l="n -Rdae"
 alias ll="exa -l"
 alias trm="trash"
 # Git aliases
