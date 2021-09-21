@@ -1,0 +1,50 @@
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[bar/main]
+#monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 32
+radius = 6.0
+fixed-center = true
+wm-restack = bspwm
+
+font-0 = "JetBrainsMono Nerd Font:pixelsize=14"
+
+modules-left = bspwm xwindow
+
+modules-right = date wlan battery pulseaudio
+
+[module/date]
+type = internal/date
+interval = 5.0
+date = %m-%d-%Y
+time = %l:%M
+format =   <label>
+label = %date% %time%
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+inline-mode=true
+label-empty=%name%
+label-empty-foreground=#fffff
+label-empty-background=#313131
+label-empty-padding=1
+label-focused=%name%
+label-focused-background=#212121
+label-focused-foreground=#ffffff
+label-focused-padding=1
+label-occupied=%name%
+label-occupied-background=#313131
+label-occupied-foreground=#ffffff
+label-occupied-padding=1
+label-urgent=%name%!
+label-urgent-padding=1
+
+
