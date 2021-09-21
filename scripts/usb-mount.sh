@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ACTION=$1
 DEVBASE=$2

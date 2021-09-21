@@ -1,0 +1,83 @@
+# BSPWM Bindings
+## Quit bspm
+super + Escape
+  prompt "Are you sure you would like to quit this Xsession" bspc quit
+
+## Restart bspwm
+super + shift + w
+  bspc wm -r
+
+## Kill window
+super + shift + q
+  xdo close
+
+## Focus on window in direction
+super + {h,j,k,l}
+  bspc node -f {west,south,north,east}
+
+## Send window to desktop
+super + shift + {0-9}
+  bspc node -d ^{0-9}
+
+## Send window to desktop and swap to desktop
+super + control + {0-9}
+  bspc node -d ^{0-9} && bspc desktop -f {0-9}
+
+## Toggle floating window mode
+super + o
+  bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+## Swap window with direction
+super + shift + {h,j,k,l}
+  bspc node -s {west,south,north,east}
+
+## Focus on desktop
+super + {0-9}
+  bspc desktop -f {0-9}
+
+## Expand a window by moving one of its sides outward
+ctrl + alt + {h,j,k,l}
+  bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+
+## Move a floating window
+ctrl + alt + {Left,Right,Up,Down}
+  xdo move {-x -20, -x + 20, -y - 20, -y +20}
+
+# Toggle compositor
+super + shift + c
+  toggleprogram "picom" "-b"
+
+# System control
+super + shift + {r,d}
+  prompt {"Are you sure you would like to reboot?" "sudo reboot" "Are you sure you would like to shutdown" "sudo shutdown"}
+
+## Volume Control
+XF86AudioLowerVolume
+  amixer set Master 2%-
+XF86AudioRaiseVolume
+  amixer set Master 2%+
+XF86AudioMute
+  amixer set Master toggle
+
+# Script keys
+
+super + shift + l
+  betterlockscreen -l
+
+# Application launchers
+super + d
+  dmenu_run
+
+super + y
+  flameshot gui -r
+
+## Open terminal
+super + Return
+  $TERMINAL
+
+super + q
+  vivaldi-stable https://google.com
+
+super + alt + {k,o,g}
+  {kdenlive, obs, gimp}
+

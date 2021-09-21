@@ -22,7 +22,7 @@ function gen-pass() {
 }
 
 # Exports
-export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin"
+export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
@@ -54,10 +54,11 @@ export DEV_FOLDER="$HOME/dev"
 # Aliases
 alias d="f $DEV_FOLDER"
 alias nnn="nnn -Rdae"
-alias ll="nnn"
+alias l="nnn"
 alias N="sudo -E nnn"
-alias l="exa -l"
+alias ll="exa -l"
 alias trm="trash"
+# Git aliases
 alias g="git"
 alias gbr="fzf-git-branch"
 alias gps="git push"
@@ -74,6 +75,7 @@ alias gl="git log --graph --abbrev-commit --date=local --name-status"
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro="xdg-open $(git remote get-url origin)"
+alias v="nvim"
 
 # curl speed test for a site
 function wst() {
