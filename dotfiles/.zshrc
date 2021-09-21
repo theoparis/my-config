@@ -1,3 +1,5 @@
+fpath=(~/.zfunc $fpath)
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -141,3 +143,11 @@ export KUBECONFIG="$HOME/kubeconfig"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/emsdk:$HOME/emsdk/upstream/emscripten"
 
+autoload -Uz compinit && compinit -i
+
+
+PATH="/home/theo/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/theo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/theo/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/theo/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/theo/perl5"; export PERL_MM_OPT;
