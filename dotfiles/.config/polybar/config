@@ -9,6 +9,7 @@ height = 32
 radius = 6.0
 fixed-center = true
 wm-restack = bspwm
+tray-position = right
 
 font-0 = "JetBrainsMono Nerd Font:pixelsize=14"
 
