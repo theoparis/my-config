@@ -27,6 +27,7 @@ export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
+export SXHKD_SHELL="$SHELL"
 export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Loading

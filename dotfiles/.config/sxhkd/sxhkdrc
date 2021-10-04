@@ -1,7 +1,7 @@
 # BSPWM Bindings
 ## Quit bspm
 super + Escape
-  prompt "Are you sure you would like to quit this Xsession" bspc quit
+  zsh -ic 'prompt "Are you sure you would like to quit this Xsession" "bspc quit"'
 
 ## Restart bspwm
 super + shift + w
@@ -49,7 +49,7 @@ super + shift + c
 
 # System control
 super + shift + {r,d}
-  prompt {"Are you sure you would like to reboot?" "sudo reboot" "Are you sure you would like to shutdown" "sudo shutdown"}
+  zsh -ic 'prompt "Are you sure you would like to reboot?" "sudo reboot"'
 
 ## Volume Control
 XF86AudioLowerVolume
@@ -73,7 +73,7 @@ super + y
 
 ## Open terminal
 super + Return
-  $TERMINAL
+  zsh -ic "\$TERMINAL"
 
 super + q
   vivaldi-stable https://google.com
