@@ -1,3 +1,5 @@
+vim.o.clipboard = "unnamedplus"
+
 -- Language Server Config
 local function setup_servers()
     require "lspinstall".setup()
@@ -181,6 +183,9 @@ vim.g.ale_fixers = {
     python = {"autopep8"},
     cpp = {"clang-format"},
     c = {"clang-format"}
+}
+vim.g.ale_linters = {
+    sh = {"shell"}
 }
 
 vim.g.NERDCreateDefaultMappings = false

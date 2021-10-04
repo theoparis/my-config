@@ -1,4 +1,5 @@
 fpath=(~/.zfunc $fpath)
+plugins=(lxd-completion-zsh)
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -26,6 +27,7 @@ export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
+export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Loading
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -39,6 +41,7 @@ export NVM_DIR="$HOME/.nvm"
 source ~/Git/zsh-snap/znap.zsh  # Start Znap
 
 znap source romkatv/powerlevel10k
+znap source endaaman/lxd-completion-zsh
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source Aloxaf/fzf-tab
@@ -78,7 +81,6 @@ alias gl="git log --graph --abbrev-commit --date=local --name-status"
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro="xdg-open $(git remote get-url origin)"
-alias v="nvim"
 
 # curl speed test for a site
 function wst() {
@@ -88,6 +90,12 @@ function wst() {
 # lm-sensors get specific sensor
 function sensor() {
     sensors | grep $1 | cut -f2- -d: | tr -d ' 	'
+}
+
+function change-extension() {
+  foreach f (**/*.$1)
+    mv $f $f:r.$2
+  end
 }
 
 function genMacAddr() {
@@ -136,23 +144,21 @@ export VULKAN_SDK="$HOME/vukan"
 #    source "$file"
 #done
 
-export JAVA_HOME="/usr/lib/jvm/java-16-openjdk"
+export DENO_INSTALL="$HOME/.deno"
 export HISTFILE="~/.zsh_history"
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
 setopt INC_APPEND_HISTORY
 export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY
-
 export KUBECONFIG="$HOME/kubeconfig"
 export GOPATH=$HOME/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/emsdk:$HOME/emsdk/upstream/emscripten"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
+export TERM="xterm-256color"
+export DOCKER_HOST="unix:///var/run/docker.sock"
+export PATH="$PATH:$(go env GOROOT)/misc/wasm"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
-autoload -Uz compinit && compinit -i
-
-
-PATH="/home/theo/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/theo/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/theo/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/theo/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/theo/perl5"; export PERL_MM_OPT;
+function emsource() {
+    source "$HOME/emsdk/emsdk_env.sh"
+}
