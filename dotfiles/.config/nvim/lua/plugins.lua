@@ -28,7 +28,13 @@ return require("packer").startup(
             end
         }
         use "w0rp/ale"
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            requires = "kyazdani42/nvim-web-devicons",
+            config = function()
+                require "nvim-tree".setup {}
+            end
+        }
         use "andweeb/presence.nvim"
         use "ntk148v/vim-horizon"
         use "scrooloose/nerdcommenter"
@@ -46,7 +52,6 @@ return require("packer").startup(
         use "ray-x/lsp_signature.nvim"
         use "nvim-lua/lsp-status.nvim"
         use "neoclide/jsonc.vim"
-        use "cespare/vim-toml"
         use "fhill2/floating.nvim"
         --use "creepinson/nvim-proj"
         --use "~/Documents/Code/nvim-proj"

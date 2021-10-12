@@ -8,7 +8,7 @@ pkill nm-applet
 pkill picom
 pkill sxhkd
 pkill dunst
-pkill feh
+pkill nitrogen
 pkill polybar
 pkill flameshot
 
@@ -16,7 +16,7 @@ nm-applet &
 picom &
 SXHKD_SHELL="$SHELL" sxhkd &
 dunst &
-feh --bg-scale --no-fehbg ~/wall.png &
+nitrogen --restore &
 polybar main &
 flameshot &
 

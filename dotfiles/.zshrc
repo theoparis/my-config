@@ -45,8 +45,7 @@ znap source romkatv/powerlevel10k
 znap source endaaman/lxd-completion-zsh
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
-znap source Aloxaf/fzf-tab
-znap source agkozak/zsh-z
+znap source marlonrichert/zsh-autocomplete
 
 zstyle ':completion:*' menu select
 
@@ -60,6 +59,7 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 fi
 
 # Aliases
+alias rpy="rustpython"
 alias d="f $DEV_FOLDER"
 alias L="sudo -E n"
 alias l="n -Rdae"
@@ -88,6 +88,10 @@ function wst() {
     curl -s -w 'Testing Website Response Time for :%{url_effective}\n\nLookup Time:\t\t%{time_namelookup}\nConnect Time:\t\t%{time_connect}\nAppCon Time:\t\t%{time_appconnect}\nRedirect Time:\t\t%{time_redirect}\nPre-transfer Time:\t%{time_pretransfer}\nStart-transfer Time:\t%{time_starttransfer}\n\nTotal Time:\t\t%{time_total}\n' -o /dev/null $1
 }
 
+function batdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff $1
+}
+
 # lm-sensors get specific sensor
 function sensor() {
     sensors | grep $1 | cut -f2- -d: | tr -d ' 	'
@@ -101,6 +105,19 @@ function change-extension() {
 
 function genMacAddr() {
     echo $(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/:$//')
+}
+
+## fzf search for a folder, then cd into it
+function f() {
+    if [ ${1:-""} != "" ]; then
+        ls $1 | fzf | read f && cd "$1/$f"
+    else
+        ls | fzf | read f && cd $f
+    fi
+}
+
+function gen-pass() {
+    tr -cd '[:alnum:]' < /dev/urandom | fold -w${1:-"32"} | head -n1
 }
 
 fzf-git-branch() {
@@ -145,6 +162,8 @@ export VULKAN_SDK="$HOME/vukan"
 #    source "$file"
 #done
 
+eval "$(zoxide init zsh)"
+
 export DENO_INSTALL="$HOME/.deno"
 export HISTFILE="~/.zsh_history"
 export HISTFILESIZE=1000000000
@@ -155,7 +174,11 @@ setopt EXTENDED_HISTORY
 export KUBECONFIG="$HOME/kubeconfig"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
-export TERM="xterm-256color"
+
+# 256 color support
+export TERM=xterm-256color
+alias tmux="tmux -2 -u"  # for 256color
+
 export DOCKER_HOST="unix:///var/run/docker.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
 export PATH="$DENO_INSTALL/bin:$PATH"
