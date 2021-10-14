@@ -1,2 +1,2 @@
 #!/bin/zsh
-$TERMINAL -e nvim "$1"
+$TERMINAL nvim "$1"
