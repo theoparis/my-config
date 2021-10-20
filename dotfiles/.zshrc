@@ -65,6 +65,8 @@ alias L="sudo -E n"
 alias l="n -Rdae"
 alias ll="exa -l"
 alias trm="trash"
+alias s="doas"
+alias pwease="s"
 # Git aliases
 alias g="git"
 alias gbr="fzf-git-branch"
