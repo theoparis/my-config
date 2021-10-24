@@ -59,6 +59,9 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 fi
 
 # Aliases
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh="kitty +kitten ssh"
+fi
 alias rpy="rustpython"
 alias d="f $DEV_FOLDER"
 alias L="sudo -E n"
@@ -178,7 +181,6 @@ export GOPATH=$HOME/go
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
 
 # 256 color support
-export TERM=xterm-256color
 alias tmux="tmux -2 -u"  # for 256color
 
 export DOCKER_HOST="unix:///var/run/docker.sock"

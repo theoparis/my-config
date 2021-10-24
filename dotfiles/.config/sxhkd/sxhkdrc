@@ -69,14 +69,14 @@ super + d
   dmenu_run
 
 super + y
-  flameshot gui -r
+  zsh -ic "flameshot gui -r | flameshot-uploader -u"
 
 ## Open terminal
 super + Return
   zsh -ic "\$TERMINAL"
 
-super + q
-  vivaldi-stable https://google.com
+super + b
+  zsh -ic "\$BROWSER https://google.com"
 
 super + alt + {k,o,g}
   {kdenlive, obs, gimp}
