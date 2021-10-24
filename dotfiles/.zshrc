@@ -48,6 +48,7 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 znap source agkozak/zsh-z
 
+zstyle ':znap:*' git-maintenance off
 zstyle ':completion:*' menu select
 
 # Projects Folder For Quick Navigation
@@ -59,10 +60,9 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
+export TERM="xterm-256color"
+
 # Aliases
-if [ "$TERM" = "xterm-kitty" ]; then
-  alias ssh="kitty +kitten ssh"
-fi
 alias rpy="rustpython"
 alias d="f $DEV_FOLDER"
 alias L="sudo -E n"
