@@ -46,6 +46,7 @@ znap source endaaman/lxd-completion-zsh
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
+znap source agkozak/zsh-z
 
 zstyle ':completion:*' menu select
 
@@ -166,8 +167,6 @@ export VULKAN_SDK="$HOME/vukan"
 #for file in ~/.zfunc/*; do
 #    source "$file"
 #done
-
-eval "$(zoxide init zsh)"
 
 export DENO_INSTALL="$HOME/.deno"
 export HISTFILE="~/.zsh_history"
