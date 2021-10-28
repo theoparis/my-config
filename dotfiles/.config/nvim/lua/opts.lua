@@ -30,6 +30,7 @@ lsp.rust_analyzer.setup {}
 lsp.dockerls.setup {}
 lsp.gopls.setup{}
 lsp.pylsp.setup {}
+lsp.tailwindcss.setup { }
 lsp.jsonls.setup {
     settings = {
         json = {

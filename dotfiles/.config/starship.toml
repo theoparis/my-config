@@ -1,0 +1,13 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+format = """
+[┌───────────────────](bold #7d7d7d)[>](bold #00cc00)
+[│ ](bold #7d7d7d)$directory$rust$package
+[└─](bold #7d7d7d)[>](bold #00cc00) """
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[docker_context]
+disabled = true

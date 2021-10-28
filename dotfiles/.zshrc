@@ -1,14 +1,6 @@
 fpath=(~/.zfunc $fpath)
 plugins=(lxd-completion-zsh)
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 ## fzf search for a folder, then cd into it
 function f() {
     if [ ${1:-""} != "" ]; then
@@ -36,17 +28,15 @@ export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Plugins
 # Download Znap, if it's not there yet.
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
-    git clone https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+[[ -f ~/dev/zsh-snap/znap.zsh ]] ||
+    git clone https://github.com/marlonrichert/zsh-snap.git ~/dev/zsh-snap
 
-source ~/Git/zsh-snap/znap.zsh  # Start Znap
+source ~/dev/zsh-snap/znap.zsh  # Start Znap
 
-znap source romkatv/powerlevel10k
 znap source endaaman/lxd-completion-zsh
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
-znap source agkozak/zsh-z
 
 zstyle ':znap:*' git-maintenance off
 zstyle ':completion:*' menu select
@@ -156,9 +146,6 @@ fzf-git-checkout() {
     fi
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 export VULKAN_SDK="$HOME/vukan"
@@ -189,3 +176,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 function emsource() {
     source "$HOME/emsdk/emsdk_env.sh"
 }
+
+# Load starship prompt (https://starship.rs)
+autoload -U colors
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
