@@ -168,6 +168,7 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
 
 # 256 color support
 alias tmux="tmux -2 -u"  # for 256color
+zstyle ':autocomplete:*' fzf-completion
 
 export DOCKER_HOST="unix:///var/run/docker.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"

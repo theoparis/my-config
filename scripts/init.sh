@@ -8,7 +8,8 @@ sh -c "cd ~/.tmux/plugins/tpm && git pull"
 mkdir -p ~/.config/zsh
 
 # Node Version Manager
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+mkdir -p ~/.nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 # Neovim plugin manager
 git clone https://github.com/wbthomason/packer.nvim \
