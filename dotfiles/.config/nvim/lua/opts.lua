@@ -191,7 +191,7 @@ vim.g.ale_linters = {
 }
 
 vim.g.NERDCreateDefaultMappings = false
-
+vim.g.copilot_no_tab_map = true
 vim.g.NERDTreeIgnore = {"^node_modules$"}
 vim.g.user_emmet_settings = {
     html = {

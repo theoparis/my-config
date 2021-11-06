@@ -17,7 +17,7 @@ function gen-pass() {
 # Exports
 export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin:/usr/local/go/bin"
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="kitty"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
 export ZSH_AUTOSUGGEST_USE_ASYNC="1"
@@ -28,10 +28,10 @@ export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Plugins
 # Download Znap, if it's not there yet.
-[[ -f ~/dev/zsh-snap/znap.zsh ]] ||
-    git clone https://github.com/marlonrichert/zsh-snap.git ~/dev/zsh-snap
+[[ -f ~/.znap/zsh-snap/znap.zsh ]] ||
+    git clone https://github.com/marlonrichert/zsh-snap.git ~/.znap/zsh-snap
 
-source ~/dev/zsh-snap/znap.zsh  # Start Znap
+source ~/.znap/zsh-snap/znap.zsh  # Start Znap
 
 znap source endaaman/lxd-completion-zsh
 znap source zsh-users/zsh-autosuggestions
@@ -39,12 +39,14 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 
 zstyle ':znap:*' git-maintenance off
-zstyle ':completion:*' menu select
 
 # Projects Folder For Quick Navigation
 export DEV_FOLDER="$HOME/dev"
 
 [[ -f ~/.config/zsh/user.zsh ]] && source ~/.config/zsh/user.zsh
+
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
+[[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
@@ -86,6 +88,13 @@ function wst() {
 
 function batdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff $1
+}
+
+function sftpu() {
+    localFile="$1"
+    remotePath="$2"
+
+    sftp ${remotePath} <<< "put ${localFile}"
 }
 
 # lm-sensors get specific sensor
@@ -168,7 +177,6 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
 
 # 256 color support
 alias tmux="tmux -2 -u"  # for 256color
-zstyle ':autocomplete:*' fzf-completion
 
 export DOCKER_HOST="unix:///var/run/docker.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
