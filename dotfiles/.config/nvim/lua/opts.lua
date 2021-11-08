@@ -233,7 +233,3 @@ lsp_status.register_progress()
 
 require("telescope").load_extension("git_worktree")
 
-local saga = require("lspsaga")
-saga.init_lsp_saga {
-    border_style = "round"
-}

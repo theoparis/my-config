@@ -10,20 +10,41 @@ radius = 6.0
 fixed-center = true
 wm-restack = bspwm
 tray-position = right
+module-margin = 1
 
 font-0 = "JetBrainsMono Nerd Font:pixelsize=14"
 
 modules-left = bspwm xwindow
 
-modules-right = date wlan battery pulseaudio
+modules-right = date battery pulseaudio sensors
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+[module/sensors]
+type = custom/script
+interval = 2
+format-prefix = " "
+exec = ~/go/bin/polybar-lmsensors -u -n -t zenpower-pci-00c3/Tdie=CPU
 
 [module/date]
 type = internal/date
-interval = 5.0
-date = %m-%d-%Y
-time = %l:%M
-format =   <label>
-label = %date% %time%
+format-prefix = "📆 "
+label = %{F#99}%date%%{F-} %{F#fff}%time%%{F-}
+date = %m/%d/%Y
+date-alt = %A, %B %d, %Y
+time = %I:%M %p
+time-alt = ${self.time}
 
 [module/xwindow]
 type = internal/xwindow

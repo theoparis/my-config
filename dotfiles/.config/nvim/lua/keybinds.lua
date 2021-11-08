@@ -16,3 +16,5 @@ map("n", "<leader>gp", ":Lspsaga lsp_finder<CR>", {noremap = true})
 map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", {noremap = true})
 map("n", "gh", "copilot#Accept()", {noremap = true, expr = true})
 map("i", "gh", "copilot#Accept()", {noremap = true, expr = true})
+-- Code actions with :CodeActionMenu
+map("n", "<leader>ca", ":CodeActionMenu<CR>", {noremap = true})

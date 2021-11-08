@@ -13,7 +13,11 @@ return require("packer").startup(
         }
         --use "kabouzeid/nvim-lspinstall"
         use "neovim/nvim-lspconfig"
-        use "glepnir/lspsaga.nvim"
+        -- Code actions
+        use {
+            "weilbith/nvim-code-action-menu",
+            cmd = "CodeActionMenu"
+        }
         -- Github Copilot
         use "github/copilot.vim"
         -- Status Bar
