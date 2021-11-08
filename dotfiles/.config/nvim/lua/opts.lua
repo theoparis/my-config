@@ -171,6 +171,7 @@ vim.g.ale_lua_luafmt_options = "--stdin"
 vim.g.ale_fixers = {
     javascript = {"eslint"},
     typescript = {"eslint"},
+    typescriptreact = {"eslint"},
     css = {"prettier"},
     scss = {"prettier"},
     kotlin = {"ktlint"},
