@@ -18,6 +18,7 @@ function gen-pass() {
 export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin:/usr/local/go/bin"
 export EDITOR="nvim"
 export TERMINAL="kitty"
+#export TERM="xterm-256color"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
 export ZSH_AUTOSUGGEST_USE_ASYNC="1"
@@ -52,7 +53,6 @@ if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
     source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
 
-export TERM="xterm-256color"
 
 # Aliases
 alias rpy="rustpython"

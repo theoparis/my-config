@@ -27,10 +27,15 @@ end
 -- Language server
 local lsp = require("lspconfig")
 lsp.rust_analyzer.setup {}
+lsp.svelte.setup {}
+
+lsp.vls.setup {
+    cmd = {"/usr/local/bin/vls"}
+}
 lsp.dockerls.setup {}
-lsp.gopls.setup{}
+lsp.gopls.setup {}
 lsp.pylsp.setup {}
-lsp.tailwindcss.setup { }
+lsp.tailwindcss.setup {}
 lsp.jsonls.setup {
     settings = {
         json = {
@@ -233,4 +238,3 @@ lsp_status.register_progress()
 --vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
 
 require("telescope").load_extension("git_worktree")
-
