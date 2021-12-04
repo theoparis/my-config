@@ -18,10 +18,9 @@ function gen-pass() {
 export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin:/usr/local/go/bin"
 export EDITOR="nvim"
 export TERMINAL="kitty"
-#export TERM="xterm-256color"
+export TERM="xterm-256color"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
-export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Loading
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -40,6 +39,8 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 
 zstyle ':znap:*' git-maintenance off
+zstyle ':autocomplete:*' min-input min-input 1 min-delay 0
+zstyle ':autocomplete:*' async off
 
 # Projects Folder For Quick Navigation
 export DEV_FOLDER="$HOME/dev"
@@ -59,7 +60,8 @@ alias rpy="rustpython"
 alias d="f $DEV_FOLDER"
 alias L="sudo -E n"
 alias l="n -Rdae"
-alias ll="exa -l"
+alias ll="exa -a --time-style=hide"
+alias lll="exa -la"
 alias trm="trash"
 alias s="doas"
 alias pwease="s"
@@ -76,7 +78,7 @@ alias gdf="git diff"
 alias gad="git add"
 alias gch="fzf-git-checkout"
 alias gchb="git checkout -b"
-alias gl="git log --graph --abbrev-commit --date=local --name-status"
+alias gl="git log --abbrev-commit --date=local --name-status --pretty --color --decorate --graph"
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro="xdg-open $(git remote get-url origin)"
@@ -185,6 +187,9 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 function emsource() {
     source "$HOME/emsdk/emsdk_env.sh"
 }
+
+autoload -U compinit
+compinit
 
 # Load starship prompt (https://starship.rs)
 autoload -U colors

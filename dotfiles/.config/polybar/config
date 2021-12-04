@@ -35,7 +35,7 @@ poll-interval = 5
 type = custom/script
 interval = 2
 format-prefix = " "
-exec = ~/go/bin/polybar-lmsensors -u -n -t zenpower-pci-00c3/Tdie=CPU
+exec = ~/go/bin/polybar-lmsensors -u -n -t 'coretemp-isa-0000/Core 0=CPU'
 
 [module/date]
 type = internal/date
