@@ -180,7 +180,7 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
 # 256 color support
 alias tmux="tmux -2 -u"  # for 256color
 
-export DOCKER_HOST="unix:///var/run/docker.sock"
+export DOCKER_HOST="unix:///run/user/$(id -u)/podman/podman.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
@@ -195,3 +195,7 @@ compinit
 autoload -U colors
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+# OPS config
+export OPS_DIR="$HOME/.ops"
+export PATH="$HOME/.ops/bin:$PATH"
+source "$HOME/.ops/scripts/bash_completion.sh"
