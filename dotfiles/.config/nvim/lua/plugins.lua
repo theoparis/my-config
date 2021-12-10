@@ -77,5 +77,6 @@ return require("packer").startup(
         use "metakirby5/codi.vim"
         use "mfussenegger/nvim-dap"
         use "ollykel/v-vim"
+        use "earthly/earthly.vim"
     end
 )

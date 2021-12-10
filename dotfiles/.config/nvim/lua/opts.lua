@@ -1,4 +1,5 @@
-vim.o.clipboard = "unnamedplus"
+local cmd = vim.api.nvim_command
+local map = vim.api.nvim_set_keymap
 
 -- Language Server Config
 local function setup_servers()
@@ -29,6 +30,7 @@ local lsp = require("lspconfig")
 lsp.rust_analyzer.setup {}
 lsp.svelte.setup {}
 
+lsp.zls.setup {}
 lsp.vls.setup {
     cmd = {"/usr/local/bin/vls"}
 }
@@ -85,14 +87,17 @@ lsp.jsonls.setup {
     }
 }
 
-lsp.tsserver.setup(
-    {
-        cmd = {
-            "typescript-language-server",
-            "--stdio"
-        }
-    }
-)
+--lsp.tsserver.setup(
+--{
+--cmd = {
+--"typescript-language-server",
+--"--stdio"
+--}
+--}
+--)
+lsp.denols.setup {
+    
+}
 lsp.yamlls.setup(
     {
         format = {
@@ -151,14 +156,9 @@ require "nvim-treesitter.configs".setup {
     textobjects = {enable = true}
 }
 
---Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
---require "lspinstall".post_install_hook = function()
---setup_servers() -- reload installed servers
---vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
---end
-
 -- Global options
-vim.g.mapleader = " "
+vim.o.clipboard = "unnamedplus"
+vim.g.mapleader = ";"
 vim.o.encoding = "UTF-8"
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -174,6 +174,7 @@ vim.g.ale_fix_on_save = true
 vim.g.ale_kotlin_ktlint_options = "--disabled_rules=no-unused-imports"
 vim.g.ale_lua_luafmt_options = "--stdin"
 vim.g.ale_fixers = {
+    v = {"vfmt"},
     javascript = {"eslint"},
     typescript = {"eslint"},
     typescriptreact = {"eslint"},
@@ -193,7 +194,8 @@ vim.g.ale_fixers = {
     c = {"clang-format"}
 }
 vim.g.ale_linters = {
-    sh = {"shell"}
+    sh = {"shell"},
+    v = {"v"}
 }
 
 vim.g.NERDCreateDefaultMappings = false
@@ -236,5 +238,7 @@ lsp_status.register_progress()
 
 --vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
 --vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
+vim.api.nvim_command("autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile")
+vim.api.nvim_command("autocmd BufRead,BufNewFile build.earth set filetype=Earthfile")
 
 require("telescope").load_extension("git_worktree")

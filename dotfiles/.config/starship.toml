@@ -76,3 +76,7 @@ success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being
 
 [docker_context]
 disabled = true
+
+[cmd_duration]
+min_time = 5
+format = "took [$duration](bold yellow)"

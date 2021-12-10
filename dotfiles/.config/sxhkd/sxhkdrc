@@ -66,7 +66,7 @@ super + shift + l
 
 # Application launchers
 super + d
-  dmenu_run
+  zsh -ic "dmenu_run"
 
 super + y
   zsh -ic "flameshot gui -r | flameshot-uploader -u"

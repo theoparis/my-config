@@ -18,7 +18,7 @@ function gen-pass() {
 export PATH="$PATH:/usr/lib/jvm/java-16-openjdk/bin:$HOME/my-config/scripts/bin:/usr/local/go/bin"
 export EDITOR="nvim"
 export TERMINAL="kitty"
-#export TERM="xterm-256color"
+export TERM="xterm-256color"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
 export ZSH_AUTOSUGGEST_USE_ASYNC="1"
@@ -40,6 +40,8 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 
 zstyle ':znap:*' git-maintenance off
+zstyle ':autocomplete:*' min-input 1
+zstyle ':autocomplete:*' async off
 
 # Projects Folder For Quick Navigation
 export DEV_FOLDER="$HOME/dev"
@@ -171,9 +173,11 @@ export HISTSIZE=1000000000
 setopt INC_APPEND_HISTORY
 export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY
-export KUBECONFIG="$HOME/kubeconfig"
+export KUBECONFIG="$HOME/.kubeconfig"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin"
+
+setxkbmap -option caps:escape
 
 # 256 color support
 alias tmux="tmux -2 -u"  # for 256color
@@ -186,7 +190,12 @@ function emsource() {
     source "$HOME/emsdk/emsdk_env.sh"
 }
 
+# Compinit for shell autocompletion
+autoload -U compinit
+compinit
+
 # Load starship prompt (https://starship.rs)
 autoload -U colors
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
