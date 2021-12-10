@@ -26,8 +26,12 @@ end
 --setup_servers()
 
 -- Language server
+local pid = vim.fn.getpid()
 local lsp = require("lspconfig")
 lsp.rust_analyzer.setup {}
+lsp.omnisharp.setup {
+    cmd = {"/usr/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid)}
+}
 lsp.svelte.setup {}
 
 lsp.zls.setup {}

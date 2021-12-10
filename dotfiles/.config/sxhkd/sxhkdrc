@@ -78,6 +78,9 @@ super + Return
 super + b
   zsh -ic "\$BROWSER https://google.com"
 
-super + alt + {k,o,g}
-  {kdenlive, obs, gimp}
+super + alt + {k,o, w}
+  {kdenlive, obs, inkscape}
+
+super + alt + b
+  zsh -ic "bitwarden-dmenu"
 

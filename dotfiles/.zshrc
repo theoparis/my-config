@@ -21,7 +21,6 @@ export TERMINAL="kitty"
 export TERM="xterm-256color"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
-export ZSH_AUTOSUGGEST_USE_ASYNC="1"
 
 # Loading
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -40,7 +39,11 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 
 zstyle ':znap:*' git-maintenance off
+<<<<<<< HEAD
 zstyle ':autocomplete:*' min-input 1
+=======
+zstyle ':autocomplete:*' min-input min-input 1 min-delay 0
+>>>>>>> dcc30abe4bb942fc9af4355537e493c4152e74f5
 zstyle ':autocomplete:*' async off
 
 # Projects Folder For Quick Navigation
@@ -61,7 +64,8 @@ alias rpy="rustpython"
 alias d="f $DEV_FOLDER"
 alias L="sudo -E n"
 alias l="n -Rdae"
-alias ll="exa -l"
+alias ll="exa -a --time-style=hide"
+alias lll="exa -la"
 alias trm="trash"
 alias s="doas"
 alias pwease="s"
@@ -78,7 +82,7 @@ alias gdf="git diff"
 alias gad="git add"
 alias gch="fzf-git-checkout"
 alias gchb="git checkout -b"
-alias gl="git log --graph --abbrev-commit --date=local --name-status"
+alias gl="git log --abbrev-commit --date=local --name-status --pretty --color --decorate --graph"
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro="xdg-open $(git remote get-url origin)"
@@ -182,7 +186,7 @@ setxkbmap -option caps:escape
 # 256 color support
 alias tmux="tmux -2 -u"  # for 256color
 
-export DOCKER_HOST="unix:///var/run/docker.sock"
+export DOCKER_HOST="unix:///run/user/$(id -u)/podman/podman.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
@@ -199,3 +203,7 @@ autoload -U colors
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+# OPS config
+export OPS_DIR="$HOME/.ops"
+export PATH="$HOME/.ops/bin:$PATH"
+source "$HOME/.ops/scripts/bash_completion.sh"
