@@ -1,5 +1,5 @@
 require("plugins")
 require("opts")
-require("nv-compe")
+require("cmp-config")
 require("keybinds")
 require("statusline")

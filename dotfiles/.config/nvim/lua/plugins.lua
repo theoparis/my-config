@@ -11,6 +11,7 @@ return require("packer").startup(
                 require("which-key").setup {}
             end
         }
+        use "L3MON4D3/LuaSnip"
         --use "kabouzeid/nvim-lspinstall"
         use "neovim/nvim-lspconfig"
         -- Code actions
@@ -54,7 +55,11 @@ return require("packer").startup(
         use "tjdevries/colorbuddy.nvim"
         use "vim-syntastic/syntastic"
         use "Th3Whit3Wolf/onebuddy"
-        use "hrsh7th/nvim-compe"
+        use "hrsh7th/nvim-cmp"
+        use "hrsh7th/cmp-nvim-lsp"
+        use "hrsh7th/cmp-buffer"
+        use "hrsh7th/cmp-path"
+        use "hrsh7th/cmp-cmdline"
         use "ray-x/lsp_signature.nvim"
         use "nvim-lua/lsp-status.nvim"
         use "neoclide/jsonc.vim"
@@ -78,5 +83,11 @@ return require("packer").startup(
         use "mfussenegger/nvim-dap"
         use "ollykel/v-vim"
         use "earthly/earthly.vim"
+        use {
+            "nvim-orgmode/orgmode",
+            config = function()
+                require("orgmode").setup {}
+            end
+        }
     end
 )

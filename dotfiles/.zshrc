@@ -39,11 +39,7 @@ znap source zsh-users/zsh-completions
 znap source marlonrichert/zsh-autocomplete
 
 zstyle ':znap:*' git-maintenance off
-<<<<<<< HEAD
-zstyle ':autocomplete:*' min-input 1
-=======
-zstyle ':autocomplete:*' min-input min-input 1 min-delay 0
->>>>>>> dcc30abe4bb942fc9af4355537e493c4152e74f5
+zstyle ':autocomplete:*' min-input 1 min-delay 1
 zstyle ':autocomplete:*' async off
 
 # Projects Folder For Quick Navigation
@@ -188,7 +184,6 @@ alias tmux="tmux -2 -u"  # for 256color
 
 export DOCKER_HOST="unix:///run/user/$(id -u)/podman/podman.sock"
 export PATH="$PATH:$(go env GOROOT)/misc/wasm"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 function emsource() {
     source "$HOME/emsdk/emsdk_env.sh"
@@ -206,4 +201,6 @@ eval "$(zoxide init zsh)"
 # OPS config
 export OPS_DIR="$HOME/.ops"
 export PATH="$HOME/.ops/bin:$PATH"
-source "$HOME/.ops/scripts/bash_completion.sh"
+if [ -f "$OPS_DIR/scripts/bash_completion.sh" ]; then
+    source "$OPS_DIR/scripts/bash_completion.sh"
+fi

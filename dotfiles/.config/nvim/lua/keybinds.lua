@@ -8,7 +8,7 @@ map("v", "<C-_>", ":call nerdcommenter#Comment('v', 'Toggle')<CR>", {noremap = t
 map("n", "<leader>n", ":NvimTreeToggle<CR>", {noremap = true})
 map("n", "<leader>ca", ":Lspsaga code_action<CR>", {noremap = true})
 map("n", "<leader>f", "<cmd>lua require'telescope-config'.project_files()<CR>", {noremap = true})
-map("i", "<CR>", [[compe#confirm('<CR>')]], {noremap = true, silent = true, expr = true})
+--map("i", "<CR>", [[compe#confirm('<CR>')]], {noremap = true, silent = true, expr = true})
 map("n", "<leader>to", ":TodoTelescope<CR>", {noremap = true})
 map("n", "<leader>gc", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", {noremap = true})
 map("n", "<leader>gr", ":Telescope live_grep<CR>", {noremap = true})

@@ -28,21 +28,39 @@ end
 -- Language server
 local pid = vim.fn.getpid()
 local lsp = require("lspconfig")
-lsp.rust_analyzer.setup {}
+vim.lsp.set_log_level("debug")
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lsp.rust_analyzer.setup {
+    capabilities = capabilities
+}
 lsp.omnisharp.setup {
+    capabilities = capabilities,
     cmd = {"/usr/bin/omnisharp", "--languageserver", "--hostPID", tostring(pid)}
 }
-lsp.svelte.setup {}
-
-lsp.zls.setup {}
+lsp.svelte.setup {
+    capabilities = capabilities
+}
+lsp.zls.setup {
+    capabilities = capabilities
+}
 lsp.vls.setup {
+    capabilities = capabilities,
     cmd = {"/usr/local/bin/vls"}
 }
-lsp.dockerls.setup {}
-lsp.gopls.setup {}
-lsp.pylsp.setup {}
-lsp.tailwindcss.setup {}
+lsp.dockerls.setup {
+    capabilities = capabilities
+}
+lsp.gopls.setup {
+    capabilities = capabilities
+}
+lsp.pylsp.setup {
+    capabilities = capabilities
+}
+lsp.tailwindcss.setup {
+    capabilities = capabilities
+}
 lsp.jsonls.setup {
+    capabilities = capabilities,
     settings = {
         json = {
             schemas = {
@@ -100,10 +118,11 @@ lsp.jsonls.setup {
 --}
 --)
 lsp.denols.setup {
-    
+    capabilities = capabilities
 }
 lsp.yamlls.setup(
     {
+        capabilities = capabilities,
         format = {
             enable = false
         }
@@ -111,6 +130,7 @@ lsp.yamlls.setup(
 )
 --lsp.sumneko_lua.setup({})
 lsp.kotlin_language_server.setup {
+    capabilities = capabilities,
     settings = {
         kotlin = {
             compiler = {
@@ -122,6 +142,7 @@ lsp.kotlin_language_server.setup {
     }
 }
 lsp.ccls.setup {
+    capabilities = capabilities,
     init_options = {
         compilationDatabaseDirectory = "build",
         index = {
@@ -163,6 +184,7 @@ require "nvim-treesitter.configs".setup {
 -- Global options
 vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = ";"
+vim.o.completeopt = "menu,menuone,noselect"
 vim.o.encoding = "UTF-8"
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -194,6 +216,7 @@ vim.g.ale_fixers = {
     -- Uses prettier-plugin-toml
     html = {"prettier"},
     python = {"autopep8"},
+    rust = {"rustfmt"},
     cpp = {"clang-format"},
     c = {"clang-format"}
 }
