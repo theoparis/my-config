@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash
 # BSPWM Config
 
 bspc rule -r "*"
@@ -8,29 +9,28 @@ pkill nm-applet
 pkill picom
 pkill sxhkd
 pkill dunst
-pkill nitrogen
+pkill feh
 pkill polybar
 pkill flameshot
-<<<<<<< Updated upstream
-||||||| constructed merge base
 pkill pipewire
 pkill pipewire-pulse
 pkill pipewire-media-session
-=======
-pkill pipewire
-pkill pipewire-pulse
->>>>>>> Stashed changes
 
 nm-applet &
-picom &
+picom -b
 SXHKD_SHELL="$SHELL" sxhkd &
 dunst &
-nitrogen --restore &
+feh --bg-scale ~/wallpapers/Arch-2.png &
 polybar main &
 flameshot &
+pipewire &
+pipewire-pulse &
+pipewire-media-session &
 
 ## Monitors
 ~/monitors
+
+wmname LG3D
 
 ## Global settings
 
@@ -59,3 +59,4 @@ bspc config window_gap 10
 ### Rules
 bspc rule -a mpv state=fullscreen
 
+export _JAVA_AWT_WM_NONREPARENTING=1

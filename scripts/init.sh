@@ -1,4 +1,7 @@
-echo "Attempting to initialize config from $(pwd)";
+#!/bin/zsh
+# shellcheck shell=bash
+
+echo "Attempting to initialize config from $(pwd)"
 
 # Tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -7,9 +10,14 @@ sh -c "cd ~/.tmux/plugins/tpm && git pull"
 # Zsh plugins
 mkdir -p ~/.config/zsh
 
+# Xplr File Manager
+mkdir -p ~/.config/xplr/plugins
+
+git clone https://github.com/prncss-xyz/icons.xplr ~/.config/xplr/plugins/icons
+
 # Node Version Manager
-mkdir -p ~/.nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o ~/.local/bin/n
+chmod +x ~/.local/bin/n
 
 # Neovim plugin manager
 git clone https://github.com/wbthomason/packer.nvim \
@@ -26,4 +34,3 @@ echo "Linking config files..."
 stow dotfiles
 
 echo "Done."
-

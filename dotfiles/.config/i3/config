@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:JetBrainsMono Nerd Font 14
+font pango:FiraCode Nerd Font 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).

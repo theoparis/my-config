@@ -3,7 +3,6 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/main]
-#monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 32
 radius = 6.0
@@ -11,49 +10,58 @@ fixed-center = true
 wm-restack = bspwm
 tray-position = right
 module-margin = 1
-<<<<<<< Updated upstream
-||||||| constructed merge base
-font-0 = "JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true:hinting=true:hintstyle=hintfull"
-font-1 = "Noto Color Emoji:scale=7:pixelsize=16:style=Regular;2"
-=======
 font-0 = "FiraCode Nerd Font:pixelsize=16:antialias=true:autohint=true:hinting=true:hintstyle=hintfull"
 font-1 = "Noto Color Emoji:scale=7:pixelsize=16:style=Regular;2"
->>>>>>> Stashed changes
 
-<<<<<<< Updated upstream
-font-0 = "JetBrainsMono Nerd Font:pixelsize=14"
 
-||||||| constructed merge base
-
-=======
->>>>>>> Stashed changes
 modules-left = bspwm xwindow
 
-modules-right = date battery pulseaudio sensors
+modules-right = date battery temperature
 
 [module/battery]
 type = internal/battery
-
 ; This is useful in case the battery never reports 100% charge
 full-at = 99
-
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = ADP1
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
 
 poll-interval = 5
 
-[module/sensors]
-type = custom/script
+[module/temperature]
+type = internal/temperature
 interval = 2
-format-prefix = " "
-exec = ~/go/bin/polybar-lmsensors -u -n -t 'zenpower-pci-00c3/Tdie=CPU'
+format = <ramp> <label>
+ramp-0 = "🧊"
+ramp-1 = "🔥"
+ramp-2 = "🔥"
+base-temperature = 30
+warn-temperature = 60
+thermal-zone = 0
+hwmon-path = ${env:POLYBAR_HWMON}
 
 [module/date]
 type = internal/date
 format-prefix = "📆 "
-label = %{F#99}%date%%{F-} %{F#fff}%time%%{F-}
+label = %date% %time%
 date = %m/%d/%Y
 date-alt = %A, %B %d, %Y
 time = %I:%M %p
@@ -62,13 +70,14 @@ time-alt = ${self.time}
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
+format = 🪟 <label>
 
 [module/bspwm]
 type = internal/bspwm
 pin-workspaces = true
 inline-mode=true
 label-empty=%name%
-label-empty-foreground=#fffff
+label-empty-foreground=#ffffff
 label-empty-background=#313131
 label-empty-padding=1
 label-focused=%name%
@@ -81,5 +90,3 @@ label-occupied-foreground=#ffffff
 label-occupied-padding=1
 label-urgent=%name%!
 label-urgent-padding=1
-
-
