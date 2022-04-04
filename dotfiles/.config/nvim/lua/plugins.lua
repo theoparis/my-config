@@ -4,7 +4,7 @@ return require("packer").startup(function()
     use "wbthomason/packer.nvim"
 
     -- use "kabouzeid/nvim-lspinstall"
-    use "neovim/nvim-lspconfig"
+    use {"neovim/nvim-lspconfig", branch = "master"}
     -- Code actions
     use {"weilbith/nvim-code-action-menu", cmd = "CodeActionMenu"}
     -- Github Copilot
