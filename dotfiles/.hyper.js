@@ -4,6 +4,10 @@
 
 module.exports = {
   config: {
+    hypercwd: {
+      initialWorkingDirectory: "~/",
+    },
+    confirmQuit: true,
     // choose either `'stable'` for receiving highly polished,
     // or `'canary'` for less polished but more frequent updates
     updateChannel: "stable",
@@ -12,7 +16,7 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: "'JetBrainsMono Nerd Font', monospace",
+    fontFamily: "'FiraCode Nerd Font', monospace",
 
     // default font weight: 'normal' or 'bold'
     fontWeight: "normal",
@@ -150,12 +154,25 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ["hyperpower", "hyper-one-dark", "hyperborder"],
+  plugins: [
+    "hyperterm-paste",
+    "hypercwd",
+    "hyperlinks",
+    //"hyper-confirm",
+    "hyper-material",
+    "hyper-search",
+    "hyper-pane",
+    "hyperterm-transparent-vibrancy",
+    "hyperpower",
+    "hyperborder",
+    "hyperterm-tab-icons",
+    "hyper-blink",
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
-  localPlugins: [],
+  localPlugins: ["hyper-confirm"],
 
   keymaps: {
     // Example

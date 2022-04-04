@@ -193,8 +193,53 @@ function emsource() {
 autoload -U compinit
 compinit
 
+<<<<<<< Updated upstream
 # Load starship prompt (https://starship.rs)
 autoload -U colors
+||||||| constructed merge base
+# OPS config
+if [ -f "$OPS_DIR/scripts/bash_completion.sh" ]; then
+	source "$OPS_DIR/scripts/bash_completion.sh"
+fi
+
+
+
+#eval "$(thefuck --alias)"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+#zprof
+
+# Wasmer
+export WASMER_DIR="/home/theo/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+
+alias luamake=/mnt/data/projects/lua-language-server/3rd/luamake/luamake
+=======
+# OPS config
+if [ -f "$OPS_DIR/scripts/bash_completion.sh" ]; then
+	source "$OPS_DIR/scripts/bash_completion.sh"
+fi
+
+. /home/theo/.nix-profile/etc/profile.d/nix.sh
+
+#eval "$(thefuck --alias)"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+#zprof
+
+# Wasmer
+export WASMER_DIR="/home/theo/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+alias luamake=/mnt/data/projects/lua-language-server/3rd/luamake/luamake
+>>>>>>> Stashed changes
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"

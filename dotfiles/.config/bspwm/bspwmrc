@@ -11,6 +11,15 @@ pkill dunst
 pkill nitrogen
 pkill polybar
 pkill flameshot
+<<<<<<< Updated upstream
+||||||| constructed merge base
+pkill pipewire
+pkill pipewire-pulse
+pkill pipewire-media-session
+=======
+pkill pipewire
+pkill pipewire-pulse
+>>>>>>> Stashed changes
 
 nm-applet &
 picom &
