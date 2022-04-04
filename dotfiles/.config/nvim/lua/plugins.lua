@@ -46,6 +46,10 @@ return require("packer").startup(function()
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
+    -- snippet engine
+    use "saadparwaiz1/cmp_luasnip"
+    use "L3MON4D3/LuaSnip"
+
     use "ray-x/lsp_signature.nvim"
     use "nvim-lua/lsp-status.nvim"
     use "neoclide/jsonc.vim"
