@@ -2,6 +2,9 @@ local cmd = vim.api.nvim_command
 local map = vim.api.nvim_set_keymap
 
 local lsp = require("lspconfig")
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
 require"nvim-tree".setup {}
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp
@@ -16,10 +19,20 @@ lsp.vls.setup {capabilities = capabilities, cmd = {"/usr/local/bin/vls"}}
 lsp.dockerls.setup {capabilities = capabilities}
 lsp.gopls.setup {capabilities = capabilities}
 lsp.pylsp.setup {capabilities = capabilities}
--- lsp.tailwindcss.setup {capabilities = capabilities}
-lsp.tailwindcss.setup {
-    capabilities = capabilities
+lsp.sumneko_lua.setup {
+    settings = {
+        Lua = {
+            runtime = {version = 'Lua5.4', path = runtime_path},
+            diagnostics = {globals = {'vim'}},
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false
+            },
+            telemetry = {enable = false}
+        }
+    }
 }
+lsp.tailwindcss.setup {capabilities = capabilities}
 lsp.jsonls.setup {
     capabilities = capabilities,
     settings = {
@@ -29,40 +42,41 @@ lsp.jsonls.setup {
                     description = "TypeScript compiler configuration file",
                     fileMatch = {"tsconfig.json", "tsconfig.*.json"},
                     url = "http://json.schemastore.org/tsconfig"
-                },
-                {
+                }, {
                     description = "Lerna config",
                     fileMatch = {"lerna.json"},
                     url = "http://json.schemastore.org/lerna"
-                },
-                {
+                }, {
                     description = "Babel configuration",
-                    fileMatch = {".babelrc.json", ".babelrc", "babel.config.json"},
+                    fileMatch = {
+                        ".babelrc.json", ".babelrc", "babel.config.json"
+                    },
                     url = "http://json.schemastore.org/lerna"
-                },
-                {
+                }, {
                     description = "ESLint config",
                     fileMatch = {".eslintrc.json", ".eslintrc"},
                     url = "http://json.schemastore.org/eslintrc"
-                },
-                {
+                }, {
                     description = "Bucklescript config",
                     fileMatch = {"bsconfig.json"},
                     url = "https://bucklescript.github.io/bucklescript/docson/build-schema.json"
-                },
-                {
+                }, {
                     description = "Prettier config",
-                    fileMatch = {".prettierrc", ".prettierrc.json", "prettier.config.json"},
+                    fileMatch = {
+                        ".prettierrc", ".prettierrc.json",
+                        "prettier.config.json"
+                    },
                     url = "http://json.schemastore.org/prettierrc"
-                },
-                {
+                }, {
                     description = "Vercel Now config",
                     fileMatch = {"now.json"},
                     url = "http://json.schemastore.org/now"
-                },
-                {
+                }, {
                     description = "Stylelint config",
-                    fileMatch = {".stylelintrc", ".stylelintrc.json", "stylelint.config.json"},
+                    fileMatch = {
+                        ".stylelintrc", ".stylelintrc.json",
+                        "stylelint.config.json"
+                    },
                     url = "http://json.schemastore.org/stylelintrc"
                 }
             }
@@ -70,26 +84,17 @@ lsp.jsonls.setup {
     }
 }
 
---lsp.tsserver.setup(
---{
---cmd = {
---"typescript-language-server",
---"--stdio"
---}
---}
---)
-lsp.denols.setup {
-    capabilities = capabilities
-}
-lsp.yamlls.setup(
-    {
-        capabilities = capabilities,
-        format = {
-            enable = false
-        }
-    }
-)
---lsp.sumneko_lua.setup({})
+-- lsp.tsserver.setup(
+-- {
+-- cmd = {
+-- "typescript-language-server",
+-- "--stdio"
+-- }
+-- }
+-- )
+lsp.denols.setup {capabilities = capabilities}
+lsp.yamlls.setup({capabilities = capabilities, format = {enable = false}})
+-- lsp.sumneko_lua.setup({})
 lsp.kotlin_language_server.setup {
     capabilities = capabilities,
     settings = {kotlin = {compiler = {jvm = {target = "11"}}}}
@@ -98,35 +103,18 @@ lsp.ccls.setup {
     capabilities = capabilities,
     init_options = {
         compilationDatabaseDirectory = "build",
-        index = {
-            threads = 0
-        },
-        clang = {
-            excludeArgs = {"-frounding-math"}
-        }
+        index = {threads = 0},
+        clang = {excludeArgs = {"-frounding-math"}}
     }
 }
 
 -- Treesitter
-require "nvim-treesitter.install".compilers = {"gcc", "clang"}
+require"nvim-treesitter.install".compilers = {"gcc", "clang"}
 
-require "nvim-treesitter.configs".setup {
+require"nvim-treesitter.configs".setup {
     ensure_installed = {
-        "bash",
-        "cpp",
-        "comment",
-        "css",
-        "graphql",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "lua",
-        "python",
-        "regex",
-        "tsx",
-        "vue",
-        "typescript",
+        "bash", "cpp", "comment", "css", "graphql", "html", "javascript",
+        "jsdoc", "json", "lua", "python", "regex", "tsx", "vue", "typescript",
         "kotlin"
     },
     highlight = {enable = true},
@@ -172,10 +160,7 @@ vim.g.ale_fixers = {
     cpp = {"clang-format"},
     c = {"clang-format"}
 }
-vim.g.ale_linters = {
-    sh = {"shell"},
-    v = {"v"}
-}
+vim.g.ale_linters = {sh = {"shell"}, v = {"v"}}
 
 vim.g.NERDCreateDefaultMappings = false
 vim.g.copilot_no_tab_map = true
@@ -189,7 +174,8 @@ vim.g.user_emmet_settings = {
 }
 
 -- File types
-vim.api.nvim_command("autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc")
+vim.api.nvim_command(
+    "autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc")
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.razor setfiletype xml")
 vim.api.nvim_command("au BufRead,BufNewFile *.csx set filetype=cs")
 vim.api.nvim_command(
@@ -213,22 +199,22 @@ end
 
 local lsp_status = require("lsp-status")
 
-lsp_status.config(
-    {
-        indicator_errors = "❌",
-        indicator_warnings = "⚠️",
-        indicator_info = "ℹ️",
-        indicator_hint = "❔",
-        indicator_ok = "👌"
-    }
-)
+lsp_status.config({
+    indicator_errors = "❌",
+    indicator_warnings = "⚠️",
+    indicator_info = "ℹ️",
+    indicator_hint = "❔",
+    indicator_ok = "👌"
+})
 
 lsp_status.register_progress()
 
---vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
---vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
-vim.api.nvim_command("autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile")
-vim.api.nvim_command("autocmd BufRead,BufNewFile build.earth set filetype=Earthfile")
+-- vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
+-- vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
+vim.api.nvim_command(
+    "autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile")
+vim.api.nvim_command(
+    "autocmd BufRead,BufNewFile build.earth set filetype=Earthfile")
 
 require("telescope").load_extension("git_worktree")
 
