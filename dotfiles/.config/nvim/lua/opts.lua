@@ -145,9 +145,9 @@ vim.o.shiftwidth = 4
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
 vim.o.completeopt = "menuone,noselect"
 -- Color scheme
-require("onedark").setup {}
-require("onedark").load()
-vim.g.material_style = "darker"
+vim.g.material_style = "deep ocean"
+require('colorbuddy').setup()
+require('colorbuddy').colorscheme('material')
 
 -- Ale linter
 vim.g.ale_fix_on_save = true
@@ -159,7 +159,7 @@ vim.g.ale_fixers = {
     css = {"prettier"},
     scss = {"prettier"},
     kotlin = {"ktlint"},
-    lua = {"luafmt"},
+    lua = {"lua-format"},
     yaml = {"prettier"},
     json5 = {"prettier"},
     json = {"prettier"},
@@ -167,7 +167,7 @@ vim.g.ale_fixers = {
     go = {"gofmt"},
     -- Uses prettier-plugin-toml
     html = {"prettier"},
-    python = {"autopep8"},
+    python = {"black"},
     rust = {"rustfmt"},
     cpp = {"clang-format"},
     c = {"clang-format"}

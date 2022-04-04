@@ -1,7 +1,7 @@
 # BSPWM Bindings
 ## Quit bspm
 super + Escape
-  zsh -ic 'prompt "Are you sure you would like to quit this Xsession" "bspc quit"'
+  prompt "Are you sure you would like to quit this Xsession" "bspc quit"
 
 ## Restart bspwm
 super + shift + w
@@ -49,7 +49,7 @@ super + shift + c
 
 # System control
 super + shift + {r,d}
-  zsh -ic 'prompt "Are you sure you would like to reboot?" "sudo reboot"'
+  prompt "Are you sure you would like to reboot?" "sudo reboot"
 
 ## Volume Control
 XF86AudioLowerVolume
@@ -66,21 +66,15 @@ super + shift + l
 
 # Application launchers
 super + d
-  zsh -ic "dmenu_run"
+  dmenu_run
 
 super + y
-  zsh -ic "flameshot gui -r | flameshot-uploader -u"
+  flameshot gui -r | xclip -selection clipboard -t image/png -i
 
 ## Open terminal
 super + Return
-  zsh -ic "\$TERMINAL"
+  $TERMINAL
 
 super + b
-  zsh -ic "\$BROWSER https://google.com"
-
-super + alt + {k,o, w}
-  {kdenlive, obs, inkscape}
-
-super + alt + b
-  zsh -ic "bitwarden-dmenu"
+  $BROWSER https://google.com
 
