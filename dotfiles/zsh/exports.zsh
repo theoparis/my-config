@@ -25,5 +25,11 @@ export DEV_FOLDER="$HOME/dev"
 
 # Node version mamager (https://github.com/tj/n)
 export N_PREFIX="$HOME/.n"
-export _JAVA_AWT_WM_NONREPARTENTING=1
 export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+export WLR_NO_HARDWARE_CURSORS=1
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARTENTING=1
+export QT_QPA_PLATFORM=wayland
+export XDG_CURRENT_DESKTOP=wayfire
+export XDG_SESSION_DESKTOP=wayfire
+export MOZ_ENABLE_WAYLAND=1
