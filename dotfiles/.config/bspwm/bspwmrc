@@ -14,8 +14,10 @@ pkill polybar
 pkill flameshot
 pkill pipewire
 pkill pipewire-pulse
-pkill pipewire-media-session
+pkill wireplumber
+pkill polkit-dumb-agent
 
+polkit-dumb-agent &
 nm-applet &
 picom -b
 SXHKD_SHELL="$SHELL" sxhkd &
@@ -25,7 +27,7 @@ polybar main &
 flameshot &
 pipewire &
 pipewire-pulse &
-pipewire-media-session &
+wireplumber &
 
 ## Monitors
 ~/monitors
