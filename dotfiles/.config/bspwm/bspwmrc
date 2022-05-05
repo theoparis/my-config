@@ -15,13 +15,7 @@ killall flameshot
 killall polkit-dumb-agent
 killall gnome-keyring-daemon
 killall compiz
-killall pipewire
-killall pipewire-pulse
-killall wireplumber
 
-pipewire &
-wireplumber &
-pipewire-pulse &
 polkit-dumb-agent &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) export SSH_AUTH_SOCK
 nm-applet &
