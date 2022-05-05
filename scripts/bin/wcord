@@ -1,3 +1,8 @@
-#/bin/sh
+#!/bin/sh
 discord \
-    --use-gl=desktop
+    --ignore-gpu-blocklist \
+    --enable-features=VapiVideoDecoder,WebRTCPipeWireCapture \
+    --disable-features=OzonePlatform \
+    --use-gl=desktop \
+    --enable-gpu-rasterization \
+    --enable-zero-copy

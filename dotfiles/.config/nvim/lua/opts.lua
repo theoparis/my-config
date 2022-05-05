@@ -8,6 +8,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 require("nvim-tree").setup({})
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lsp.vala_ls.setup({})
 lsp.rust_analyzer.setup({
 	capabilities = capabilities,
 	settings = {
@@ -33,6 +34,7 @@ lsp.typeprof.setup({ capabilities = capabilities })
 lsp.crystalline.setup({ capabilities = capabilities })
 lsp.zls.setup({ capabilities = capabilities })
 lsp.vls.setup({ capabilities = capabilities, cmd = { "/usr/local/bin/vls" } })
+lsp.jdtls.setup({ capabilities = capabilities, cmd = { "java-lsp.sh" } })
 lsp.dockerls.setup({ capabilities = capabilities })
 lsp.gopls.setup({ capabilities = capabilities })
 lsp.pylsp.setup({ capabilities = capabilities })
@@ -120,13 +122,9 @@ lsp.jsonls.setup({
 -- }
 -- }
 -- )
-lsp.denols.setup({ capabilities = capabilities })
+lsp.tsserver.setup({ capabilities = capabilities })
 lsp.yamlls.setup({ capabilities = capabilities, format = { enable = false } })
 -- lsp.sumneko_lua.setup({})
-lsp.kotlin_language_server.setup({
-	capabilities = capabilities,
-	settings = { kotlin = { compiler = { jvm = { target = "11" } } } },
-})
 lsp.clangd.setup({ capabilities = capabilities })
 
 -- Treesitter
@@ -161,7 +159,8 @@ vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = ";"
 vim.o.completeopt = "menu,menuone,noselect"
 vim.o.encoding = "UTF-8"
-vim.o.expandtab = true
+vim.o.autoindent = true
+vim.o.expandtab = false
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
@@ -174,11 +173,14 @@ require("colorbuddy").colorscheme("material")
 -- Ale linter
 vim.g.ale_fix_on_save = true
 vim.g.ale_fixers = {
+	vala = { "uncrustify" },
 	v = { "vfmt" },
+	cs = { "dotnet-format" },
 	ruby = { "rubocop" },
-	javascript = { "eslint" },
-	typescript = { "eslint" },
-	typescriptreact = { "eslint" },
+	javascript = { "prettier" },
+	typescript = { "prettier" },
+	typescriptreact = { "prettier" },
+	svelte = { "prettier" },
 	css = { "prettier" },
 	scss = { "prettier" },
 	kotlin = { "ktlint" },
@@ -216,7 +218,7 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfilet
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.razor setfiletype xml")
 vim.api.nvim_command("au BufRead,BufNewFile *.csx set filetype=cs")
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc")
-vim.api.nvim_command("autocmd BufRead,BufNewFile *.java,*.kotlin lua require'jdtls_setup'.setup()")
+vim.api.nvim_command("autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()")
 
 -- Status bar
 

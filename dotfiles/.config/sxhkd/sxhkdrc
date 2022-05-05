@@ -66,7 +66,7 @@ super + shift + l
 
 # Application launchers
 super + d
-  dmenu_run
+  ~/my-config/scripts/bin/menu-run
 
 super + y
   flameshot gui -r | xclip -selection clipboard -t image/png -i

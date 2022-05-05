@@ -5,29 +5,32 @@
 bspc rule -r "*"
 
 ## Autostart
-pkill nm-applet
-pkill picom
-pkill sxhkd
-pkill dunst
-pkill feh
-pkill polybar
-pkill flameshot
-pkill pipewire
-pkill pipewire-pulse
-pkill wireplumber
-pkill polkit-dumb-agent
+killall nm-applet
+killall picom
+killall sxhkd
+killall dunst
+killall feh
+killall polybar
+killall flameshot
+killall polkit-dumb-agent
+killall gnome-keyring-daemon
+killall compiz
+killall pipewire
+killall pipewire-pulse
+killall wireplumber
 
+pipewire &
+wireplumber &
+pipewire-pulse &
 polkit-dumb-agent &
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) export SSH_AUTH_SOCK
 nm-applet &
-picom -b
+compiz --replace &
 SXHKD_SHELL="$SHELL" sxhkd &
 dunst &
 feh --bg-scale ~/wallpapers/Arch-2.png &
 polybar main &
 flameshot &
-pipewire &
-pipewire-pulse &
-wireplumber &
 
 ## Monitors
 ~/monitors

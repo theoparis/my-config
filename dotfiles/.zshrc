@@ -65,7 +65,6 @@ fi
 [[ -f /usr/share/fzf/completion.zsh ]] && source "/usr/share/fzf/completion.zsh"
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export VULKAN_SDK="$HOME/vukan"
 
 # Load functions
 #for file in ~/.zfunc/*; do

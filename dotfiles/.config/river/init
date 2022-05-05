@@ -2,7 +2,8 @@
 
 # Inspired by https://github.com/oncomouse/dotfiles/blob/master/stow/river/dot-config/river/init
 
-riverctl map normal Super Return spawn kitty
+riverctl map normal Super Return spawn alacritty
+riverctl map normal Super Y spawn 'grim -g "$(slurp)" -t png - | wl-copy -t image/png'
 riverctl map normal Super+Shift W exit
 riverctl map normal Super+Shift Q close
 riverctl map normal Super Q spawn "$HOME"/.config/river/init
@@ -87,7 +88,7 @@ for mode in normal locked; do
 done
 
 riverctl map normal Super E spawn "nautilus"
-riverctl map normal Super D spawn "rofi -match fuzzy -auto-select -show drun -show-icons -drun-display-format '{name}' -font 'FiraCode Nerd Font 14' -location 2"
+riverctl map normal Super D spawn "rofi -match fuzzy -show drun -show-icons -drun-display-format '{name}' -font 'JetBrainsMono Nerd Font 14' -location 2"
 
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
@@ -103,22 +104,21 @@ riverctl float-filter-add app-id nautilus
 riverctl float-filter-add title "popup title with spaces"
 
 # Start Waybar
-pkill yambar
-yambar &
+#pkill yambar
+#yambar &
+pkill waybar
+waybar &
 pkill dunst
 dunst &
 pkill nm-applet
 nm-applet &
-pkill feh
-feh --bg-scale ~/wallpapers/Arch-2.png &
+pkill swaybg 
+swaybg -i ~/wallpapers/Arch-2.png &
 pkill flameshot
 flameshot &
-pkill pipewire
-pipewire &
-pkill pipewire-pulse
-pipewire-pulse &
-pkill pipewire-media-session
-pipewire-media-session &
+~/monitors
+/usr/lib/xdg-desktop-portal &
+/usr/lib/xdg-desktop-portal-wlr &
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_GPA_PLATFORM="wayland;xcb"
