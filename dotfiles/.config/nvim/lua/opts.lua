@@ -114,15 +114,13 @@ lsp.jsonls.setup({
 	},
 })
 
--- lsp.tsserver.setup(
--- {
--- cmd = {
--- "typescript-language-server",
--- "--stdio"
--- }
--- }
--- )
-lsp.tsserver.setup({ capabilities = capabilities })
+lsp.tsserver.setup({
+	cmd = {
+		"typescript-language-server",
+		"--stdio",
+	},
+})
+--lsp.denols.setup({ capabilities = capabilities })
 lsp.yamlls.setup({ capabilities = capabilities, format = { enable = false } })
 -- lsp.sumneko_lua.setup({})
 lsp.clangd.setup({ capabilities = capabilities })
@@ -159,9 +157,10 @@ vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = ";"
 vim.o.completeopt = "menu,menuone,noselect"
 vim.o.encoding = "UTF-8"
-vim.o.autoindent = true
 vim.o.expandtab = false
+vim.o.autoindent = true
 vim.o.tabstop = 4
+vim.o.softtabstop = 0
 vim.o.shiftwidth = 4
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
 vim.o.completeopt = "menuone,noselect"
@@ -173,6 +172,8 @@ require("colorbuddy").colorscheme("material")
 -- Ale linter
 vim.g.ale_fix_on_save = true
 vim.g.ale_fixers = {
+	zsh = { "shfmt" },
+	sh = { "shfmt" },
 	vala = { "uncrustify" },
 	v = { "vfmt" },
 	cs = { "dotnet-format" },
@@ -191,13 +192,12 @@ vim.g.ale_fixers = {
 	jsonc = { "prettier" },
 	go = { "gofmt" },
 	-- Uses prettier-plugin-toml
-	html = { "prettier" },
 	python = { "black" },
 	rust = { "rustfmt" },
 	cpp = { "clang-format" },
 	c = { "clang-format" },
 }
-vim.g.ale_linters = { sh = { "shell" }, v = { "v" } }
+vim.g.ale_linters = { v = { "v" } }
 
 vim.g.NERDCreateDefaultMappings = false
 vim.g.copilot_no_tab_map = true

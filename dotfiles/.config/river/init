@@ -88,7 +88,7 @@ for mode in normal locked; do
 done
 
 riverctl map normal Super E spawn "nautilus"
-riverctl map normal Super D spawn "rofi -match fuzzy -show drun -show-icons -drun-display-format '{name}' -font 'JetBrainsMono Nerd Font 14' -location 2"
+riverctl map normal Super D spawn "bemenu-run"
 
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
@@ -112,7 +112,7 @@ pkill dunst
 dunst &
 pkill nm-applet
 nm-applet &
-pkill swaybg 
+pkill swaybg
 swaybg -i ~/wallpapers/Arch-2.png &
 pkill flameshot
 flameshot &

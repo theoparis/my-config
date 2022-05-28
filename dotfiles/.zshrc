@@ -103,3 +103,4 @@ alias luamake=/mnt/data/projects/lua-language-server/3rd/luamake/luamake
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
