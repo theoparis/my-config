@@ -8,7 +8,6 @@ export GLFW_IM_MODULE=none
 export PATH="$PATH:$HOME/my-config/scripts/bin:/usr/local/go/bin:/opt/riscv/bin:$HOME/.ops/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/sdk/go/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.nimble/bin:$HOME/.local/bin:$HOME/.n/bin:$HOME/.krew/bin:$HOME/.dotnet/tools"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export TERM="rxvt-256color"
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
