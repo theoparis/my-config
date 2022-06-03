@@ -5,7 +5,7 @@ window:
 shell:
   program: /bin/zsh
 font:
-  size: 20
+  size: 16
   normal:
     family: "FiraCode Nerd Font"
 

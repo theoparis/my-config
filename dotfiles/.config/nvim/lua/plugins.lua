@@ -112,8 +112,12 @@ return require("packer").startup(function()
 			require("trouble").setup({})
 		end,
 	})
-	-- https://github.com/filipdutescu/renamer.nvim/pull/118
-	use({ "abzcoding/renamer.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({
+		"smjonas/inc-rename.nvim",
+		config = function()
+			require("inc_rename").setup()
+		end,
+	})
 	use({ "LhKipp/nvim-nu", run = ":TSInstall nu" })
 	use({ "dstein64/vim-startuptime" })
 	use("IndianBoy42/tree-sitter-just")
