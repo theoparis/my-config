@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
 -- Reload neovim config
-map("n", "<leader>sc", ":source ~/.config/nvim/init.lua<CR>", { silent = true, noremap = true, silent = true })
+map("n", "<leader>sc", ":source ~/.config/nvim/init.lua<CR>", { noremap = true, silent = true })
 map("n", "<C-_>", ":call nerdcommenter#Comment('n', 'Toggle')<CR>", { silent = true, noremap = true })
 map("v", "<C-_>", ":call nerdcommenter#Comment('v', 'Toggle')<CR>", { silent = true, noremap = true })
 map("n", "<leader>n", ":NvimTreeToggle<CR>", { silent = true, noremap = true })

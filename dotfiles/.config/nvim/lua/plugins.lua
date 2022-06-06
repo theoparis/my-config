@@ -4,7 +4,7 @@ return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	-- use "kabouzeid/nvim-lspinstall"
-	use({ "neovim/nvim-lspconfig", branch = "master" })
+	use({ "neovim/nvim-lspconfig" })
 	-- Code actions
 	use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 	-- Github Copilot
@@ -28,7 +28,6 @@ return require("packer").startup(function()
 			require("nvim-tree").setup({})
 		end,
 	})
-	use("andweeb/presence.nvim")
 	use("ntk148v/vim-horizon")
 	use("scrooloose/nerdcommenter")
 	use("mattn/emmet-vim")
@@ -74,8 +73,8 @@ return require("packer").startup(function()
 	})
 	use("sheerun/vim-polyglot")
 	use("metakirby5/codi.vim")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use("mfussenegger/nvim-dap")
-	use("ollykel/v-vim")
 	use({
 		"nvim-orgmode/orgmode",
 		config = function()
@@ -100,9 +99,6 @@ return require("packer").startup(function()
 			vim.fn["firenvim#install"](0)
 		end,
 	})
-	use("metakirby5/codi.vim")
-	use("mfussenegger/nvim-dap")
-	use("ollykel/v-vim")
 	use("earthly/earthly.vim")
 	use("simrat39/rust-tools.nvim")
 	use({
@@ -122,7 +118,7 @@ return require("packer").startup(function()
 	use({ "dstein64/vim-startuptime" })
 	use("IndianBoy42/tree-sitter-just")
 	use({ "edluffy/specs.nvim" })
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+
 	use("mfussenegger/nvim-jdtls")
 	use("udalov/kotlin-vim")
 	use("ggandor/lightspeed.nvim")

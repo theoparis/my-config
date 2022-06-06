@@ -38,16 +38,14 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone"
 zinit light starship/starship
 zinit ice wait"2" as"command" from"gh-r" lucid \
-  mv"zoxide*/zoxide -> zoxide" \
   atpull"%atclone" nocompile'!'
 zinit light ajeetdsouza/zoxide
 zinit ice from"gh-r" as"program"
-zinit light junegunn/fzf
 zinit light Aloxaf/fzf-tab
 zinit light endaaman/lxd-completion-zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
+zinit light z-shell/F-Sy-H
 #zinit light marlonrichert/zsh-autocomplete
 
 zstyle ":fzf-tab:*" fzf-command sk
@@ -66,27 +64,14 @@ fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# Load functions
-#for file in ~/.zfunc/*; do
-#    source "$file"
-#done
-
-function emsource() {
-	source "$HOME/emsdk/emsdk_env.sh"
-}
-
 # Compinit for shell autocompletion
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 # OPS config
 if [ -f "$OPS_DIR/scripts/bash_completion.sh" ]; then
 	source "$OPS_DIR/scripts/bash_completion.sh"
 fi
-
-
-
-#eval "$(thefuck --alias)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -103,4 +88,5 @@ alias luamake=/mnt/data/projects/lua-language-server/3rd/luamake/luamake
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(fnm env)"
 
