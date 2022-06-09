@@ -1,13 +1,10 @@
 #!/bin/sh
 set -e
-cd /opt/discord-canary/resources
 
-electron \
-    --ignore-gpu-blocklist \
+exec electron13 --ignore-gpu-blocklist \
     --enable-features=VapiVideoDecoder,WebRTCPipeWireCapture,UseOzonePlatform \
-    --use-gl=desktop \
-    --ozone-platform=wayland \
-    --enable--gpu \
-    --enable-gpu-rasterization \
-    --enable-zero-copy \
-    app.asar
+        --enable-gl=desktop \
+        --enable-gpu \
+        --enable-gpu-rasterization \
+        --ozone-platform=wayland \
+        /usr/lib/discord-canary/resources/app.asar "$@"

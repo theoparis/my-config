@@ -41,26 +41,19 @@ zinit ice wait"2" as"command" from"gh-r" lucid \
   atpull"%atclone" nocompile'!'
 zinit light ajeetdsouza/zoxide
 zinit ice from"gh-r" as"program"
-zinit light Aloxaf/fzf-tab
-zinit light endaaman/lxd-completion-zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light z-shell/F-Sy-H
-#zinit light marlonrichert/zsh-autocomplete
 
-zstyle ":fzf-tab:*" fzf-command sk
-zstyle ":fzf-tab:complete:cd:*" fzf-preview \"ls -1 --color=always $realpath\"
-zstyle ':fzf-tab:*' switch-group "," "."
-zstyle ':autocomplete:*' min-input 1
-zstyle ':autocomplete:*' fzf-completion yes
+zstyle ":completion:*" use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
+zstyle ":autocomplete:*" min-input 1
 
 [[ -f ~/.config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
 
 if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
 	source /usr/share/nnn/quitcd/quitcd.bash_zsh
 fi
-
-[[ -f /usr/share/fzf/completion.zsh ]] && source "/usr/share/fzf/completion.zsh"
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -84,9 +77,7 @@ export WASMER_DIR="/home/theo/.wasmer"
 
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 
-alias luamake=/mnt/data/projects/lua-language-server/3rd/luamake/luamake
-
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(fnm env)"
+eval "$(fnm env --shell=zsh)"
 

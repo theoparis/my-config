@@ -25,7 +25,7 @@ map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>", { silent = true, nor
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { silent = true, noremap = true })
 map("n", "<leader>g[", ":lua vim.diagnostic.goto_prev()<CR>", { silent = true, noremap = true })
 map("n", "<leader>g]", ":lua vim.diagnostic.goto_next()<CR>", { silent = true, noremap = true })
-map("n", "<leader>r", ":IncRename <CR>", { silent = true, noremap = true })
+map("n", "<leader>r", ":IncRename ", { silent = true, noremap = true })
 map("n", "<leader>gh", "copilot#Accept()", { silent = true, noremap = true, expr = true })
 map("i", "<leader>gh", "copilot#Accept()", { silent = true, noremap = true, expr = true })
 map("n", "<leader>wx", ":TroubleToggle<CR>", { silent = true, noremap = true })

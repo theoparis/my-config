@@ -2,13 +2,49 @@ local cmd = vim.api.nvim_command
 local map = vim.api.nvim_set_keymap
 
 local lsp = require("lspconfig")
+local configs = require("lspconfig.configs")
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+if not configs.ls_emmet then
+	configs.ls_emmet = {
+		default_config = {
+			cmd = { "ls_emmet", "--stdio" },
+			filetypes = {
+				"html",
+				"css",
+				"scss",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"haml",
+				"xml",
+				"xsl",
+				"pug",
+				"slim",
+				"sass",
+				"stylus",
+				"less",
+				"sss",
+				"hbs",
+				"handlebars",
+			},
+			root_dir = function()
+				return vim.loop.cwd()
+			end,
+			settings = {},
+		},
+	}
+end
 
-require("nvim-tree").setup({})
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-lsp.vala_ls.setup({})
+lsp.rnix.setup({})
+lsp.ls_emmet.setup({ capabilities = capabilities })
+lsp.vala_ls.setup({ capabilities = capabilities })
+lsp.html.setup({ capabilities = capabilities })
 lsp.rust_analyzer.setup({
 	capabilities = capabilities,
 	settings = {
@@ -173,6 +209,7 @@ require("colorbuddy").colorscheme("material")
 -- Ale linter
 vim.g.ale_fix_on_save = true
 vim.g.ale_fixers = {
+	nix = {"nixpkgs-fmt"},
 	zig = { "zigfmt" },
 	zsh = { "shfmt" },
 	sh = { "shfmt" },
@@ -290,43 +327,5 @@ require("dapui").setup({
 	},
 	windows = { indent = 1 },
 })
-
-require("dapui").setup({
-	icons = { expanded = "▾", collapsed = "▸" },
-	mappings = {
-		-- Use a table to apply multiple mappings
-		expand = { "<CR>", "<2-LeftMouse>" },
-		open = "o",
-		remove = "d",
-		edit = "e",
-		repl = "r",
-		toggle = "t",
-	},
-	sidebar = {
-		-- You can change the order of elements in the sidebar
-		elements = {
-			-- Provide as ID strings or tables with "id" and "size" keys
-			{
-				id = "scopes",
-				size = 0.25, -- Can be float or integer > 1
-			},
-			{ id = "breakpoints", size = 0.25 },
-			{ id = "stacks", size = 0.25 },
-			{ id = "watches", size = 00.25 },
-		},
-		size = 40,
-		position = "left", -- Can be "left", "right", "top", "bottom"
-	},
-	tray = {
-		elements = { "repl" },
-		size = 10,
-		position = "bottom", -- Can be "left", "right", "top", "bottom"
-	},
-	floating = {
-		max_height = nil, -- These can be integers or a float between 0 and 1.
-		max_width = nil, -- Floats will be treated as percentage of your screen.
-		border = "single", -- Border style. Can be "single", "double" or "rounded"
-		mappings = { close = { "q", "<Esc>" } },
-	},
-	windows = { indent = 1 },
-})
+require("inc_rename").setup()
+require("nvim-tree").setup({})

@@ -110,9 +110,6 @@ return require("packer").startup(function()
 	})
 	use({
 		"smjonas/inc-rename.nvim",
-		config = function()
-			require("inc_rename").setup()
-		end,
 	})
 	use({ "LhKipp/nvim-nu", run = ":TSInstall nu" })
 	use({ "dstein64/vim-startuptime" })
