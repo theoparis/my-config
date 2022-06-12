@@ -88,7 +88,7 @@ for mode in normal locked; do
 done
 
 riverctl map normal Super E spawn "nautilus"
-riverctl map normal Super D spawn "bemenu-run"
+riverctl map normal Super D spawn "~/my-config/scripts/bin/menu-run"
 
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
@@ -121,11 +121,6 @@ flameshot &
 /usr/lib/xdg-desktop-portal-wlr &
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-export QT_GPA_PLATFORM="wayland;xcb"
-export SDL_VIDEODRIVER="wayland"
-export MOZ_ENABLE_WAYLAND=1
-export XDG_CURRENT_DESKTOP=river
-export XCURSOR_THEME="macOSBigSur"
 wmname LG3D
 
 # Set and exec into the default layout generator, rivertile.

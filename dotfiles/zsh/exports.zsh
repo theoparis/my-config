@@ -5,7 +5,7 @@ export USER_ID=$(id -u)
 export KUBECONFIG="$HOME/.kube/config"
 export GOPATH=$HOME/go
 export GLFW_IM_MODULE=none
-export PATH="$PATH:$HOME/my-config/scripts/bin:/usr/local/go/bin:/opt/riscv/bin:$HOME/.ops/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/sdk/go/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.nimble/bin:$HOME/.local/bin:$HOME/.n/bin:$HOME/.krew/bin:$HOME/.dotnet/tools:$HOME/.fnm"
+export PATH="$PATH:$HOME/my-config/scripts/bin:/usr/local/go/bin:/opt/riscv/bin:$HOME/.ops/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/sdk/go/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.nimble/bin:$HOME/.local/bin:$HOME/.n/bin:$HOME/.krew/bin:$HOME/.dotnet/tools:$HOME/.fnm:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/cuda/bin"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export NVM_DIR="$HOME/.nvm"
@@ -39,8 +39,6 @@ export _JAVA_AWT_WM_NONREPARTENTING=1
 #export MOZ_DISABLE_RDD_SANDBOX=1
 #export GBM_BACKEND=nvidia-drm
 #export __GLX_VENDOR_LIBRARY_NAME=nvidia
-
-export DOCKER_HOST="unix:///run/user/${USER_ID}/podman/podman.sock"
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

@@ -93,12 +93,6 @@ return require("packer").startup(function()
 			require("git-worktree").setup({})
 		end,
 	})
-	use({
-		"glacambre/firenvim",
-		run = function()
-			vim.fn["firenvim#install"](0)
-		end,
-	})
 	use("earthly/earthly.vim")
 	use("simrat39/rust-tools.nvim")
 	use({
@@ -120,4 +114,6 @@ return require("packer").startup(function()
 	use("udalov/kotlin-vim")
 	use("ggandor/lightspeed.nvim")
 	use("jlcrochet/vim-crystal")
+	use("stevearc/aerial.nvim")
+	use("rcarriga/nvim-notify")
 end)

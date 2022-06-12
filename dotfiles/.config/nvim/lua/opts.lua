@@ -1,6 +1,8 @@
 local cmd = vim.api.nvim_command
 local map = vim.api.nvim_set_keymap
 
+vim.notify = require("notify")
+
 local lsp = require("lspconfig")
 local configs = require("lspconfig.configs")
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -41,12 +43,37 @@ if not configs.ls_emmet then
 	}
 end
 
-lsp.rnix.setup({})
-lsp.ls_emmet.setup({ capabilities = capabilities })
-lsp.vala_ls.setup({ capabilities = capabilities })
-lsp.html.setup({ capabilities = capabilities })
-lsp.rust_analyzer.setup({
-	capabilities = capabilities,
+local make_lsp_config = function(config1)
+	local config2 = {
+		capabilities = capabilities,
+		on_attach = function(client)
+			vim.notify(
+				string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()),
+				"info",
+				{ title = "Lsp Active", timeout = 1000 },
+				true
+			)
+		end,
+	}
+
+	local config = {}
+
+	for k, v in pairs(config1) do
+		config[k] = v
+	end
+	for k, v in pairs(config2) do
+		config[k] = v
+	end
+
+	return config
+end
+
+lsp.rnix.setup(make_lsp_config({}))
+lsp.fortls.setup(make_lsp_config({}))
+lsp.ls_emmet.setup(make_lsp_config({}))
+lsp.vala_ls.setup(make_lsp_config({}))
+lsp.html.setup(make_lsp_config({}))
+lsp.rust_analyzer.setup(make_lsp_config({
 	settings = {
 		["rust-analyzer"] = {
 			checkOnSave = {
@@ -62,19 +89,18 @@ lsp.rust_analyzer.setup({
 			},
 		},
 	},
-})
-lsp.csharp_ls.setup({ capabilities = capabilities })
-lsp.nimls.setup({ capabilities = capabilities })
-lsp.svelte.setup({ capabilities = capabilities })
-lsp.typeprof.setup({ capabilities = capabilities })
-lsp.crystalline.setup({ capabilities = capabilities })
-lsp.zls.setup({ capabilities = capabilities })
-lsp.vls.setup({ capabilities = capabilities, cmd = { "/usr/local/bin/vls" } })
-lsp.jdtls.setup({ capabilities = capabilities, cmd = { "java-lsp.sh" } })
-lsp.dockerls.setup({ capabilities = capabilities })
-lsp.gopls.setup({ capabilities = capabilities })
-lsp.pylsp.setup({ capabilities = capabilities })
-lsp.sumneko_lua.setup({
+}))
+lsp.csharp_ls.setup(make_lsp_config({}))
+lsp.nimls.setup(make_lsp_config({}))
+lsp.svelte.setup(make_lsp_config({}))
+lsp.typeprof.setup(make_lsp_config({}))
+lsp.crystalline.setup(make_lsp_config({}))
+lsp.zls.setup(make_lsp_config({}))
+lsp.jdtls.setup(make_lsp_config({ cmd = { "java-lsp.sh" } }))
+lsp.dockerls.setup(make_lsp_config({}))
+lsp.gopls.setup(make_lsp_config({}))
+lsp.pylsp.setup(make_lsp_config({}))
+lsp.sumneko_lua.setup(make_lsp_config({
 	settings = {
 		Lua = {
 			runtime = { version = "Lua5.4", path = runtime_path },
@@ -86,10 +112,9 @@ lsp.sumneko_lua.setup({
 			telemetry = { enable = false },
 		},
 	},
-})
-lsp.tailwindcss.setup({ capabilities = capabilities })
-lsp.jsonls.setup({
-	capabilities = capabilities,
+}))
+lsp.tailwindcss.setup(make_lsp_config({}))
+lsp.jsonls.setup(make_lsp_config({
 	settings = {
 		json = {
 			schemas = {
@@ -148,7 +173,7 @@ lsp.jsonls.setup({
 			},
 		},
 	},
-})
+}))
 
 lsp.tsserver.setup({
 	cmd = {
@@ -156,10 +181,10 @@ lsp.tsserver.setup({
 		"--stdio",
 	},
 })
---lsp.denols.setup({ capabilities = capabilities })
-lsp.yamlls.setup({ capabilities = capabilities, format = { enable = false } })
+--lsp.denols.setup(make_lsp_config({}))
+lsp.yamlls.setup(make_lsp_config({ capabilities = capabilities, format = { enable = false } }))
 -- lsp.sumneko_lua.setup({})
-lsp.clangd.setup({ capabilities = capabilities })
+lsp.clangd.setup(make_lsp_config({}))
 
 -- Treesitter
 require("nvim-treesitter.install").compilers = { "gcc", "clang" }
@@ -189,6 +214,7 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- Global options
+vim.o.winbar = "%{%v:lua.require('utils.win').eval()%}"
 vim.o.clipboard = "unnamedplus"
 vim.g.mapleader = ";"
 vim.o.completeopt = "menu,menuone,noselect"
@@ -200,6 +226,7 @@ vim.o.softtabstop = 0
 vim.o.shiftwidth = 4
 vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
 vim.o.completeopt = "menuone,noselect"
+vim.wo.number = true
 
 -- Color scheme
 vim.g.material_style = "deep ocean"
@@ -209,7 +236,7 @@ require("colorbuddy").colorscheme("material")
 -- Ale linter
 vim.g.ale_fix_on_save = true
 vim.g.ale_fixers = {
-	nix = {"nixpkgs-fmt"},
+	nix = { "nixpkgs-fmt" },
 	zig = { "zigfmt" },
 	zsh = { "shfmt" },
 	sh = { "shfmt" },
@@ -329,3 +356,4 @@ require("dapui").setup({
 })
 require("inc_rename").setup()
 require("nvim-tree").setup({})
+require("aerial").setup()
