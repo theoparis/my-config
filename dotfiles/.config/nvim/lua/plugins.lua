@@ -20,7 +20,6 @@ return require("packer").startup(function()
 			require("todo-comments").setup({})
 		end,
 	})
-	use("w0rp/ale")
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = "kyazdani42/nvim-web-devicons",

@@ -14,7 +14,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 if not configs.ls_emmet then
 	configs.ls_emmet = {
 		default_config = {
-			cmd = { "ls_emmet", "--stdio" },
+			cmd = { "emmet-ls", "--stdio" },
 			filetypes = {
 				"html",
 				"css",
@@ -47,12 +47,17 @@ local make_lsp_config = function(config1)
 	local config2 = {
 		capabilities = capabilities,
 		on_attach = function(client)
-			vim.notify(
-				string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()),
-				"info",
-				{ title = "Lsp Active", timeout = 1000 },
-				true
-			)
+			local group = vim.api.nvim_create_augroup("lsp_formatting", { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				command = ":lua vim.lsp.buf.format({}, 1000)",
+				group = group,
+			})
+			--vim.notify(
+			--string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()),
+			--"info",
+			--{ title = "Lsp Active", timeout = 1000 },
+			--true
+			--)
 		end,
 	}
 
@@ -68,6 +73,24 @@ local make_lsp_config = function(config1)
 	return config
 end
 
+lsp.kotlin_language_server.setup(make_lsp_config({}))
+lsp.efm.setup(make_lsp_config({
+	init_options = { documentFormatting = true },
+	settings = {
+		rootMarkers = { ".git/" },
+		languages = {
+			lua = {
+				{ formatCommand = "stylua --color Never -", formatStdin = true },
+			},
+			rust = {
+				{ formatCommand = "rustfmt -", formatStdin = true },
+			},
+			python = {
+				{ formatCommand = "black -", formatStdin = true },
+			},
+		},
+	},
+}))
 lsp.rnix.setup(make_lsp_config({}))
 lsp.fortls.setup(make_lsp_config({}))
 lsp.ls_emmet.setup(make_lsp_config({}))
@@ -96,10 +119,10 @@ lsp.svelte.setup(make_lsp_config({}))
 lsp.typeprof.setup(make_lsp_config({}))
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
-lsp.jdtls.setup(make_lsp_config({ cmd = { "java-lsp.sh" } }))
+lsp.jdtls.setup(make_lsp_config({ cmd = { "java-lsp.sh", lsp.util.root_pattern("pom.xml", "build.gradle") } }))
 lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({}))
-lsp.pylsp.setup(make_lsp_config({}))
+lsp.pyright.setup(make_lsp_config({}))
 lsp.sumneko_lua.setup(make_lsp_config({
 	settings = {
 		Lua = {
@@ -233,38 +256,6 @@ vim.g.material_style = "deep ocean"
 require("colorbuddy").setup()
 require("colorbuddy").colorscheme("material")
 
--- Ale linter
-vim.g.ale_fix_on_save = true
-vim.g.ale_fixers = {
-	nix = { "nixpkgs-fmt" },
-	zig = { "zigfmt" },
-	zsh = { "shfmt" },
-	sh = { "shfmt" },
-	vala = { "uncrustify" },
-	v = { "vfmt" },
-	cs = { "dotnet-format" },
-	ruby = { "rubocop" },
-	javascript = { "prettier" },
-	typescript = { "prettier" },
-	typescriptreact = { "prettier" },
-	svelte = { "prettier" },
-	css = { "prettier" },
-	scss = { "prettier" },
-	kotlin = { "ktlint" },
-	lua = { "stylua" },
-	yaml = { "prettier" },
-	json5 = { "prettier" },
-	json = { "prettier" },
-	jsonc = { "prettier" },
-	go = { "gofmt" },
-	-- Uses prettier-plugin-toml
-	python = { "black" },
-	rust = { "rustfmt" },
-	cpp = { "clang-format" },
-	c = { "clang-format" },
-}
-vim.g.ale_linters = { v = { "v" } }
-
 vim.g.NERDCreateDefaultMappings = false
 vim.g.copilot_no_tab_map = true
 vim.g.NERDTreeIgnore = { "^node_modules$" }
@@ -313,6 +304,7 @@ lsp_status.register_progress()
 vim.api.nvim_command("autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile")
 vim.api.nvim_command("autocmd BufRead,BufNewFile build.earth set filetype=Earthfile")
 
+require("todo-comments").setup()
 require("telescope").load_extension("git_worktree")
 
 require("dapui").setup({

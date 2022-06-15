@@ -1,7 +1,7 @@
 window:
   padding:
     x: 24
-  opacity: 0.75
+  opacity: 0.95
 shell:
   program: /bin/zsh
 font:

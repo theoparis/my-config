@@ -21,7 +21,7 @@ map("n", "<leader>K", ":lua vim.lsp.buf.hover()<CR>", { silent = true, noremap =
 map("n", "<leader>gD", ":lua vim.lsp.buf.implementation()<CR>", { silent = true, noremap = true })
 map("n", "<leader>1gD", ":lua vim.lsp.buf.type_definition()<CR>", { silent = true, noremap = true })
 map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>", { silent = true, noremap = true })
-map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>", { silent = true, noremap = true })
+map("n", "<leader>gr", ":Telescope lsp_references<CR>", { silent = true, noremap = true })
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", { silent = true, noremap = true })
 map("n", "<leader>g[", ":lua vim.diagnostic.goto_prev()<CR>", { silent = true, noremap = true })
 map("n", "<leader>g]", ":lua vim.diagnostic.goto_next()<CR>", { silent = true, noremap = true })

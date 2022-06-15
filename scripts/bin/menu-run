@@ -1,2 +1,2 @@
-#!/bin/sh
-bemenu-run -i --fn "font pango:FiraCode Nerd Font 14" "$@" -p ">"
+#!/bin/zsh
+$(bemenu-run --no-exec -i --fn "font pango:FiraCode Nerd Font 14" "$@" -p ">")
