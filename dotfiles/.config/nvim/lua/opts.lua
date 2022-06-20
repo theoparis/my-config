@@ -73,6 +73,7 @@ local make_lsp_config = function(config1)
 	return config
 end
 
+lsp.julials.setup(make_lsp_config({}))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
 lsp.efm.setup(make_lsp_config({
 	init_options = { documentFormatting = true },
@@ -87,6 +88,9 @@ lsp.efm.setup(make_lsp_config({
 			},
 			python = {
 				{ formatCommand = "black -", formatStdin = true },
+			},
+			xml = {
+				{ formatCommand = "xmllint --format -", formatStdin = true },
 			},
 		},
 	},
@@ -119,7 +123,7 @@ lsp.svelte.setup(make_lsp_config({}))
 lsp.typeprof.setup(make_lsp_config({}))
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
-lsp.jdtls.setup(make_lsp_config({ cmd = { "java-lsp.sh", lsp.util.root_pattern("pom.xml", "build.gradle") } }))
+lsp.jdtls.setup(make_lsp_config({ cmd = { "java-lsp.sh", vim.fn.getcwd() } }))
 lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({}))
 lsp.pyright.setup(make_lsp_config({}))
@@ -198,13 +202,13 @@ lsp.jsonls.setup(make_lsp_config({
 	},
 }))
 
-lsp.tsserver.setup({
-	cmd = {
-		"typescript-language-server",
-		"--stdio",
-	},
-})
---lsp.denols.setup(make_lsp_config({}))
+--lsp.tsserver.setup({
+--cmd = {
+--"typescript-language-server",
+--"--stdio",
+--},
+--})
+lsp.denols.setup(make_lsp_config({}))
 lsp.yamlls.setup(make_lsp_config({ capabilities = capabilities, format = { enable = false } }))
 -- lsp.sumneko_lua.setup({})
 lsp.clangd.setup(make_lsp_config({}))
@@ -230,6 +234,7 @@ require("nvim-treesitter.configs").setup({
 		"vue",
 		"typescript",
 		"kotlin",
+		"java",
 	},
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
@@ -318,34 +323,38 @@ require("dapui").setup({
 		repl = "r",
 		toggle = "t",
 	},
-	sidebar = {
-		-- You can change the order of elements in the sidebar
-		elements = {
-			-- Provide as ID strings or tables with "id" and "size" keys
-			{
-				id = "scopes",
-				size = 0.25, -- Can be float or integer > 1
+	layouts = {
+		{
+			elements = {
+				-- Elements can be strings or table with id and size keys.
+				{ id = "scopes", size = 0.25 },
+				"breakpoints",
+				"stacks",
+				"watches",
 			},
-			{ id = "breakpoints", size = 0.25 },
-			{ id = "stacks", size = 0.25 },
-			{ id = "watches", size = 00.25 },
+			size = 40,
+			position = "left",
 		},
-		size = 40,
-		position = "left", -- Can be "left", "right", "top", "bottom"
-	},
-	tray = {
-		elements = { "repl" },
-		size = 10,
-		position = "bottom", -- Can be "left", "right", "top", "bottom"
+		{
+			elements = {
+				"repl",
+				"console",
+			},
+			size = 10,
+			position = "bottom",
+		},
 	},
 	floating = {
 		max_height = nil, -- These can be integers or a float between 0 and 1.
 		max_width = nil, -- Floats will be treated as percentage of your screen.
 		border = "single", -- Border style. Can be "single", "double" or "rounded"
-		mappings = { close = { "q", "<Esc>" } },
+		mappings = {
+			close = { "q", "<Esc>" },
+		},
 	},
 	windows = { indent = 1 },
 })
 require("inc_rename").setup()
 require("nvim-tree").setup({})
 require("aerial").setup()
+require("git-worktree").setup({})

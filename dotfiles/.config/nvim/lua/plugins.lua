@@ -37,7 +37,6 @@ return require("packer").startup(function()
 		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
 	})
 	use("tjdevries/colorbuddy.nvim")
-	use("marko-cerovac/material.nvim")
 	use("vim-syntastic/syntastic")
 	use("Th3Whit3Wolf/onebuddy")
 	use("marko-cerovac/material.nvim")
@@ -52,17 +51,10 @@ return require("packer").startup(function()
 	use("saadparwaiz1/cmp_luasnip")
 	use("L3MON4D3/LuaSnip")
 
-	use("ray-x/lsp_signature.nvim")
-	use("nvim-lua/lsp-status.nvim")
-	use("neoclide/jsonc.vim")
-	use("fhill2/floating.nvim")
 	-- use "creepinson/nvim-proj"
 	-- use "~/Documents/Code/nvim-proj"
 	use({
 		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup({})
-		end,
 	})
 	use({
 		"glacambre/firenvim",
@@ -86,12 +78,6 @@ return require("packer").startup(function()
 	use("fhill2/floating.nvim")
 	-- use "creepinson/nvim-proj"
 	-- use "~/Documents/Code/nvim-proj"
-	use({
-		"ThePrimeagen/git-worktree.nvim",
-		config = function()
-			require("git-worktree").setup({})
-		end,
-	})
 	use("earthly/earthly.vim")
 	use("simrat39/rust-tools.nvim")
 	use({
