@@ -73,7 +73,7 @@ super + y
 
 ## Open terminal
 super + Return
-  $TERMINAL
+  kitty 
 
 super + b
   $BROWSER https://google.com

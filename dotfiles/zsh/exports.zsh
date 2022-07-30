@@ -1,5 +1,4 @@
-#!/usr/bin/env zsh
-# shellcheck shell=bash
+#!/bin/fish
 # Exports
 export USER_ID=$(id -u)
 export KUBECONFIG="$HOME/.kube/config"
@@ -30,17 +29,17 @@ export WLR_NO_HARDWARE_CURSORS=1
 export _JAVA_AWT_WM_NONREPARTENTING=1
 
 # Wayland-specific
-export MOZ_DBUS_REMOTE=1
-export SDL_VIDEODRIVER=wayland
-export QT_QPA_PLATFORM=wayland
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export MOZ_ENABLE_WAYLAND=1
-export GDK_BACKEND=wayland
-export MOZ_DISABLE_RDD_SANDBOX=1
-export GBM_BACKEND=nvidia-drm
-export __GLX_VENDOR_LIBRARY_NAME=nvidia
+#export MOZ_DBUS_REMOTE=1
+#export SDL_VIDEODRIVER=wayland
+#export QT_QPA_PLATFORM=wayland
+#export XDG_CURRENT_DESKTOP=sway
+#export XDG_SESSION_DESKTOP=sway
+#export QT_QPA_PLATFORMTHEME="qt5ct"
+#export MOZ_ENABLE_WAYLAND=1
+#export GDK_BACKEND=wayland
+#export MOZ_DISABLE_RDD_SANDBOX=1
+#export GBM_BACKEND=nvidia-drm
+#export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

@@ -1,5 +1,5 @@
 #Inserts a blank line between shell prompts
-command_timeout = 2500
+#command_timeout = 2500
 format = """$all[->](bold #0096FF) """
 
 # Wait 10 milliseconds for starship to check files under the current directory.
@@ -12,7 +12,6 @@ add_newline = true
 disabled = false
 min_time = 500
 format = "Took [$duration](bold yellow)"
-show_notifications = true
 
 [character]
 disabled = true

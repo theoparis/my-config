@@ -2,7 +2,7 @@
 
 # Inspired by https://github.com/oncomouse/dotfiles/blob/master/stow/river/dot-config/river/init
 
-riverctl map normal Super Return spawn alacritty
+riverctl map normal Super Return spawn kitty
 riverctl map normal Super Y spawn 'grim -g "$(slurp)" -t png - | wl-copy -t image/png'
 riverctl map normal Super+Shift W exit
 riverctl map normal Super+Shift Q close
@@ -87,8 +87,7 @@ for mode in normal locked; do
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
 done
 
-riverctl map normal Super E spawn "nautilus"
-riverctl map normal Super D spawn "~/my-config/scripts/bin/menu-run"
+riverctl map normal Super D spawn "zofi"
 
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
@@ -106,16 +105,16 @@ riverctl float-filter-add title "popup title with spaces"
 # Start Waybar
 #pkill yambar
 #yambar &
+pkill polkit-gnome-authentication-agent-1
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 pkill waybar
 waybar &
-pkill dunst
-dunst &
+pkill deadd-notification-center
+deadd-notification-center &
 pkill nm-applet
 nm-applet &
 pkill swaybg
 swaybg -i ~/wallpapers/Arch-2.png &
-pkill flameshot
-flameshot &
 ~/monitors
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-wlr &

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/fish
 # shellcheck shell=bash
 
 # aliases

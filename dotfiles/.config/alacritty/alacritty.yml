@@ -3,9 +3,9 @@ window:
     x: 24
   opacity: 0.95
 shell:
-  program: /bin/zsh
+  program: /bin/fish
 font:
-  size: 16
+  size: 14
   normal:
     family: "FiraCode Nerd Font"
 

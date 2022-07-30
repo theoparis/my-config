@@ -1,5 +1,4 @@
-#!/bin/zsh
-# shellcheck shell=bash
+#!/bin/fish
 # BSPWM Config
 
 bspc rule -r "*"
@@ -19,7 +18,7 @@ killall compiz
 polkit-dumb-agent &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) export SSH_AUTH_SOCK
 nm-applet &
-compiz --replace &
+picom &
 SXHKD_SHELL="$SHELL" sxhkd &
 dunst &
 feh --bg-scale ~/wallpapers/Arch-2.png &
