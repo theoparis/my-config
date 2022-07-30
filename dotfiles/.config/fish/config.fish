@@ -11,6 +11,7 @@ zoxide init fish | source
 
 set -Ux EDITOR nvim
 set -Ux LIB_ICU_PATH "~/webkit-build/lib"
+set -Ux GPG_TTY $(tty)
 
 alias l "exa -la"
 
