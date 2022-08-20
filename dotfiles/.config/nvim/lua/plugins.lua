@@ -79,4 +79,5 @@ return require('packer').startup(function()
 	use 'rcarriga/nvim-notify'
 	use 'glepnir/dashboard-nvim'
 	use 'kdheepak/tabline.nvim'
+	use 'simrat39/inlay-hints.nvim'
 end)

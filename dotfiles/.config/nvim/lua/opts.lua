@@ -12,6 +12,7 @@ end
 vim.notify = require 'notify'
 
 local lsp = require 'lspconfig'
+local ih = require 'inlay-hints'
 local configs = require 'lspconfig.configs'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
 	vim.lsp.protocol.make_client_capabilities()
@@ -29,9 +30,7 @@ if not configs.ls_emmet then
 				'html',
 				'css',
 				'scss',
-				'javascript',
 				'javascriptreact',
-				'typescript',
 				'typescriptreact',
 				'haml',
 				'xml',
@@ -57,13 +56,16 @@ end
 local make_lsp_config = function(config1)
 	local config2 = {
 		capabilities = capabilities,
-		on_attach = function(client)
+		on_attach = function(client, buf)
 			local group =
 				vim.api.nvim_create_augroup('lsp_formatting', { clear = true })
 			vim.api.nvim_create_autocmd('BufWritePre', {
 				command = ':lua vim.lsp.buf.format({}, 1000)',
 				group = group,
 			})
+			-- inlay hints
+			--ih.on_attach(client, buf)
+
 			--vim.notify(
 			--string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()),
 			--"info",
@@ -117,7 +119,21 @@ lsp.crystalline.setup(make_lsp_config {})
 lsp.zls.setup(make_lsp_config {})
 lsp.jdtls.setup(make_lsp_config { cmd = { 'java-lsp.sh', vim.fn.getcwd() } })
 lsp.dockerls.setup(make_lsp_config {})
-lsp.gopls.setup(make_lsp_config {})
+lsp.gopls.setup(make_lsp_config {
+	settings = {
+		gopls = {
+			hints = {
+				assignVariableTypes = true,
+				compositeLiteralFields = true,
+				compositeLiteralTypes = true,
+				constantValues = true,
+				functionTypeParameters = true,
+				parameterNames = true,
+				rangeVariableTypes = true,
+			},
+		},
+	},
+})
 lsp.pyright.setup(make_lsp_config {})
 lsp.sumneko_lua.setup(make_lsp_config {
 	settings = {
@@ -129,6 +145,9 @@ lsp.sumneko_lua.setup(make_lsp_config {
 				checkThirdParty = false,
 			},
 			telemetry = { enable = false },
+			hint = {
+				enable = true,
+			},
 		},
 	},
 })
@@ -194,13 +213,37 @@ lsp.jsonls.setup(make_lsp_config {
 	},
 })
 
---lsp.tsserver.setup {
---cmd = {
---'typescript-language-server',
---'--stdio',
---},
---}
-lsp.denols.setup(make_lsp_config {})
+lsp.tsserver.setup {
+	cmd = {
+		'typescript-language-server',
+		'--stdio',
+	},
+	settings = {
+		javascript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+		typescript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+	},
+}
+--lsp.denols.setup(make_lsp_config {})
 lsp.yamlls.setup(
 	make_lsp_config { capabilities = capabilities, format = { enable = false } }
 )
@@ -252,6 +295,7 @@ vim.o.autoindent = true
 vim.o.updatetime = 100
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
 vim.g.mapleader = ' '
+vim.o.termguicolors = true
 
 -- Color scheme
 vim.g.material_style = 'deep ocean'
@@ -323,31 +367,79 @@ null_ls.setup {
 			null_ls.builtins.formatting.prettierd,
 			null_ls.builtins.formatting.rustfmt,
 			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.formatting.rufo,
 		},
 	},
 }
+require('inlay-hints').setup()
 require('tabline').setup {
-	-- Defaults configuration options
 	enable = true,
 	options = {
-		-- If lualine is installed tabline will use separators configured in lualine by default.
-		-- These options can be used to override those settings.
 		section_separators = { '', '' },
 		component_separators = { '', '' },
-		max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
-		show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
-		show_devicons = true, -- this shows devicons in buffer section
-		show_bufnr = false, -- this appends [bufnr] to buffer section,
-		show_filename_only = false, -- shows base filename only instead of relative path in filename
-		modified_icon = '+ ', -- change the default modified icon
-		modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
-		show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+		max_bufferline_percent = 66,
+		show_tabs_always = false,
+		show_devicons = true,
+		show_bufnr = false,
+		show_filename_only = false,
+		modified_icon = '+ ',
+		modified_italic = false,
+		show_tabs_only = false,
 	},
 }
 vim.cmd [[
   set guioptions-=e " Use showtabline in gui vim
   set sessionoptions+=tabpages,globals " store tabpages and globals in session
 ]]
+
+local db = require 'dashboard'
+db.custom_header = {
+	'',
+	'',
+	'',
+	'',
+	' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+	' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+	' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+	' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+	' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+	' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+	'',
+	'',
+	'',
+}
+db.custom_center = {
+	{
+		icon = ' ',
+		desc = 'New File            ',
+		action = 'DashboardNewFile',
+		shortcut = 'SPC o',
+	},
+	{
+		icon = ' ',
+		desc = 'Browse Files        ',
+		action = 'Telescope file_browser',
+		shortcut = 'SPC n',
+	},
+	{
+		icon = ' ',
+		desc = 'Find File           ',
+		action = 'Telescope find_files',
+		shortcut = 'SPC f',
+	},
+	{
+		icon = ' ',
+		desc = 'Configure Neovim    ',
+		action = 'edit ~/.config/nvim/lua/init.lua',
+		shortcut = 'SPC v',
+	},
+	{
+		icon = ' ',
+		desc = 'Exit Neovim              ',
+		action = 'quit',
+	},
+}
+vim.keymap.set('n', '<Leader>o', ':DashboardNewFile<CR>', { silent = true })
 
 function LspRename()
 	local curr_name = vim.fn.expand '<cword>'

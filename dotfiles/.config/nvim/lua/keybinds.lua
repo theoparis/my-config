@@ -22,9 +22,9 @@ map('n', '<leader>f', ":lua require'telescope-config'.project_files()<CR>")
 map('n', '<leader>to', ':TodoTelescope<CR>')
 map('n', '<leader>dbg', ":lua require('dapui').toggle()")
 map(
-  'n',
-  '<leader>gc',
-  ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>"
+	'n',
+	'<leader>gc',
+	":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>"
 )
 map('n', '<leader>rg', ':Telescope live_grep<CR>')
 map('n', '<leader>K', ':lua vim.lsp.buf.hover()<CR>')
@@ -35,7 +35,7 @@ map('n', '<leader>gr', ':Telescope lsp_references<CR>')
 map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 map('n', '<leader>g[', ':lua vim.diagnostic.goto_prev()<CR>')
 map('n', '<leader>g]', ':lua vim.diagnostic.goto_next()<CR>')
-map('n', '<leader>r', ':lua LspRename()')
+map('n', '<leader>r', ':lua LspRename()<CR>')
 map('n', '<leader>wx', ':TroubleToggle<CR>')
 map('n', '<leader>ww', ':TroubleToggle workspace_diagnostics<CR>')
 map('n', '<leader>wq', ':TroubleToggle quickfix<CR>')

@@ -2,7 +2,7 @@
 
 # Inspired by https://github.com/oncomouse/dotfiles/blob/master/stow/river/dot-config/river/init
 
-riverctl map normal Super Return spawn kitty
+riverctl map normal Super Return spawn kitty 
 riverctl map normal Super Y spawn 'grim -g "$(slurp)" -t png - | wl-copy -t image/png'
 riverctl map normal Super+Shift W exit
 riverctl map normal Super+Shift Q close
@@ -87,7 +87,7 @@ for mode in normal locked; do
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
 done
 
-riverctl map normal Super D spawn "zofi"
+riverctl map normal Super D spawn "bemenu-run"
 
 riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
@@ -102,22 +102,24 @@ riverctl float-filter-add app-id Rofi
 riverctl float-filter-add app-id nautilus
 riverctl float-filter-add title "popup title with spaces"
 
-# Start Waybar
-#pkill yambar
-#yambar &
 pkill polkit-gnome-authentication-agent-1
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 pkill waybar
-waybar &
-pkill deadd-notification-center
-deadd-notification-center &
+pkill dunst
 pkill nm-applet
-nm-applet &
 pkill swaybg
+pkill xdg-desktop-portal
+pkill xdg-desktop-portal-wlr
+pkill swaybg
+pkill mpd
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+waybar &
+dunst &
+nm-applet &
 swaybg -i ~/wallpapers/Arch-2.png &
-~/monitors
+mpd ~/.config/mpd/mpd.conf --no-daemon &
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-wlr &
+~/monitors
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D

@@ -3,11 +3,11 @@ window:
     x: 24
   opacity: 0.95
 shell:
-  program: /bin/fish
+  program: /home/theo/.cargo/bin/nu
 font:
   size: 14
   normal:
-    family: "FiraCode Nerd Font"
+    family: "JetBrainsMono Nerd Font"
 
 colors:
   # Default colors
