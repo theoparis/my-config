@@ -6,24 +6,25 @@
 export fpath=(~/.zfunc "${fpath[@]}")
 
 # Exports
-if test -f ~/zsh/exports.zsh; then
-	source "$HOME/zsh/exports.zsh"
+if test -f ~/.config/zsh/exports.zsh; then
+	source "$HOME/.config/zsh/exports.zsh"
 fi
 
-if test -f ~/zsh/aliases.zsh; then
-	source "$HOME/zsh/aliases.zsh"
+if test -f ~/.config/zsh/aliases.zsh; then
+	source "$HOME/.config/zsh/aliases.zsh"
 fi
 
-if test -f ~/zsh/functions.zsh; then
-	source "$HOME/zsh/functions.zsh"
+if test -f ~/.config/zsh/functions.zsh; then
+	source "$HOME/.config/zsh/functions.zsh"
 fi
 
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+[[ -f ~/.znap/zsh-snap/znap.zsh ]] ||
     git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+        https://github.com/marlonrichert/zsh-snap.git ~/.znap/zsh-snap
 
 source ~/.znap/zsh-snap/znap.zsh
 
+znap prompt sindresorhus/pure
 znap source zsh-users/zsh-autosuggestions
 znap source z-shell/F-Sy-H
 
@@ -35,10 +36,6 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 zstyle ":autocomplete:*" min-input 1
 
 [[ -f ~/.config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
-
-if [ -f /usr/share/nnn/quitcd/quitcd.bash_zsh ]; then
-	source /usr/share/nnn/quitcd/quitcd.bash_zsh
-fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
@@ -62,7 +59,5 @@ export WASMER_DIR="/home/theo/.wasmer"
 
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(fnm env --shell=zsh)"
 

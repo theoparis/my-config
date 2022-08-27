@@ -1,10 +1,5 @@
 #!/bin/sh
 set -e
 
-exec electron13 --ignore-gpu-blocklist \
-    --enable-features=VapiVideoDecoder,WebRTCPipeWireCapture,UseOzonePlatform \
-        --enable-gl=desktop \
-        --enable-gpu \
-        --enable-gpu-rasterization \
-        --ozone-platform=wayland \
-        /usr/lib/discord-canary/resources/app.asar "$@"
+discord-canary --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-gpu
+

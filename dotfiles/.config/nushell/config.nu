@@ -519,6 +519,9 @@ let-env PROMPT_COMMAND = {
     ~/.cargo/bin/zoxide add -- (shells | where active == true | get path | get 0)
 }
 
+let-env QT_QPA_PLATFORM = "wayland"
+let-env QT_QPA_PLATFORMTHEME = "qt6ct"
+
 let-env GPG_TTY = (tty)
 
 let-env config = {

@@ -23,14 +23,21 @@ set -Ux BUN_INSTALL "$HOME/.bun"
 fish_add_path "$BUN_INSTALL/bin"
 
 # wayland
-set -Ux MOZ_ENABLE_WAYLAND 1
+set MOZ_ENABLE_WAYLAND 1
+set SDL_VIDEODRIVER wayland
+set _JAVA_AWT_WM_NONREPARENTING 1
+set QT_QPA_PLATFORM wayland
+set XDG_CURRENT_DESKTOP sway
+set XDG_CURRENT_SESSION sway
 
 # pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+set PNPM_HOME "$HOME/.local/share/pnpm"
+set PATH "$PNPM_HOME" $PATH
 # pnpm end
 
 # cmake
-set -gx CPM_SOURCE_CACHE $HOME/.cache/CPM
+set CPM_SOURCE_CACHE $HOME/.cache/CPM
+
+set GPG_TTY $(tty)
 
 direnv hook fish | source

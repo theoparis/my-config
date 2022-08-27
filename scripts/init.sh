@@ -1,20 +1,17 @@
-#!/usr/bin/env fish
+#!/usr/bin/env zsh
 echo "Attempting to initialize config from $(pwd)"
 
-# Tmux plugin manager
+mkdir ~/.config/xplr/plugins
+
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fish -c "cd ~/.tmux/plugins/tpm && git pull"
-
-# Zsh plugins
-mkdir -p ~/.config/zsh
-
-# Xplr File Manager
-mkdir -p ~/.config/xplr/plugins
-
 git clone https://github.com/prncss-xyz/icons.xplr ~/.config/xplr/plugins/icons
+git clone https://github.com/dtomvan/xpm.xplr ~/.local/share/xplr/dtomvan/xpm.xplr
+
+zsh -c "cd ~/.tmux/plugins/tpm && git pull"
 
 # Symlinks
 echo "Linking config files..."
-stow -t ~/ dotfiles
+fling --ignore 'README.*' --src-dir ./dotfiles link
 
 echo "Done."
+
