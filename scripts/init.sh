@@ -2,6 +2,7 @@
 echo "Attempting to initialize config from $(pwd)"
 
 mkdir -p ~/.config/xplr/plugins
+mkdir -p ~/.config/zsh
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone https://github.com/prncss-xyz/icons.xplr ~/.config/xplr/plugins/icons
@@ -11,7 +12,7 @@ zsh -c "cd ~/.tmux/plugins/tpm && git pull"
 
 # Symlinks
 echo "Linking config files..."
-fling --ignore 'README.*' --src-dir ./dotfiles link
+fling --src-dir ./dotfiles link
 
 echo "Done."
 
