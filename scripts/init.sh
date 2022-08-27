@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 echo "Attempting to initialize config from $(pwd)"
 
-mkdir ~/.config/xplr/plugins
+mkdir -p ~/.config/xplr/plugins
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone https://github.com/prncss-xyz/icons.xplr ~/.config/xplr/plugins/icons
