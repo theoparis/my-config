@@ -2,7 +2,7 @@
 
 # Inspired by https://github.com/oncomouse/dotfiles/blob/master/stow/river/dot-config/river/init
 
-riverctl map normal Super Return spawn kitty 
+riverctl map normal Super Return spawn wezterm 
 riverctl map normal Super Y spawn 'grim -g "$(slurp)" -t png - | wl-copy -t image/png'
 riverctl map normal Super+Shift W exit
 riverctl map normal Super+Shift Q close

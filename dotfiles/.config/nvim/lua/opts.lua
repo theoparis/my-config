@@ -1,19 +1,10 @@
 local cmd = vim.api.nvim_command
 
-local install_path = vim.fn.stdpath 'data'
-	.. '/site/pack/packer/start/packer.nvim'
+vim.notify = require('notify')
 
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.execute(
-		'!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
-	)
-end
-
-vim.notify = require 'notify'
-
-local lsp = require 'lspconfig'
-local ih = require 'inlay-hints'
-local configs = require 'lspconfig.configs'
+local lsp = require('lspconfig')
+local ih = require('inlay-hints')
+local configs = require('lspconfig.configs')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
 	vim.lsp.protocol.make_client_capabilities()
 )
@@ -53,16 +44,16 @@ if not configs.ls_emmet then
 	}
 end
 
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
 local make_lsp_config = function(config1)
 	local config2 = {
 		capabilities = capabilities,
-		on_attach = function(client, buf)
-			local group =
-				vim.api.nvim_create_augroup('lsp_formatting', { clear = true })
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				command = ':lua vim.lsp.buf.format({}, 1000)',
-				group = group,
-			})
+		on_attach = function(client, bufnr)
+			--vim.api.nvim_create_autocmd('BufWritePre', {
+			--command = ':lua vim.lsp.buf.format({}, 1000)',
+			--group = group,
+			--})
 			-- inlay hints
 			--ih.on_attach(client, buf)
 
@@ -87,14 +78,14 @@ local make_lsp_config = function(config1)
 	return config
 end
 
-lsp.julials.setup(make_lsp_config {})
-lsp.kotlin_language_server.setup(make_lsp_config {})
-lsp.rnix.setup(make_lsp_config {})
-lsp.fortls.setup(make_lsp_config {})
-lsp.ls_emmet.setup(make_lsp_config {})
-lsp.vala_ls.setup(make_lsp_config {})
-lsp.html.setup(make_lsp_config {})
-lsp.rust_analyzer.setup(make_lsp_config {
+lsp.julials.setup(make_lsp_config({}))
+lsp.kotlin_language_server.setup(make_lsp_config({}))
+lsp.rnix.setup(make_lsp_config({}))
+lsp.fortls.setup(make_lsp_config({}))
+lsp.ls_emmet.setup(make_lsp_config({}))
+lsp.vala_ls.setup(make_lsp_config({}))
+lsp.html.setup(make_lsp_config({}))
+lsp.rust_analyzer.setup(make_lsp_config({
 	settings = {
 		['rust-analyzer'] = {
 			checkOnSave = {
@@ -110,16 +101,16 @@ lsp.rust_analyzer.setup(make_lsp_config {
 			},
 		},
 	},
-})
-lsp.csharp_ls.setup(make_lsp_config {})
-lsp.nimls.setup(make_lsp_config {})
-lsp.svelte.setup(make_lsp_config {})
-lsp.typeprof.setup(make_lsp_config {})
-lsp.crystalline.setup(make_lsp_config {})
-lsp.zls.setup(make_lsp_config {})
-lsp.jdtls.setup(make_lsp_config { cmd = { 'java-lsp.sh', vim.fn.getcwd() } })
-lsp.dockerls.setup(make_lsp_config {})
-lsp.gopls.setup(make_lsp_config {
+}))
+lsp.csharp_ls.setup(make_lsp_config({}))
+lsp.nimls.setup(make_lsp_config({}))
+lsp.svelte.setup(make_lsp_config({}))
+lsp.typeprof.setup(make_lsp_config({}))
+lsp.crystalline.setup(make_lsp_config({}))
+lsp.zls.setup(make_lsp_config({}))
+lsp.jdtls.setup(make_lsp_config({ cmd = { 'java-lsp.sh', vim.fn.getcwd() } }))
+lsp.dockerls.setup(make_lsp_config({}))
+lsp.gopls.setup(make_lsp_config({
 	settings = {
 		gopls = {
 			hints = {
@@ -133,9 +124,9 @@ lsp.gopls.setup(make_lsp_config {
 			},
 		},
 	},
-})
-lsp.pyright.setup(make_lsp_config {})
-lsp.sumneko_lua.setup(make_lsp_config {
+}))
+lsp.pyright.setup(make_lsp_config({}))
+lsp.sumneko_lua.setup(make_lsp_config({
 	settings = {
 		Lua = {
 			runtime = { version = 'Lua5.4', path = runtime_path },
@@ -150,9 +141,9 @@ lsp.sumneko_lua.setup(make_lsp_config {
 			},
 		},
 	},
-})
-lsp.tailwindcss.setup(make_lsp_config {})
-lsp.jsonls.setup(make_lsp_config {
+}))
+lsp.tailwindcss.setup(make_lsp_config({}))
+lsp.jsonls.setup(make_lsp_config({
 	settings = {
 		json = {
 			schemas = {
@@ -211,48 +202,48 @@ lsp.jsonls.setup(make_lsp_config {
 			},
 		},
 	},
-})
+}))
 
-lsp.tsserver.setup {
-	cmd = {
-		'typescript-language-server',
-		'--stdio',
-	},
-	settings = {
-		javascript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-		typescript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all',
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-	},
-}
---lsp.denols.setup(make_lsp_config {})
+--lsp.tsserver.setup {
+--cmd = {
+--'typescript-language-server',
+--'--stdio',
+--},
+--settings = {
+--javascript = {
+--inlayHints = {
+--includeInlayEnumMemberValueHints = true,
+--includeInlayFunctionLikeReturnTypeHints = true,
+--includeInlayFunctionParameterTypeHints = true,
+--includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
+--includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+--includeInlayPropertyDeclarationTypeHints = true,
+--includeInlayVariableTypeHints = true,
+--},
+--},
+--typescript = {
+--inlayHints = {
+--includeInlayEnumMemberValueHints = true,
+--includeInlayFunctionLikeReturnTypeHints = true,
+--includeInlayFunctionParameterTypeHints = true,
+--includeInlayParameterNameHints = 'all',
+--includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+--includeInlayPropertyDeclarationTypeHints = true,
+--includeInlayVariableTypeHints = true,
+--},
+--},
+--},
+--}
+lsp.denols.setup(make_lsp_config({}))
 lsp.yamlls.setup(
-	make_lsp_config { capabilities = capabilities, format = { enable = false } }
+	make_lsp_config({ capabilities = capabilities, format = { enable = false } })
 )
 -- lsp.sumneko_lua.setup({})
-lsp.clangd.setup(make_lsp_config {})
+lsp.clangd.setup(make_lsp_config({}))
 
 -- Treesitter
 require('nvim-treesitter.install').compilers = { 'gcc', 'clang' }
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'bash',
 		'cpp',
@@ -277,7 +268,7 @@ require('nvim-treesitter.configs').setup {
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
-}
+})
 
 -- Global options
 vim.o.winbar = "%{%v:lua.require('utils.win').eval()%}"
@@ -300,7 +291,7 @@ vim.o.termguicolors = true
 -- Color scheme
 vim.g.material_style = 'deep ocean'
 require('colorbuddy').setup()
-require('colorbuddy').colorscheme 'material'
+require('colorbuddy').colorscheme('material')
 
 vim.g.NERDCreateDefaultMappings = false
 vim.g.copilot_no_tab_map = true
@@ -314,14 +305,22 @@ vim.g.user_emmet_settings = {
 }
 
 -- File types
-vim.api.nvim_command 'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-vim.api.nvim_command 'autocmd BufNewFile,BufRead *.razor setfiletype xml'
-vim.api.nvim_command 'au BufRead,BufNewFile *.csx set filetype=cs'
-vim.api.nvim_command 'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-vim.api.nvim_command 'autocmd BufNewFile,BufRead *.razor setfiletype xml'
-vim.api.nvim_command 'au BufRead,BufNewFile *.csx set filetype=cs'
-vim.api.nvim_command 'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-vim.api.nvim_command "autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()"
+vim.api.nvim_command(
+	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+)
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
+vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
+vim.api.nvim_command(
+	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+)
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
+vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
+vim.api.nvim_command(
+	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+)
+vim.api.nvim_command(
+	"autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()"
+)
 
 -- Status bar
 
@@ -333,46 +332,75 @@ function LspStatus()
 	return ''
 end
 
-local lsp_status = require 'lsp-status'
+local lsp_status = require('lsp-status')
 
-lsp_status.config {
+lsp_status.config({
 	indicator_errors = '❌',
 	indicator_warnings = '⚠️',
 	indicator_info = 'ℹ️',
 	indicator_hint = '❔',
 	indicator_ok = '👌',
-}
+})
 
 lsp_status.register_progress()
 
 -- vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
 -- vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
-vim.api.nvim_command 'autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile'
-vim.api.nvim_command 'autocmd BufRead,BufNewFile build.earth set filetype=Earthfile'
+vim.api.nvim_command(
+	'autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile'
+)
+vim.api.nvim_command(
+	'autocmd BufRead,BufNewFile build.earth set filetype=Earthfile'
+)
 
 require('todo-comments').setup()
-require('dapui').setup {}
-require('nvim-tree').setup {}
+require('dapui').setup({})
+require('nvim-tree').setup({})
 require('aerial').setup()
-require('git-worktree').setup {}
+require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
-local null_ls = require 'null-ls'
-null_ls.setup {
+
+local null_ls = require('null-ls')
+
+null_ls.setup({
 	sources = {
-		sources = {
-			null_ls.builtins.diagnostics.eslint_d,
-			null_ls.builtins.formatting.autopep8,
-			null_ls.builtins.formatting.eslint_d,
-			null_ls.builtins.formatting.gofmt,
-			null_ls.builtins.formatting.prettierd,
-			null_ls.builtins.formatting.rustfmt,
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.rufo,
-		},
+		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.yapf,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.rustfmt,
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.rufo,
+		null_ls.builtins.formatting.uncrustify.with({
+			extra_args = {
+				'-c',
+				'uncrustify.cfg',
+				'--replace',
+			},
+		}),
 	},
-}
+	on_attach = function(client, bufnr)
+		if client.supports_method('textDocument/formatting') then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						bufnr = bufnr,
+						filter = function(client)
+							return client.name == 'null-ls'
+						end,
+					})
+				end,
+			})
+		end
+	end,
+})
+require('presence'):setup()
 require('inlay-hints').setup()
-require('tabline').setup {
+require('tabline').setup({
 	enable = true,
 	options = {
 		section_separators = { '', '' },
@@ -386,13 +414,13 @@ require('tabline').setup {
 		modified_italic = false,
 		show_tabs_only = false,
 	},
-}
-vim.cmd [[
+})
+vim.cmd([[
   set guioptions-=e " Use showtabline in gui vim
   set sessionoptions+=tabpages,globals " store tabpages and globals in session
-]]
+]])
 
-local db = require 'dashboard'
+local db = require('dashboard')
 db.custom_header = {
 	'',
 	'',
@@ -442,7 +470,7 @@ db.custom_center = {
 vim.keymap.set('n', '<Leader>o', ':DashboardNewFile<CR>', { silent = true })
 
 function LspRename()
-	local curr_name = vim.fn.expand '<cword>'
+	local curr_name = vim.fn.expand('<cword>')
 	local value = vim.fn.input('LSP Rename: ', curr_name)
 	local lsp_params = vim.lsp.util.make_position_params()
 

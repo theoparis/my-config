@@ -71,9 +71,12 @@ super + d
 super + y
   flameshot gui -r | xclip -selection clipboard -t image/png -i
 
+super + {s,f}
+  bspc node -t '~{floating,fullscreen}'
+
 ## Open terminal
 super + Return
-  kitty 
+  alacritty
 
 super + b
   $BROWSER https://google.com

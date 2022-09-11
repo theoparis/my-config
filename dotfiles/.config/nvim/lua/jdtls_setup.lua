@@ -38,7 +38,7 @@ function M.setup()
 		-- The command that starts the language server
 		cmd = {
 			'java-lsp.sh',
-			os.getenv 'HOME' .. '/jdtls/workspace/' .. workspace_dir,
+			os.getenv('HOME') .. '/jdtls/workspace/' .. workspace_dir,
 		},
 
 		flags = { allow_incremental_sync = true },

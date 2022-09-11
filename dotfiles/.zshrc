@@ -1,14 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-#!/bin/env zsh
-# shellcheck shell=bash
-
-#zmodload zsh/zprof
+#!/bin/zsh
 
 export fpath=(~/.zfunc "${fpath[@]}")
 
@@ -17,15 +7,10 @@ source "$HOME/.config/zsh/exports.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 
-[[ -f ~/.znap/zsh-snap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.znap/zsh-snap
-
 source ~/.znap/zsh-snap/znap.zsh
 
 znap source zsh-users/zsh-autosuggestions
 znap source z-shell/F-Sy-H
-znap prompt romkatv/powerlevel10k
 
 znap function _pyenv pyenvn 'eval "$( pyenv init - --no-rehash )"'
 compctl -K    _pyenv pyenv
@@ -59,6 +44,12 @@ export WASMER_DIR="/home/theo/.wasmer"
 export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export fpath=(~/zsh/site-functions $fpath)
+mkdir -p ~/zsh/site-functions
+dasel completion zsh > ~/zsh/site-functions/_dasel
+compinit
+
+# bun completions
+[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"

@@ -1,5 +1,4 @@
-#!/bin/fish
-# shellcheck shell=bash
+#!/bin/zsh
 
 # aliases
 # 256 color support
@@ -8,7 +7,7 @@ alias tmux="tmux -2 -u" # for 256color
 alias d='f $DEV_FOLDER'
 alias L="sudo -E zsh -ic 'l'"
 alias l="xplr"
-alias ls="exa -a --time-style=hide --color=always --icons"
+alias ls="exa -a --color=always --icons"
 alias lsl="exa -la --color=always --icons"
 alias rm="rm -i"
 alias mv="mv -n"

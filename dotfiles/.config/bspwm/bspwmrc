@@ -1,11 +1,11 @@
-#!/bin/fish
+#!/bin/zsh
 # BSPWM Config
 
 bspc rule -r "*"
 
 ## Autostart
 killall nm-applet
-killall picom
+killall picom 
 killall sxhkd
 killall dunst
 killall feh
@@ -16,14 +16,13 @@ killall gnome-keyring-daemon
 killall compiz
 
 polkit-dumb-agent &
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh) export SSH_AUTH_SOCK
+eval $(/usr/local/bin/gnome-keyring-daemon --start --components=pkcs11,secrets) export SSH_AUTH_SOCK
 nm-applet &
 picom &
 SXHKD_SHELL="$SHELL" sxhkd &
 dunst &
 feh --bg-scale ~/wallpapers/Arch-2.png &
 polybar main &
-flameshot &
 
 ## Monitors
 ~/monitors

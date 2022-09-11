@@ -1,5 +1,5 @@
-require 'plugins'
-require 'opts'
-require 'cmp-config'
-require 'keybinds'
-require 'statusline'
+require('plugins')
+require('opts')
+require('cmp-config')
+require('keybinds')
+require('statusline')

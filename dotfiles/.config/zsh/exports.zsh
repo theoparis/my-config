@@ -4,12 +4,11 @@ export USER_ID=$(id -u)
 export KUBECONFIG="$HOME/.kube/config"
 export GOPATH=$HOME/go
 export GLFW_IM_MODULE=none
-export PATH="$PATH:$HOME/my-config/scripts/bin:/usr/local/go/bin:/opt/riscv/bin:$HOME/.ops/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/sdk/go/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.nimble/bin:$HOME/.local/bin:$HOME/.n/bin:$HOME/.krew/bin:$HOME/.dotnet/tools:$HOME/.fnm:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/cuda/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/my-config/scripts/bin:/usr/local/go/bin:/opt/riscv/bin:$HOME/.ops/bin:$GOROOT/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/sdk/go/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.gem/ruby/3.0.0/bin:$HOME/.nimble/bin:$HOME/.local/bin:$HOME/.n/bin:$HOME/.krew/bin:$HOME/.dotnet/tools:$HOME/.fnm:/opt/rocm/bin:/opt/rocm/hip/bin:/opt/cuda/bin:$HOME/.cargo/bin:$HOME/.bun/bin:/usr/local/cross/bin:$HOME/crystal/bin:$HOME/zig:$HOME/blender"
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="alacritty"https://bitbucket.org/chromiumembedded/cef/src/master/
 export NVM_DIR="$HOME/.nvm"
 export SXHKD_SHELL="$SHELL"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$PATH:$JAVA_HOME/bin"
 
@@ -23,8 +22,7 @@ export DEV_FOLDER="$HOME/dev"
 # Node version mamager (https://github.com/tj/n)
 export N_PREFIX="$HOME/.n"
 
-#export GTK_THEME="Sweet-Dark"
-export LIBRARY_PATH="/usr/local/lib:$LIBRARY_PATH"
+export GTK_THEME="Sweet-Dark"
 export WLR_NO_HARDWARE_CURSORS=1
 export _JAVA_AWT_WM_NONREPARTENTING=1
 
@@ -44,4 +42,9 @@ export _JAVA_AWT_WM_NONREPARTENTING=1
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
+
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+
+# CPM.cmake
+export CPM_SOURCE_CACHE=$HOME/.cache/CPM
 

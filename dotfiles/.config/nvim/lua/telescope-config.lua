@@ -1,7 +1,7 @@
 local M = {}
 
-local telescope = require 'telescope'
-telescope.setup {
+local telescope = require('telescope')
+telescope.setup({
 	defaults = {
 		mappings = { n = { ['o'] = require('telescope.actions').select_default } },
 		initial_mode = 'normal',
@@ -9,9 +9,9 @@ telescope.setup {
 		file_ignore_patterns = { '.git/', 'node_modules/', 'target/' },
 	},
 	extensions = { file_browser = { hidden = true } },
-}
-telescope.load_extension 'file_browser'
-telescope.load_extension 'git_worktree'
+})
+telescope.load_extension('file_browser')
+telescope.load_extension('git_worktree')
 
 M.project_files = function()
 	local opts = {

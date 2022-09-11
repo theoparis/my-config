@@ -3,7 +3,7 @@ window:
     x: 24
   opacity: 0.95
 shell:
-  program: /home/theo/.cargo/bin/nu
+  program: /bin/zsh
 font:
   size: 14
   normal:
