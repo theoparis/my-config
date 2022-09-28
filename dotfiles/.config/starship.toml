@@ -6,7 +6,7 @@ format = """$all[->](bold #0096FF) """
 scan_timeout = 10
 
 # Disable the blank line at the start of the prompt
-add_newline = true
+add_newline = false
 
 [cmd_duration]
 disabled = false
@@ -17,5 +17,6 @@ format = "Took [$duration](bold yellow)"
 disabled = true
 
 [git_status]
+disabled = true
 ignore_submodules = true
 

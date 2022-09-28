@@ -36,7 +36,7 @@ end)
 beautiful.init(gears.filesystem.get_themes_dir() .. 'gtk/theme.lua')
 beautiful.font = 'JetBrainsMono Nerd Font 16'
 
-terminal = 'kitty'
+terminal = 'wezterm'
 editor = os.getenv('EDITOR') or 'nvim'
 editor_cmd = terminal .. ' -e ' .. editor
 
@@ -80,8 +80,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal('request::default_layouts', function()
 	awful.layout.append_default_layouts({
-		awful.layout.suit.floating,
 		awful.layout.suit.tile,
+		awful.layout.suit.floating,
 		awful.layout.suit.tile.left,
 		awful.layout.suit.tile.bottom,
 		awful.layout.suit.tile.top,
@@ -275,7 +275,7 @@ awful.keyboard.append_global_keybindings({
 		awful.spawn(terminal)
 	end, { description = 'open a terminal', group = 'launcher' }),
 	awful.key({ modkey }, 'r', function()
-		awful.util.spawn('bemenu-run')
+		awful.util.spawn('rofi -show drun')
 	end, { description = 'App launcher', group = 'launcher' }),
 })
 
@@ -627,7 +627,7 @@ end)
 
 -- Autostart apps
 awful.spawn.with_shell('picom')
-awful.spawn.with_shell('feh --bg-scale ~/wallpapers/Arch-2.png')
+awful.spawn.with_shell('feh --bg-scale ~/wallpapers/Linux-1.png')
 awful.spawn.with_shell('flameshot')
 awful.spawn.with_shell('pipewire')
 awful.spawn.with_shell('pipewire-pulse')
@@ -636,3 +636,9 @@ awful.spawn.with_shell('nm-applet')
 awful.spawn.with_shell('dunst')
 awful.spawn.with_shell('wmname LG3D')
 awful.spawn.with_shell('~/monitors')
+awful.spawn.with_shell(
+	'/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1'
+)
+awful.spawn.with_shell(
+	'/usr/bin/gnome-keyring-daemon --foreground --components="pkcs11,secrets,ssh"'
+)

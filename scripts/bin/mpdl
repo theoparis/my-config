@@ -1,0 +1,3 @@
+#!/bin/sh -e
+mpv --no-config --script-opts=ytdl_hook-ytdl_path=$HOME/.local/bin/yt-dlp "$@"
+

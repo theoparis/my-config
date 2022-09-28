@@ -364,6 +364,7 @@ local null_ls = require('null-ls')
 
 null_ls.setup({
 	sources = {
+		null_ls.builtins.formatting.csharpier,
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.formatting.yapf,
 		null_ls.builtins.formatting.eslint_d,
@@ -372,6 +373,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rufo,
+		null_ls.builtins.diagnostics.clang_check,
 		null_ls.builtins.formatting.uncrustify.with({
 			extra_args = {
 				'-c',
@@ -379,6 +381,7 @@ null_ls.setup({
 				'--replace',
 			},
 		}),
+		null_ls.builtins.formatting.zigfmt,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method('textDocument/formatting') then

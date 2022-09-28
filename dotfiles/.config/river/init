@@ -103,20 +103,17 @@ riverctl float-filter-add app-id nautilus
 riverctl float-filter-add title "popup title with spaces"
 
 pkill polkit-gnome-authentication-agent-1
-pkill waybar
 pkill dunst
 pkill nm-applet
 pkill swaybg
 pkill xdg-desktop-portal
 pkill xdg-desktop-portal-wlr
 pkill swaybg
-pkill mpd
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-waybar &
 dunst &
 nm-applet &
-swaybg -i ~/wallpapers/Arch-2.png &
-mpd ~/.config/mpd/mpd.conf --no-daemon &
+swaybg -i ~/wallpapers/Linux-1.png &
+mpvpaper -vs -o "no-audio loop" HDMI-A-2 "$HOME/ocean.webm" &
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-wlr &
 ~/monitors

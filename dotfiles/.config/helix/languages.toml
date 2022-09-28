@@ -1,0 +1,5 @@
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["-"] }
+language-server = { command = "deno", args = ["lsp"] }

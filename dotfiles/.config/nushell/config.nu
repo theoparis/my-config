@@ -519,6 +519,24 @@ let-env PROMPT_COMMAND = {
     ~/.cargo/bin/zoxide add -- (shells | where active == true | get path | get 0)
 }
 
+def-env br [
+  --args (-a): string
+] {
+  let cmd_file = (^mktemp | str trim)
+  if ($args | empty?) {
+    ^broot --outcmd $cmd_file
+  } else {
+    ^broot $args --outcmd $cmd_file
+  }
+  let-env cmd = ((open $cmd_file) | str trim)
+  ^rm $cmd_file
+  cd ($env.cmd | str replace "cd" "" | str trim)
+}
+
+alias ll = exa -la --color=always --icons
+alias l = xplr
+alias cat = bat -pp
+
 let-env QT_QPA_PLATFORM = "wayland"
 let-env QT_QPA_PLATFORMTHEME = "qt6ct"
 
@@ -527,3 +545,5 @@ let-env GPG_TTY = (tty)
 let-env config = {
     show_banner: false
 }
+
+source ~/.cache/starship/init.nu

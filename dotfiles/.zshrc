@@ -46,10 +46,6 @@ export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
-export fpath=(~/zsh/site-functions $fpath)
-mkdir -p ~/zsh/site-functions
-dasel completion zsh > ~/zsh/site-functions/_dasel
-compinit
+export GPG_TTY=$(tty)
 
-# bun completions
-[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"
+source /home/theo/.config/broot/launcher/bash/br
