@@ -1,1 +1,0 @@
-deno run --allow-write --allow-read --allow-env --allow-run --import-map import_map.json --unstable src/main.ts $@

@@ -1,3 +1,5 @@
+zstyle ':znap:*' repos-dir ~/.znap
+source ~/zsh-snap/znap.zsh
 #!/bin/zsh
 
 export fpath=(~/.zfunc "${fpath[@]}")
@@ -7,7 +9,6 @@ source "$HOME/.config/zsh/exports.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 
-source ~/.znap/zsh-snap/znap.zsh
 
 znap source zsh-users/zsh-autosuggestions
 znap source z-shell/F-Sy-H
@@ -27,25 +28,8 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 autoload -Uz compinit
 compinit
 
-# OPS config
-if [ -f "$OPS_DIR/scripts/bash_completion.sh" ]; then
-	source "$OPS_DIR/scripts/bash_completion.sh"
-fi
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-#zprof
-
-# Wasmer
-export WASMER_DIR="/home/theo/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-
-eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 export GPG_TTY=$(tty)
 
-source /home/theo/.config/broot/launcher/bash/br

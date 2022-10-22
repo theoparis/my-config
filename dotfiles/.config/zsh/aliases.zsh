@@ -5,15 +5,11 @@
 alias tmux="tmux -2 -u" # for 256color
 
 alias d='f $DEV_FOLDER'
-alias L="sudo -E zsh -ic 'l'"
-alias l="xplr"
-alias ls="exa -a --color=always --icons"
-alias lsl="exa -la --color=always --icons"
 alias rm="rm -i"
 alias mv="mv -n"
 alias cp="cp -n"
-alias cat="bat -pp"
 alias s="doas"
+alias l="xplr"
 alias sedit="doasedit"
 alias pwease="s"
 alias pweasedit="sedit"
@@ -35,4 +31,6 @@ alias gl="git log --abbrev-commit --date=local --name-status --pretty   --color 
 alias gw="git worktree"
 alias gwa="git worktree add"
 alias gro='xdg-open $(git remote get-url origin)'
+
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 

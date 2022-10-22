@@ -1,11 +1,12 @@
 window:
+  opacity: 0.75
   padding:
-    x: 24
-  opacity: 0.95
+    x: 18
+    y: 18
 shell:
   program: /bin/zsh
 font:
-  size: 14
+  size: 18
   normal:
     family: "JetBrainsMono Nerd Font"
 

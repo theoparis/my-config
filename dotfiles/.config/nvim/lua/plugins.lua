@@ -9,8 +9,8 @@ end
 return packer.startup(function()
 	-- Packer can manage itself
 	use('wbthomason/packer.nvim')
-	use('andweeb/presence.nvim')
 	use('jose-elias-alvarez/null-ls.nvim')
+	use('andweeb/presence.nvim')
 	use({ 'neovim/nvim-lspconfig' })
 	-- Code actions
 	use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })

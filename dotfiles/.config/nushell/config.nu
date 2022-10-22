@@ -233,6 +233,7 @@ let light_theme = {
 
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
+  show_banner: false
   filesize_metric: false
   table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
   use_ls_colors: true
@@ -252,7 +253,6 @@ let-env config = {
   sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
   history_file_format: "plaintext" # "sqlite" or "plaintext"
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
-  disable_table_indexes: false # set to true to remove the index column from tables
   cd_with_abbreviations: false # set to true to allow you to do things like cd s/o/f and nushell expand it to cd some/other/folder
   case_sensitive_completions: false # set to true to enable case-sensitive completions
   enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
@@ -508,7 +508,7 @@ alias l = (ls -la | grid -c)
 let-env WASMER_DIR = $"($env.HOME)/.local/share/wasmer"
 let-env WASMER_CACE_DIR = $"($env.WASMER_DIR)/cache"
 
-let-env PATH = ($env.PATH | prepend $"($env.HOME)/.local/bin" | prepend $"($env.HOME)/.cargo/bin" | prepend $"($env.HOME)/go/bin" | prepend $"($env.HOME)/.bun/bin" | prepend $"($env.WASMER_DIR)/bin" | prepend $"($env.HOME)/zig/bin" | prepend $"($env.HOME)/nim/bin" | prepend "/usr/local/cross/amd64/bin")
+let-env PATH = ($env.PATH | prepend $"($env.HOME)/.local/bin" | prepend $"($env.HOME)/.cargo/bin" | prepend $"($env.HOME)/go/bin" | prepend $"($env.HOME)/.bun/bin" | prepend $"($env.WASMER_DIR)/bin" | prepend $"($env.HOME)/zig/bin" | prepend $"($env.HOME)/nim/bin" | prepend "/usr/local/cross/amd64/bin" | prepend $"($env.HOME)/dev/cni-plugins/bin")
 let-env EDITOR = "nvim"
 let-env LANG = "en_US.UTF-8"
 let-env MANPAGER = "nvim"
@@ -542,8 +542,3 @@ let-env QT_QPA_PLATFORMTHEME = "qt6ct"
 
 let-env GPG_TTY = (tty)
 
-let-env config = {
-    show_banner: false
-}
-
-source ~/.cache/starship/init.nu

@@ -1,13 +1,8 @@
-local cmd = vim.api.nvim_command
-
 vim.notify = require('notify')
 
 local lsp = require('lspconfig')
-local ih = require('inlay-hints')
 local configs = require('lspconfig.configs')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-	vim.lsp.protocol.make_client_capabilities()
-)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local runtime_path = vim.split(package.path, ';')
@@ -44,12 +39,11 @@ if not configs.ls_emmet then
 	}
 end
 
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
 local make_lsp_config = function(config1)
 	local config2 = {
 		capabilities = capabilities,
 		on_attach = function(client, bufnr)
+
 			--vim.api.nvim_create_autocmd('BufWritePre', {
 			--command = ':lua vim.lsp.buf.format({}, 1000)',
 			--group = group,
@@ -77,7 +71,6 @@ local make_lsp_config = function(config1)
 
 	return config
 end
-
 lsp.julials.setup(make_lsp_config({}))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
 lsp.rnix.setup(make_lsp_config({}))
@@ -204,37 +197,37 @@ lsp.jsonls.setup(make_lsp_config({
 	},
 }))
 
---lsp.tsserver.setup {
---cmd = {
---'typescript-language-server',
---'--stdio',
---},
---settings = {
---javascript = {
---inlayHints = {
---includeInlayEnumMemberValueHints = true,
---includeInlayFunctionLikeReturnTypeHints = true,
---includeInlayFunctionParameterTypeHints = true,
---includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
---includeInlayParameterNameHintsWhenArgumentMatchesName = true,
---includeInlayPropertyDeclarationTypeHints = true,
---includeInlayVariableTypeHints = true,
---},
---},
---typescript = {
---inlayHints = {
---includeInlayEnumMemberValueHints = true,
---includeInlayFunctionLikeReturnTypeHints = true,
---includeInlayFunctionParameterTypeHints = true,
---includeInlayParameterNameHints = 'all',
---includeInlayParameterNameHintsWhenArgumentMatchesName = true,
---includeInlayPropertyDeclarationTypeHints = true,
---includeInlayVariableTypeHints = true,
---},
---},
---},
---}
-lsp.denols.setup(make_lsp_config({}))
+lsp.tsserver.setup({
+	cmd = {
+		'typescript-language-server',
+		'--stdio',
+	},
+	settings = {
+		javascript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+		typescript = {
+			inlayHints = {
+				includeInlayEnumMemberValueHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayParameterNameHints = 'all',
+				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayVariableTypeHints = true,
+			},
+		},
+	},
+})
+--lsp.denols.setup(make_lsp_config({}))
 lsp.yamlls.setup(
 	make_lsp_config({ capabilities = capabilities, format = { enable = false } })
 )
@@ -281,7 +274,7 @@ vim.o.tabstop = 2
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
-vim.o.expandtab = true
+vim.o.expandtab = false
 vim.o.autoindent = true
 vim.o.updatetime = 100
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
@@ -296,31 +289,24 @@ require('colorbuddy').colorscheme('material')
 vim.g.NERDCreateDefaultMappings = false
 vim.g.copilot_no_tab_map = true
 vim.g.NERDTreeIgnore = { '^node_modules$' }
-vim.g.user_emmet_settings = {
-	html = {
-		snippets = {
-			['html.5'] = '!!!+html>(head>(meta[charset=${charset}]+meta[name="viewport" content="width=device-width,initial-scale=1.0"]+meta[http-equiv="X-UA-Compatible" content="ie=edge"]+title +body',
-		},
-	},
-}
 
 -- File types
-vim.api.nvim_command(
-	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-)
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
-vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
-vim.api.nvim_command(
-	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-)
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
-vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
-vim.api.nvim_command(
-	'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
-)
-vim.api.nvim_command(
-	"autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()"
-)
+--vim.api.nvim_command(
+--'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+--)
+--vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
+--vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
+--vim.api.nvim_command(
+--'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+--)
+--vim.api.nvim_command('autocmd BufNewFile,BufRead *.razor setfiletype xml')
+--vim.api.nvim_command('au BufRead,BufNewFile *.csx set filetype=cs')
+--vim.api.nvim_command(
+--'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
+--)
+--vim.api.nvim_command(
+--"autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()"
+--)
 
 -- Status bar
 
@@ -360,49 +346,7 @@ require('aerial').setup()
 require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
 
-local null_ls = require('null-ls')
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.csharpier,
-		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.formatting.yapf,
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.rufo,
-		null_ls.builtins.diagnostics.clang_check,
-		null_ls.builtins.formatting.uncrustify.with({
-			extra_args = {
-				'-c',
-				'uncrustify.cfg',
-				'--replace',
-			},
-		}),
-		null_ls.builtins.formatting.zigfmt,
-	},
-	on_attach = function(client, bufnr)
-		if client.supports_method('textDocument/formatting') then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({
-						bufnr = bufnr,
-						filter = function(client)
-							return client.name == 'null-ls'
-						end,
-					})
-				end,
-			})
-		end
-	end,
-})
 require('presence'):setup()
-require('inlay-hints').setup()
 require('tabline').setup({
 	enable = true,
 	options = {
@@ -527,3 +471,61 @@ function LspRename()
 		end
 	)
 end
+
+local null_ls = require('null-ls')
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.csharpier,
+		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.yapf,
+		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.gofmt,
+		null_ls.builtins.formatting.prettier.with({
+			filetypes = {
+				'xml',
+				'java',
+				'javascript',
+				'javascriptreact',
+				'typescript',
+				'typescriptreact',
+				'vue',
+				'css',
+				'scss',
+				'less',
+				'html',
+				'json',
+				'jsonc',
+				'yaml',
+				'markdown',
+				'graphql',
+				'handlebars',
+				'svelte',
+			},
+		}),
+		null_ls.builtins.formatting.rustfmt,
+		null_ls.builtins.formatting.stylua,
+		null_ls.builtins.formatting.rufo,
+		null_ls.builtins.diagnostics.clang_check,
+		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.formatting.zigfmt,
+	},
+	on_attach = function(client, bufnr)
+		if client.supports_method('textDocument/formatting') then
+			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+			vim.api.nvim_create_autocmd('BufWritePre', {
+				group = augroup,
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						bufnr = bufnr,
+						filter = function(client)
+							return client.name == 'null-ls'
+						end,
+					})
+				end,
+			})
+		end
+	end,
+})

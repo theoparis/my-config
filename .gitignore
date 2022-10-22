@@ -1,7 +1,7 @@
 *.env
 *.log*
-user
 node_modules
 .DS_Store
 packer_compiled.*
 dotfiles/.config/gtk-3.0/bookmarks
+history.txt
