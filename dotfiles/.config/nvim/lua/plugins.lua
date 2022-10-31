@@ -17,7 +17,6 @@ return packer.startup(function()
 	-- Status Bar
 	use('nvim-lualine/lualine.nvim')
 	use('folke/todo-comments.nvim')
-	use('kyazdani42/nvim-tree.lua')
 	use('scrooloose/nerdcommenter')
 	use('editorconfig/editorconfig-vim')
 	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })

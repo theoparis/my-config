@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
 
 return {
-	default_prog = { "/bin/zsh", "-l" },
+	default_prog = { "/bin/fish", "-l" },
 	font = wezterm.font("JetBrainsMono Nerd Font"),
 	font_size = 16,
-	window_background_opacity = 0.80,
+	window_background_opacity = 0.6,
 }

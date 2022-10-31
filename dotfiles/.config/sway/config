@@ -4,8 +4,8 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty 
-set $menu wofi --show drun 
+set $term foot
+set $menu bemenu-run
 
 ### Key bindings
 
@@ -163,8 +163,6 @@ exec wmname LG3D
 exec /usr/lib/polkit-gnome/polkit-gnomec-authentication-agent-1
 exec /usr/lib/xdg-desktop-portal
 exec /usr/lib/xdg-desktop-portal-wlr
-exec ~/monitors
 exec dunst
-exec nm-applet
-exec mpd ~/.config/mpd/mpd.conf --no-daemon
+exec swaybg -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 

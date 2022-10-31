@@ -8,7 +8,12 @@ telescope.setup({
 		hidden = true,
 		file_ignore_patterns = { '.git/', 'node_modules/', 'target/' },
 	},
-	extensions = { file_browser = { hidden = true } },
+	extensions = {
+		file_browser = {
+			hijack_netrw = true,
+			hidden = true,
+		},
+	},
 })
 telescope.load_extension('file_browser')
 telescope.load_extension('git_worktree')

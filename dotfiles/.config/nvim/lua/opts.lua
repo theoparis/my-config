@@ -75,7 +75,7 @@ lsp.julials.setup(make_lsp_config({}))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
 lsp.rnix.setup(make_lsp_config({}))
 lsp.fortls.setup(make_lsp_config({}))
-lsp.ls_emmet.setup(make_lsp_config({}))
+--lsp.ls_emmet.setup(make_lsp_config({}))
 lsp.vala_ls.setup(make_lsp_config({}))
 lsp.html.setup(make_lsp_config({}))
 lsp.rust_analyzer.setup(make_lsp_config({
@@ -102,7 +102,7 @@ lsp.typeprof.setup(make_lsp_config({}))
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
 lsp.jdtls.setup(make_lsp_config({ cmd = { 'java-lsp.sh', vim.fn.getcwd() } }))
-lsp.dockerls.setup(make_lsp_config({}))
+--lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({
 	settings = {
 		gopls = {
@@ -264,12 +264,17 @@ require('nvim-treesitter.configs').setup({
 })
 
 -- Global options
+vim.g.neovide_transparency = 0.65
+vim.g.mapleader = ' '
+vim.o.guifont = 'JetBrainsMono Nerd Font:h16'
 vim.o.winbar = "%{%v:lua.require('utils.win').eval()%}"
 vim.o.clipboard = 'unnamedplus'
 vim.o.ignorecase = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.shiftwidth = 2
+vim.o.smarttab = true
+vim.o.shiftwidth = 0
+vim.o.softtapstop = 0
 vim.o.tabstop = 2
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -278,17 +283,15 @@ vim.o.expandtab = false
 vim.o.autoindent = true
 vim.o.updatetime = 100
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
-vim.g.mapleader = ' '
-vim.o.termguicolors = true
 
 -- Color scheme
 vim.g.material_style = 'deep ocean'
 require('colorbuddy').setup()
 require('colorbuddy').colorscheme('material')
 
-vim.g.NERDCreateDefaultMappings = false
-vim.g.copilot_no_tab_map = true
-vim.g.NERDTreeIgnore = { '^node_modules$' }
+--vim.g.NERDCreateDefaultMappings = false
+--vim.g.copilot_no_tab_map = true
+--vim.g.NERDTreeIgnore = { '^node_modules$' }
 
 -- File types
 --vim.api.nvim_command(
@@ -341,7 +344,7 @@ vim.api.nvim_command(
 
 require('todo-comments').setup()
 require('dapui').setup({})
-require('nvim-tree').setup({})
+--require('nvim-tree').setup({})
 require('aerial').setup()
 require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
