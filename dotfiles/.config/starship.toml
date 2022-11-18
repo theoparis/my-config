@@ -17,6 +17,6 @@ format = "Took [$duration](bold yellow)"
 disabled = true
 
 [git_status]
-disabled = true
+disabled = false
 ignore_submodules = true
 

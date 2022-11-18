@@ -20,12 +20,13 @@ return packer.startup(function()
 	use('scrooloose/nerdcommenter')
 	use('editorconfig/editorconfig-vim')
 	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+	use('David-Kunz/markid')
 	use({
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
 	})
 	use('nvim-telescope/telescope-file-browser.nvim')
-	use('tjdevries/colorbuddy.nvim')
+	--use('tjdevries/colorbuddy.nvim')
 	use('Th3Whit3Wolf/onebuddy')
 	use('marko-cerovac/material.nvim')
 	-- completion engine
@@ -87,4 +88,5 @@ return packer.startup(function()
 	use('glepnir/dashboard-nvim')
 	use('kdheepak/tabline.nvim')
 	use('simrat39/inlay-hints.nvim')
+	use('folke/tokyonight.nvim')
 end)

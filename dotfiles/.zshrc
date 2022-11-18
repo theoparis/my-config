@@ -1,5 +1,4 @@
-zstyle ':znap:*' repos-dir ~/.znap
-source ~/zsh-snap/znap.zsh
+source ~/.znap/zsh-snap/znap.zsh
 #!/bin/zsh
 
 export fpath=(~/.zfunc "${fpath[@]}")
@@ -33,3 +32,5 @@ eval "$(zoxide init zsh)"
 
 export GPG_TTY=$(tty)
 
+# bun completions
+[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"

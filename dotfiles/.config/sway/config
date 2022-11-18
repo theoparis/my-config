@@ -4,7 +4,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
+set $term kitty 
 set $menu bemenu-run
 
 ### Key bindings
@@ -145,24 +145,15 @@ bindsym $mod+r mode "resize"
 # Screenshot
 bindsym $mod+y exec slurp | grim -g - - | wl-copy -t image/png
 
-#
-# Status Bar:
-bar {
-  position top
-
-  status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-  colors {
-      statusline #ffffff
-      background #323232
-      inactive_workspace #32323200 #32323200 #5c5c5c
-  }
+input type:touchpad {
+	dwt disabled
 }
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec wmname LG3D
-exec /usr/lib/polkit-gnome/polkit-gnomec-authentication-agent-1
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/lib/xdg-desktop-portal
-exec /usr/lib/xdg-desktop-portal-wlr
 exec dunst
-exec swaybg -i /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+exec swaybg -i ~/wallpapers/nature-3082832.jpg
+exec waybar -c ~/.config/waybar/config.json
 

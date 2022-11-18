@@ -1,1 +1,5 @@
-require('lualine').setup({ options = { theme = 'material-nvim' } })
+require('lualine').setup({
+	options = {
+		theme = 'tokyonight',
+	},
+})

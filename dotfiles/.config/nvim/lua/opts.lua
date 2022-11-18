@@ -135,7 +135,7 @@ lsp.sumneko_lua.setup(make_lsp_config({
 		},
 	},
 }))
-lsp.tailwindcss.setup(make_lsp_config({}))
+--lsp.tailwindcss.setup(make_lsp_config({}))
 lsp.jsonls.setup(make_lsp_config({
 	settings = {
 		json = {
@@ -261,20 +261,20 @@ require('nvim-treesitter.configs').setup({
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
+	markid = { enable = true },
 })
 
 -- Global options
 vim.g.neovide_transparency = 0.65
+vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
 vim.g.mapleader = ' '
-vim.o.guifont = 'JetBrainsMono Nerd Font:h16'
 vim.o.winbar = "%{%v:lua.require('utils.win').eval()%}"
 vim.o.clipboard = 'unnamedplus'
 vim.o.ignorecase = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.smarttab = true
-vim.o.shiftwidth = 0
-vim.o.softtapstop = 0
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.splitbelow = true
 vim.o.splitright = true
@@ -286,8 +286,13 @@ vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
 
 -- Color scheme
 vim.g.material_style = 'deep ocean'
-require('colorbuddy').setup()
-require('colorbuddy').colorscheme('material')
+vim.cmd([[colorscheme tokyonight-night]])
+require('tokyonight').setup({
+	style = 'night',
+	transparent = true,
+})
+--require('colorbuddy').setup()
+--require('colorbuddy').colorscheme('material')
 
 --vim.g.NERDCreateDefaultMappings = false
 --vim.g.copilot_no_tab_map = true
@@ -397,7 +402,7 @@ db.custom_center = {
 		icon = ' ',
 		desc = 'Browse Files        ',
 		action = 'Telescope file_browser',
-		shortcut = 'SPC n',
+		shortcut = 'SPC fb',
 	},
 	{
 		icon = ' ',
@@ -511,7 +516,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rufo,
 		null_ls.builtins.diagnostics.clang_check,
-		null_ls.builtins.formatting.clang_format,
+		--null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.formatting.zigfmt,
 	},
 	on_attach = function(client, bufnr)
