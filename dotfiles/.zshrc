@@ -8,7 +8,7 @@ source "$HOME/.config/zsh/exports.zsh"
 source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 
-
+znap prompt romkatv/powerlevel10k
 znap source zsh-users/zsh-autosuggestions
 znap source z-shell/F-Sy-H
 
@@ -27,10 +27,16 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 autoload -Uz compinit
 compinit
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-
 export GPG_TTY=$(tty)
 
-# bun completions
-[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+[ -s "$HOME/theo/.bun/_bun" ] && source "$HOME/theo/.bun/_bun"
+
+[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile"
+
+
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+

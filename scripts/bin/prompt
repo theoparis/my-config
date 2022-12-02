@@ -1,6 +1,6 @@
 #!/bin/zsh
 ## Opens a basic dmenu prompt that executes the second argument if the asnwer is yes
 
-if [[ $(echo -e "No\nYes" | bemenu -i -p "$1") == "Yes" ]]; then
+if [[ $(echo -e "No\nYes" | dmenu -i -p "$1") == "Yes" ]]; then
     eval ${2}
 fi

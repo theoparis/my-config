@@ -4,30 +4,19 @@
 bspc rule -r "*"
 
 ## Autostart
-killall nm-applet
 killall picom 
 killall sxhkd
 killall dunst
 killall feh
 killall polybar
-killall flameshot
-killall polkit-dumb-agent
-killall gnome-keyring-daemon
-killall compiz
 
-polkit-dumb-agent &
-eval $(/usr/local/bin/gnome-keyring-daemon --start --components=pkcs11,secrets) export SSH_AUTH_SOCK
-nm-applet &
 picom &
-SXHKD_SHELL="$SHELL" sxhkd &
+SXHKD_SHELL="$(which zsh)" sxhkd &
 dunst &
-feh --bg-scale ~/wallpapers/Arch-2.png &
 polybar main &
 
 ## Monitors
 ~/monitors
-
-wmname LG3D
 
 ## Global settings
 
@@ -53,7 +42,5 @@ bspc config right_padding 0
 bspc config border_width 2
 bspc config window_gap 10
 
-### Rules
-bspc rule -a mpv state=fullscreen
-
 export _JAVA_AWT_WM_NONREPARENTING=1
+
