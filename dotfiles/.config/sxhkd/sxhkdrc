@@ -68,7 +68,7 @@ super + d
 	dmenu_run
 
 super + y
-	flameshot gui -r | xclip -selection clipboard -t image/png -i
+	ffmpeg -f x11grab -framerate 1 -video_size 1920x1080 -i :0.0 -vframes 1 -c:v png -f image2pipe - | xclip -sel clip -t image/png -i
 
 super + {s,f}
 	bspc node -t '~{floating,fullscreen}'

@@ -1,92 +1,100 @@
-local status, packer = pcall(require, 'packer')
-
-if not status then
-	print('packer.nvim is not installed')
-	return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"mkdir",
+		"-p",
+		lazypath,
+	})
+	vim.fn.system({
+		"gix",
+		"clone",
+		"https://github.com/folke/lazy.nvim.git",
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-return packer.startup(function()
-	-- Packer can manage itself
-	use('wbthomason/packer.nvim')
-	use('jose-elias-alvarez/null-ls.nvim')
-	use('andweeb/presence.nvim')
-	use({ 'neovim/nvim-lspconfig' })
-	-- Code actions
-	use({ 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' })
+require("lazy").setup({
+	"folke/which-key.nvim",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"jose-elias-alvarez/null-ls.nvim",
+			"j-hui/fidget.nvim",
+		},
+	},
+
+	-- Highlighting
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+	},
+	"nvim-treesitter/nvim-treesitter-textobjects",
+	"David-Kunz/markid",
+
 	-- Status Bar
-	use('nvim-lualine/lualine.nvim')
-	use('folke/todo-comments.nvim')
-	use('scrooloose/nerdcommenter')
-	use('editorconfig/editorconfig-vim')
-	use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
-	use('David-Kunz/markid')
-	use({
-		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
-	})
-	use('nvim-telescope/telescope-file-browser.nvim')
-	--use('tjdevries/colorbuddy.nvim')
-	use('Th3Whit3Wolf/onebuddy')
-	use('marko-cerovac/material.nvim')
-	-- completion engine
+	"nvim-lualine/lualine.nvim",
 
-	use('hrsh7th/nvim-cmp')
-	use('hrsh7th/cmp-nvim-lsp')
-	use('hrsh7th/cmp-buffer')
-	use('hrsh7th/cmp-path')
-	use('hrsh7th/cmp-cmdline')
-	-- snippet engine
-	use('saadparwaiz1/cmp_luasnip')
-	use('L3MON4D3/LuaSnip')
+	"lewis6991/gitsigns.nvim",
 
-	-- use "theoparis/nvim-proj"
-	use({
-		'ThePrimeagen/git-worktree.nvim',
-	})
-	use({
-		'glacambre/firenvim',
-		run = function()
-			vim.fn['firenvim#install'](0)
-		end,
-	})
-	use('metakirby5/codi.vim')
-	use({ 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } })
-	use('mfussenegger/nvim-dap')
-	use({
-		'nvim-orgmode/orgmode',
+	-- Code actions
+	{ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
+	"folke/todo-comments.nvim",
+
+	-- Fuzzy finder
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
+	},
+	"nvim-telescope/telescope-file-browser.nvim",
+
+	-- Autocompletion
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+		},
+	},
+
+	-- Theme
+	"navarasu/onedark.nvim",
+	"numToStr/Comment.nvim",
+	"ThePrimeagen/git-worktree.nvim",
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+	"mfussenegger/nvim-dap",
+	{
+		"nvim-orgmode/orgmode",
 		config = function()
-			require('orgmode').setup({})
+			require("orgmode").setup({})
 		end,
-	})
-	use('ray-x/lsp_signature.nvim')
-	use('nvim-lua/lsp-status.nvim')
-	use('neoclide/jsonc.vim')
-	use('fhill2/floating.nvim')
+	},
+	"ray-x/lsp_signature.nvim",
+	"nvim-lua/lsp-status.nvim",
+	"neoclide/jsonc.vim",
+	"fhill2/floating.nvim",
 	-- use "creepinson/nvim-proj"
 	-- use "~/Documents/Code/nvim-proj"
-	use('earthly/earthly.vim')
-	use('simrat39/rust-tools.nvim')
-	use({
-		'folke/trouble.nvim',
-		config = function()
-			require('trouble').setup({})
-		end,
-	})
-	use('kyazdani42/nvim-web-devicons')
-	use({ 'LhKipp/nvim-nu', run = ':TSInstall nu' })
-	use({ 'dstein64/vim-startuptime' })
-	use('IndianBoy42/tree-sitter-just')
-	use({ 'edluffy/specs.nvim' })
-
-	use('mfussenegger/nvim-jdtls')
-	use('udalov/kotlin-vim')
-	use('ggandor/lightspeed.nvim')
-	use('jlcrochet/vim-crystal')
-	use('stevearc/aerial.nvim')
-	use('rcarriga/nvim-notify')
-	use('glepnir/dashboard-nvim')
-	use('kdheepak/tabline.nvim')
-	use('simrat39/inlay-hints.nvim')
-	use('folke/tokyonight.nvim')
-end)
+	"earthly/earthly.vim",
+	"simrat39/rust-tools.nvim",
+	"kyazdani42/nvim-web-devicons",
+	"LhKipp/nvim-nu",
+	"dstein64/vim-startuptime",
+	"edluffy/specs.nvim",
+	"mfussenegger/nvim-jdtls",
+	"udalov/kotlin-vim",
+	"ggandor/lightspeed.nvim",
+	"stevearc/aerial.nvim",
+	"rcarriga/nvim-notify",
+	"glepnir/dashboard-nvim",
+	"kdheepak/tabline.nvim",
+	"simrat39/inlay-hints.nvim",
+	"folke/tokyonight.nvim",
+	"ThePrimeagen/harpoon",
+})

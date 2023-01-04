@@ -1,0 +1,50 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export BUN_INSTALL:/home/theo/\x2ebun
+SETUVAR --export CPM_SOURCE_CACHE:/home/theo/\x2ecache/CPM
+SETUVAR --export --path CRYSTAL_PATH:/mnt/data/projects/crystal/src\x1elib
+SETUVAR --export CRYSTAL_ROOT:/mnt/data/projects/crystal
+SETUVAR --export DOCKER_CLI_EXPERIMENTAL:enabled
+SETUVAR --export EDITOR:nvim
+SETUVAR --export GPG_TTY:/dev/pts/6
+SETUVAR --export --path LD_LIBRARY_PATH:/usr/local/lib\x1e/usr/lib\x1e/usr/lib64\x1e/lib\x1e/lib64
+SETUVAR --export --path LIB_ICU_PATH:/home/theo/webkit\x2dbuild/lib
+SETUVAR --export MOZ_ENABLE_WAYLAND:1
+SETUVAR --export --path PATH:/home/theo/\x2elocal/share/pnpm\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin\x1e/home/theo/\x2elocal/share/pnpm\x1e/usr/local/dev/tinygo/bin\x1e/mnt/data/projects/go/bin\x1e/usr/local/dev/kotlin\x2dlanguage\x2dserver/server/build/install/server/bin\x1e/usr/local/dev/gradle/bin\x1e/usr/local/dev/blender\x1e/usr/local/dev/jdtls/bin\x1e/mnt/data/projects/mvn/bin\x1e/home/theo/\x2ecache/\x2ebun/bin\x1e/usr/local/bin\x1e/usr/local/dev/python/bin\x1e/usr/local/go/bin\x1e/opt/riscv/bin\x1e/home/theo/\x2eops/bin\x1e/bin\x1e/home/theo/sdk/go/bin\x1e/home/theo/\x2elocal/share/gem/ruby/3\x2e0\x2e0/bin\x1e/home/theo/\x2egem/ruby/3\x2e0\x2e0/bin\x1e/home/theo/\x2enimble/bin\x1e/home/theo/\x2en/bin\x1e/home/theo/\x2ekrew/bin\x1e/home/theo/\x2edotnet/tools\x1e/home/theo/\x2efnm\x1e/opt/rocm/bin\x1e/opt/rocm/hip/bin\x1e/opt/cuda/bin\x1e/usr/local/cross/bin\x1e/home/theo/crystal/bin\x1e/home/theo/blender\x1e/home/theo/dotnet\x1e/opt/pyston/bin\x1e/home/theo/godot\x1e/home/theo/\x2eghcup/bin\x1e/home/theo/\x2ecabal/bin\x1e/home/theo/lua\x2dlanguage\x2dserver/bin\x1e/home/theo/ungoogled\x2dchromium\x1e/usr/local/dev/lua\x2dlsp/bin\x1e/home/theo/Downloads/Discord\x1e/usr/local/blender\x1e/usr/local/sbin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/opt/bin\x1e/usr/lib/llvm/16/bin\x1e/usr/lib/llvm/15/bin\x1e/etc/eselect/wine/bin\x1e/usr/lib/jvm/default/bin
+SETUVAR --export --path PKG_CONFIG_PATH:/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/local/dev/obs/lib/pkgconfig\x1e/usr/local/dev/python/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/local/dev/obs/lib/pkgconfig\x1e/usr/local/dev/python/lib/pkgconfig\x1e
+SETUVAR --export PNPM_HOME:/home/theo/\x2elocal/share/pnpm
+SETUVAR --export SDL_VIDEODRIVER:wayland
+SETUVAR --export XDG_CURRENT_DESKTOP:sway
+SETUVAR --export XDG_CURRENT_SESSION:sway
+SETUVAR --export XZ_OPT:\x2dT0
+SETUVAR --export _JAVA_AWT_WM_NONREPARENTING:1
+SETUVAR __fish_initialized:3400
+SETUVAR fish_color_autosuggestion:555\x1ebrblack
+SETUVAR fish_color_cancel:\x2dr
+SETUVAR fish_color_command:blue
+SETUVAR fish_color_comment:red
+SETUVAR fish_color_cwd:green
+SETUVAR fish_color_cwd_root:red
+SETUVAR fish_color_end:green
+SETUVAR fish_color_error:brred
+SETUVAR fish_color_escape:brcyan
+SETUVAR fish_color_history_current:\x2d\x2dbold
+SETUVAR fish_color_host:normal
+SETUVAR fish_color_host_remote:yellow
+SETUVAR fish_color_normal:normal
+SETUVAR fish_color_operator:brcyan
+SETUVAR fish_color_param:cyan
+SETUVAR fish_color_quote:yellow
+SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
+SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d111
+SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_status:red
+SETUVAR fish_color_user:brgreen
+SETUVAR fish_color_valid_path:\x2d\x2dunderline
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
+SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin

@@ -1,6 +1,6 @@
 local cmd = os.getenv('FFMPEG_CMD') or 'ffmpeg'
 local gpu_device = os.getenv('FFMPEG_GPU')
-local x11_capture = os.getenv(
+local x11_capture = os.getenv()
 local cmd_args = {}
 
 if gpu_device then

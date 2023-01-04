@@ -1,5 +1,3 @@
-vim.notify = require('notify')
-
 local lsp = require('lspconfig')
 local configs = require('lspconfig.configs')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -29,7 +27,6 @@ if not configs.ls_emmet then
 				'sss',
 				'hbs',
 				'handlebars',
-				'fish',
 			},
 			root_dir = function()
 				return vim.loop.cwd()
@@ -101,7 +98,7 @@ lsp.svelte.setup(make_lsp_config({}))
 lsp.typeprof.setup(make_lsp_config({}))
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
-lsp.jdtls.setup(make_lsp_config({ cmd = { 'java-lsp.sh', vim.fn.getcwd() } }))
+lsp.jdtls.setup(make_lsp_config({ cmd = { 'jdtls', vim.fn.getcwd() } }))
 --lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({
 	settings = {
@@ -232,10 +229,12 @@ lsp.yamlls.setup(
 	make_lsp_config({ capabilities = capabilities, format = { enable = false } })
 )
 -- lsp.sumneko_lua.setup({})
-lsp.clangd.setup(make_lsp_config({}))
+lsp.clangd.setup(make_lsp_config({
+	cmd = { 'clangd', '--completion-style=detailed' },
+}))
 
 -- Treesitter
-require('nvim-treesitter.install').compilers = { 'gcc', 'clang' }
+require('nvim-treesitter.install').compilers = { 'clang' }
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'bash',
@@ -270,7 +269,6 @@ vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
 vim.g.mapleader = ' '
 vim.o.winbar = "%{%v:lua.require('utils.win').eval()%}"
 vim.o.clipboard = 'unnamedplus'
-vim.o.ignorecase = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.softtabstop = 2
@@ -280,23 +278,23 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.expandtab = false
+vim.o.mouse = 'a'
+vim.o.hlsearch = false
+vim.o.undofile = true
 vim.o.autoindent = true
-vim.o.updatetime = 100
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+vim.o.updatetime = 250
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
 
 -- Color scheme
-vim.g.material_style = 'deep ocean'
-vim.cmd([[colorscheme tokyonight-night]])
-require('tokyonight').setup({
-	style = 'night',
+require('onedark').setup({
 	transparent = true,
 })
---require('colorbuddy').setup()
---require('colorbuddy').colorscheme('material')
-
---vim.g.NERDCreateDefaultMappings = false
---vim.g.copilot_no_tab_map = true
---vim.g.NERDTreeIgnore = { '^node_modules$' }
+vim.o.termguicolors = true
+vim.cmd([[colorscheme onedark]])
 
 -- File types
 --vim.api.nvim_command(
@@ -353,8 +351,8 @@ require('dapui').setup({})
 require('aerial').setup()
 require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
+require('orgmode').setup({})
 
-require('presence'):setup()
 require('tabline').setup({
 	enable = true,
 	options = {
@@ -395,7 +393,7 @@ db.custom_center = {
 	{
 		icon = ' ',
 		desc = 'New File            ',
-		action = 'DashboardNewFile',
+		action = 'tabnew',
 		shortcut = 'SPC o',
 	},
 	{
@@ -411,10 +409,10 @@ db.custom_center = {
 		shortcut = 'SPC f',
 	},
 	{
-		icon = ' ',
-		desc = 'Configure Neovim    ',
-		action = 'edit ~/.config/nvim/lua/init.lua',
-		shortcut = 'SPC v',
+		icon = ' ',
+		desc = 'Recent Files        ',
+		action = 'Telescope oldfiles',
+		shortcut = 'SPC re',
 	},
 	{
 		icon = ' ',
@@ -422,7 +420,6 @@ db.custom_center = {
 		action = 'quit',
 	},
 }
-vim.keymap.set('n', '<Leader>o', ':DashboardNewFile<CR>', { silent = true })
 
 function LspRename()
 	local curr_name = vim.fn.expand('<cword>')
@@ -486,32 +483,10 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.csharpier,
-		null_ls.builtins.diagnostics.eslint_d,
+		--null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.rome,
 		null_ls.builtins.formatting.yapf,
-		null_ls.builtins.formatting.eslint_d,
 		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.prettier.with({
-			filetypes = {
-				'xml',
-				'java',
-				'javascript',
-				'javascriptreact',
-				'typescript',
-				'typescriptreact',
-				'vue',
-				'css',
-				'scss',
-				'less',
-				'html',
-				'json',
-				'jsonc',
-				'yaml',
-				'markdown',
-				'graphql',
-				'handlebars',
-				'svelte',
-			},
-		}),
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rufo,
@@ -537,3 +512,5 @@ null_ls.setup({
 		end
 	end,
 })
+
+require('fidget').setup({})

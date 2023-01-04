@@ -32,11 +32,9 @@ export GPG_TTY=$(tty)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-
-[ -s "$HOME/theo/.bun/_bun" ] && source "$HOME/theo/.bun/_bun"
+[ -s "$HOME/bun/_bun" ] && source "$HOME/bun/_bun"
 
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile"
-
 
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 

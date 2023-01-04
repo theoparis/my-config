@@ -1,12 +1,9 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+	# Commands to run in interactive sessions can go here
 	#starship init fish | source
 end
 
-fish_add_path ~/zig ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin
-
-zoxide init fish | source
-starship init fish | source
+fish_add_path ~/zig ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin
 
 set -Ux EDITOR nvim
 set -Ux LIB_ICU_PATH "$HOME/webkit-build/lib"
@@ -44,4 +41,4 @@ set -Ux CPM_SOURCE_CACHE $HOME/.cache/CPM
 set -Ux DOCKER_CLI_EXPERIMENTAL enabled
 set -Ux GPG_TTY $(tty)
 
-direnv hook fish | source
+#direnv hook fish | source

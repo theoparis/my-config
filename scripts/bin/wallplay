@@ -1,11 +1,12 @@
 #!/bin/zsh
-set -ex
+set -e
 
 [[ -z "$WALLFLAGS" || ${#WALLFLAGS[@]} -eq 0 ]] && WALLFLAGS=(-g 1920x1080+0+0)
 
 xwinwrap ${WALLFLAGS[@]} -ov -ni -- \
 	mpv \
 		--vo=gpu-next \
+		--gpu-api=vulkan \
 		--hwdec=vaapi \
 		-wid WID \
 		"${1:-"https://www.youtube.com/playlist?list=PLRBp0Fe2GpgnIh0AiYKh7o7HnYAej-5ph"}"

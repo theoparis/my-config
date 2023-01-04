@@ -1,0 +1,4 @@
+#!/usr/bin/env nu
+
+tshark -i wlo1 -l -n -T json | from json
+

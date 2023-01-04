@@ -1,0 +1,6 @@
+#!/usr/bin/env nu
+
+let chrome_binary = $env.CHROME_BINARY or "chrome"
+
+chrome_binary --use-gl=desktop --enable-unsafe-webgpu --enable-quic --enable-features=Vulkan,UseOzonePlatform --enable-gpu --ozone-platform=wayland
+
