@@ -155,7 +155,7 @@ exec mako
 exec ~/monitors
 exec pipewire
 exec wireplumber
-exec /usr/libexec/xdg-desktop-portal-wlr
+exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
 
 bar {
     position top

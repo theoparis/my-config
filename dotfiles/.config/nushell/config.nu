@@ -14,6 +14,7 @@ let-env PATH = ($env.PATH
 	| prepend $"($env.HOME)/nim/bin"
 	| prepend $"($env.HOME)/dev/cni-plugins/bin"
 	| prepend $"($env.HOME)/nodejs/bin"
+	| prepend "/usr/local/dev/sysroot/current/bin"
 )
 let-env EDITOR = "nvim"
 let-env LANG = "en_US.UTF-8"

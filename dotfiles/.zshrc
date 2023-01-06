@@ -1,27 +1,22 @@
-source ~/.znap/zsh-snap/znap.zsh
-#!/bin/zsh
+#!/usr/bin/env zsh
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if test ! -d "$ZINIT_HOME"; then
+	mkdir -p "$(dirname $ZINIT_HOME)"
+	git clone -j$(nproc) https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+source "${ZINIT_HOME}/zinit.zsh"
 
 export fpath=(~/.zfunc "${fpath[@]}")
 
-# Exports
-source "$HOME/.config/zsh/exports.zsh"
-source "$HOME/.config/zsh/aliases.zsh"
-source "$HOME/.config/zsh/functions.zsh"
-
-znap prompt romkatv/powerlevel10k
-znap source zsh-users/zsh-autosuggestions
-znap source z-shell/F-Sy-H
-
-znap function _pyenv pyenvn 'eval "$( pyenv init - --no-rehash )"'
-compctl -K    _pyenv pyenv
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zstyle ":completion:*" use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
 zstyle ":autocomplete:*" min-input 1
-
-[[ -f ~/.config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
-
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Compinit for shell autocompletion
 autoload -Uz compinit
@@ -30,11 +25,19 @@ compinit
 export GPG_TTY=$(tty)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
 [ -s "$HOME/bun/_bun" ] && source "$HOME/bun/_bun"
 
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile"
 
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+# Modules 
+source "$HOME/.config/zsh/exports.zsh"
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/functions.zsh"
+
+# User Configuration
+[[ -f $HOME/config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
 

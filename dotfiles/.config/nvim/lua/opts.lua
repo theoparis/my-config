@@ -119,7 +119,7 @@ lsp.pyright.setup(make_lsp_config({}))
 lsp.sumneko_lua.setup(make_lsp_config({
 	settings = {
 		Lua = {
-			runtime = { version = 'Lua5.4', path = runtime_path },
+			runtime = { version = 'LuaJIT', path = runtime_path },
 			diagnostics = { globals = { 'vim' } },
 			workspace = {
 				library = vim.api.nvim_get_runtime_file('', true),
