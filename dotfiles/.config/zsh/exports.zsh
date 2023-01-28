@@ -51,12 +51,5 @@ export VULKAN_SDK="/usr"
 export HELIX_RUNTIME="$HOME/dev/helix/runtime"
 export RUSTPYTHONPATH="/usr/local/dev/rustpython/Lib"
 
-export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
-if ! test -d "${XDG_RUNTIME_DIR}"; then
-	mkdir "${XDG_RUNTIME_DIR}"
-	chmod 0700 "${XDG_RUNTIME_DIR}"
-fi
-
-# AMD GPU
-export VDPAU_DRIVER=radeonsi
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 

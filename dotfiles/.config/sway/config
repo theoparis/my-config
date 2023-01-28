@@ -154,8 +154,10 @@ exec wmname LG3D
 exec mako
 exec ~/monitors
 exec pipewire
+exec pipewire-pulse
 exec wireplumber
 exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
+exec ipfs daemon
 
 bar {
     position top
