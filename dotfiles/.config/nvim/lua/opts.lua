@@ -286,7 +286,7 @@ vim.o.autoindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
-vim.o.updatetime = 250
+vim.o.updatetime = 300
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
 
 -- Color scheme
@@ -347,7 +347,7 @@ vim.api.nvim_command(
 
 require('todo-comments').setup()
 require('dapui').setup({})
---require('nvim-tree').setup({})
+require('nvim-tree').setup({})
 require('aerial').setup()
 require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
