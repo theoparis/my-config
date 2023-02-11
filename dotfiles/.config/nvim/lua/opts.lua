@@ -373,53 +373,43 @@ vim.cmd([[
   set sessionoptions+=tabpages,globals " store tabpages and globals in session
 ]])
 
-local db = require('dashboard')
-db.custom_header = {
-	'',
-	'',
-	'',
-	'',
-	' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-	' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-	' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-	' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-	' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-	' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-	'',
-	'',
-	'',
-}
-db.custom_center = {
-	{
-		icon = ' ',
-		desc = 'New File            ',
-		action = 'tabnew',
-		shortcut = 'SPC o',
+local dashboard = require('dashboard')
+dashboard.setup({
+	theme = 'doom',
+	config = {
+		center = {
+			{
+				icon = ' ',
+				desc = 'New File            ',
+				action = 'tabnew',
+				shortcut = 'SPC o',
+			},
+			{
+				icon = ' ',
+				desc = 'Browse Files',
+				action = 'Telescope file_browser',
+				shortcut = 'SPC fb',
+			},
+			{
+				icon = ' ',
+				desc = 'Find File',
+				action = 'Telescope find_files',
+				shortcut = 'SPC f',
+			},
+			{
+				icon = ' ',
+				desc = 'Recent Files',
+				action = 'Telescope oldfiles',
+				shortcut = 'SPC re',
+			},
+			{
+				icon = ' ',
+				desc = 'Exit Neovim',
+				action = 'quit',
+			},
+		},
 	},
-	{
-		icon = ' ',
-		desc = 'Browse Files        ',
-		action = 'Telescope file_browser',
-		shortcut = 'SPC fb',
-	},
-	{
-		icon = ' ',
-		desc = 'Find File           ',
-		action = 'Telescope find_files',
-		shortcut = 'SPC f',
-	},
-	{
-		icon = ' ',
-		desc = 'Recent Files        ',
-		action = 'Telescope oldfiles',
-		shortcut = 'SPC re',
-	},
-	{
-		icon = ' ',
-		desc = 'Exit Neovim              ',
-		action = 'quit',
-	},
-}
+})
 
 function LspRename()
 	local curr_name = vim.fn.expand('<cword>')
