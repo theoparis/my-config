@@ -149,12 +149,13 @@ input type:touchpad {
 	dwt disabled
 }
 
+exec nm-applet
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec wmname LG3D
 exec mako
+exec swaybg -i ~/wallpapers/3119826.webp
 exec ~/monitors
-exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
-exec ipfs daemon
+exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 
 bar {
     position top

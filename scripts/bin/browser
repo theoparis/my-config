@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/chromium --enable-unsafe-webgpu --enable-quic --enable-features=Vulkan,UseOzonePlatform --enable-gpu --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer  --enable-features=WebUIDarkMode --force-dark-mode

@@ -1,3 +1,0 @@
-#!/bin/sh
-
-chrome --enable-unsafe-webgpu --enable-quic --enable-features=Vulkan,UseOzonePlatform --enable-gpu --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer

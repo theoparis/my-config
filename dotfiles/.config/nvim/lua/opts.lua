@@ -115,8 +115,8 @@ lsp.gopls.setup(make_lsp_config({
 		},
 	},
 }))
-lsp.pyright.setup(make_lsp_config({}))
-lsp.sumneko_lua.setup(make_lsp_config({
+lsp.pylsp.setup(make_lsp_config({}))
+lsp.lua_ls.setup(make_lsp_config({
 	settings = {
 		Lua = {
 			runtime = { version = 'LuaJIT', path = runtime_path },
@@ -473,9 +473,10 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.csharpier,
-		--null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.formatting.rome,
-		null_ls.builtins.formatting.yapf,
+		null_ls.builtins.diagnostics.eslint_d,
+		null_ls.builtins.formatting.eslint_d,
+		--null_ls.builtins.formatting.rome,
+		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
