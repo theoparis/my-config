@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec zig c++ -target wasm32-freestanding-musl -Oz "$@"
+

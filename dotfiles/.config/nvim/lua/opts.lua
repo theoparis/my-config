@@ -475,6 +475,7 @@ null_ls.setup({
 		null_ls.builtins.formatting.csharpier,
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.formatting.eslint_d,
+		null_ls.builtins.formatting.prettierd,
 		--null_ls.builtins.formatting.rome,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.gofmt,

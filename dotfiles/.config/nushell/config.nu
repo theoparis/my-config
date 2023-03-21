@@ -6,12 +6,13 @@ let-env WASMER_CACE_DIR = $"($env.WASMER_DIR)/cache"
 let-env EDITOR = "nvim"
 let-env LANG = "en_US.UTF-8"
 let-env MANPAGER = "nvim"
+let-env SHELL = "nu"
 
 # Zoxide
 ~/.cargo/bin/zoxide add -- (shells | where active == true | get path | get 0)
 		
 # Prompt
-source ~/.cache/starship/init.nu
+#source ~/.cache/starship/init.nu
 
 def-env br [
 	--args (-a): string
@@ -34,11 +35,11 @@ let-env QT_QPA_PLATFORM = "wayland"
 let-env QT_QPA_PLATFORMTHEME = "qt6ct"
 let-env HELIX_RUNTIME = $"($env.HOME)/dev/helix/runtime"
 let-env GPG_TTY = (tty)
-let-env PORTAGE_ROOT = $"($env.HOME)/dev/portage"
+let-env cg_clif_dir = $"($env.HOME)/dev/rustc_codegen_cranelift"
 
 let-env PATH = ($env.PATH 
 	| prepend "/mnt/data/share/projects/llvm-toolchain/build/sysroot/bin"
-	| prepend $"($env.PORTAGE_ROOT)/bin"
+	| prepend $"($env.cg_clif_dir)/dist/bin"
 	| prepend $"($env.HOME)/my-config/scripts/bin"
 	| prepend $"($env.HOME)/.local/bin"
 	| prepend $"($env.HOME)/.cargo/bin"
@@ -55,3 +56,5 @@ let-env PATH = ($env.PATH
 let-env config = {
 	show_banner: false
 }
+
+source /home/theo/.config/broot/launcher/nushell/br

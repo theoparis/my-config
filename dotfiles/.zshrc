@@ -41,3 +41,5 @@ source "$HOME/.config/zsh/functions.zsh"
 # User Configuration
 [[ -f $HOME/config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
 
+
+source /home/theo/.config/broot/launcher/bash/br

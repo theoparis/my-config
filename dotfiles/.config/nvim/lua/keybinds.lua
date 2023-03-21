@@ -19,7 +19,7 @@ map(
 	require('telescope').extensions.git_worktree.git_worktrees
 )
 map('n', '<leader>f', require('telescope.builtin').find_files)
-map('n', '<leader>fb', require('nvim-tree').toggle)
+map('n', '<leader>fb', require('nvim-tree.api').tree.toggle)
 map('n', '<leader>sr', require('telescope.builtin').oldfiles)
 map('n', '<leader>sw', require('telescope.builtin').grep_string)
 map('n', '<leader>sg', require('telescope.builtin').live_grep)

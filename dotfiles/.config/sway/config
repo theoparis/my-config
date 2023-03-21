@@ -155,6 +155,9 @@ exec wmname LG3D
 exec mako
 exec swaybg -i ~/wallpapers/3119826.webp
 exec ~/monitors
+exec pipewire
+exec wireplumber
+exec pipewire-pulse
 exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 
 bar {
