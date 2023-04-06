@@ -15,15 +15,20 @@ map('n', '<leader>d', '<C-w>l')
 map('n', '<leader>dbg', require('dapui').toggle)
 map(
 	'n',
-	'<leader>gw',
+	'<leader>fw',
 	require('telescope').extensions.git_worktree.git_worktrees
 )
 map('n', '<leader>f', require('telescope.builtin').find_files)
-map('n', '<leader>fb', require('nvim-tree.api').tree.toggle)
-map('n', '<leader>sr', require('telescope.builtin').oldfiles)
-map('n', '<leader>sw', require('telescope.builtin').grep_string)
-map('n', '<leader>sg', require('telescope.builtin').live_grep)
-map('n', '<leader>sd', require('telescope.builtin').diagnostics)
+map('n', '<leader>fb', require('telescope.builtin').buffers)
+map(
+	'n',
+	'<leader>ff',
+	require('telescope').extensions.file_browser.file_browser
+)
+map('n', '<leader>fr', require('telescope.builtin').oldfiles)
+map('n', '<leader>fs', require('telescope.builtin').grep_string)
+map('n', '<leader>fg', require('telescope.builtin').live_grep)
+map('n', '<leader>fd', require('telescope.builtin').diagnostics)
 map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
 map(
 	'n',

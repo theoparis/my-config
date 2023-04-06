@@ -259,7 +259,6 @@ require('nvim-treesitter.configs').setup({
 	},
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
-	textobjects = { enable = true },
 	markid = { enable = true },
 })
 
@@ -347,7 +346,6 @@ vim.api.nvim_command(
 
 require('todo-comments').setup()
 require('dapui').setup({})
-require('nvim-tree').setup({})
 require('aerial').setup()
 require('git-worktree').setup({})
 require('orgmode').setup_ts_grammar()
@@ -473,10 +471,10 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.csharpier,
-		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.formatting.eslint_d,
-		null_ls.builtins.formatting.prettierd,
-		--null_ls.builtins.formatting.rome,
+		--null_ls.builtins.diagnostics.eslint,
+		--null_ls.builtins.formatting.eslint,
+		--null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.rome,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.rustfmt,
@@ -506,3 +504,8 @@ null_ls.setup({
 })
 
 require('fidget').setup({})
+require('copilot').setup({
+	suggestion = {
+		auto_trigger = true,
+	},
+})

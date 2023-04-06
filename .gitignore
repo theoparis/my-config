@@ -2,6 +2,6 @@
 *.log*
 node_modules
 .DS_Store
-packer_compiled.*
 dotfiles/.config/gtk-3.0/bookmarks
 history.txt
+dotfiles/.config/helix/runtime

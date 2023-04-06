@@ -12,7 +12,7 @@ sh -c "cd ~/.tmux/plugins/tpm && git pull"
 
 # Symlinks
 echo "Linking config files..."
-~/go/bin/fling link --src-dir ./dotfiles
+stow -t ~/ dotfiles
 
 echo "Done."
 

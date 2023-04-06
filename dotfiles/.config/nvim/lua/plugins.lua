@@ -32,8 +32,6 @@ require('lazy').setup({
 		end,
 	},
 	'nvim-treesitter/nvim-treesitter-textobjects',
-	'nvim-tree/nvim-tree.lua',
-	'David-Kunz/markid',
 
 	-- Status Bar
 	'nvim-lualine/lualine.nvim',
@@ -98,4 +96,5 @@ require('lazy').setup({
 	'simrat39/inlay-hints.nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
+	'zbirenbaum/copilot.lua',
 })
