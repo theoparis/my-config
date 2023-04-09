@@ -1,19 +1,56 @@
-#Inserts a blank line between shell prompts
-#command_timeout = 2500
-format = """$all[->](bold #0096FF) """
+[character]
+success_symbol = "[➜](bold green)"  
+error_symbol = "[➜](bold red) "
 
-# Disable the blank line at the start of the prompt
-add_newline = false
+[username]
+style_user = "bold #87ceeb"
+show_always = true
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+disabled = false
+style = "bold #77dd77"
+format = "[$hostname]($style) | "
 
 [cmd_duration]
+min_time = 1
+show_milliseconds = false
 disabled = false
-min_time = 500
-format = "Took [$duration](bold yellow)"
+style = "bold dimmed #26ff8f"
+format = "\\[[$duration]($style)\\]"
 
-[character]
-disabled = true
+[directory]
+truncation_length = 10
+truncate_to_repo = true
+style = "bold blue"
+read_only ="🔒"
+read_only_style = "bold red"
+format = "[$read_only]($read_only_style)[$path]($style) "
+
+[git_branch]
+symbol = " "
+truncation_length = 4
+truncation_symbol = ""
+style = "bold green"
+
+[package]
+style = "bold dimmed #e52fd7"
+format = "[$symbol$version]($style) "
+symbol = "📦 "
 
 [git_status]
 disabled = false
 ignore_submodules = true
+style = "bold dimmed white"
+
+[python]
+symbol = "Python "
+
+[java]
+symbol = "Java "
+style = "red"
+
+[nodejs]
+symbol = "Node.js "
 

@@ -10,9 +10,12 @@ source "${ZINIT_HOME}/zinit.zsh"
 export fpath=(~/.zfunc "${fpath[@]}")
 
 zinit ice depth"1"
-zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+zinit ice as"command" from"gh-r" \
+	atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+	atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
 zstyle ":completion:*" use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
@@ -24,8 +27,6 @@ compinit
 
 export GPG_TTY=$(tty)
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
 [ -s "$HOME/bun/_bun" ] && source "$HOME/bun/_bun"
 
@@ -41,5 +42,9 @@ source "$HOME/.config/zsh/functions.zsh"
 # User Configuration
 [[ -f $HOME/config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
 
-
-source /home/theo/.config/broot/launcher/bash/br
+# Try to load pyenv
+if [[ -d "$HOME/.pyenv" ]]; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
