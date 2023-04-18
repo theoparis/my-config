@@ -92,7 +92,7 @@ require('lazy').setup({
 	'stevearc/aerial.nvim',
 	'rcarriga/nvim-notify',
 	'glepnir/dashboard-nvim',
-	'kdheepak/tabline.nvim',
+	'romgrk/barbar.nvim',
 	'simrat39/inlay-hints.nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
