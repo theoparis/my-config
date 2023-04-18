@@ -1,19 +1,14 @@
 # Nushell Config File
-alias l = (ls -la | grid -c)
-
 let-env WASMER_DIR = $"($env.HOME)/.local/share/wasmer"
 let-env WASMER_CACE_DIR = $"($env.WASMER_DIR)/cache"
 let-env EDITOR = "nvim"
 let-env LANG = "en_US.UTF-8"
 let-env MANPAGER = "nvim"
-let-env SHELL = "nu"
+let-env SHELL = "/run/current-system/sw/bin/nu"
 
 # Zoxide
-~/.cargo/bin/zoxide add -- (shells | where active == true | get path | get 0)
+zoxide add -- (shells | where active == true | get path | get 0)
 		
-# Prompt
-#source ~/.cache/starship/init.nu
-
 def-env br [
 	--args (-a): string
 ] {
@@ -40,21 +35,26 @@ let-env cg_clif_dir = $"($env.HOME)/dev/rustc_codegen_cranelift"
 let-env PATH = ($env.PATH 
 	| prepend "/mnt/data/share/projects/llvm-toolchain/build/sysroot/bin"
 	| prepend $"($env.cg_clif_dir)/dist/bin"
+	| append "/run/current-system/sw/bin"
+	| append "/run/wrappers/bin"
+	| append "/usr/bin"
 	| prepend $"($env.HOME)/my-config/scripts/bin"
 	| prepend $"($env.HOME)/.local/bin"
 	| prepend $"($env.HOME)/.cargo/bin"
 	| prepend $"($env.HOME)/go/bin"
 	| prepend $"($env.HOME)/.bun/bin"
 	| prepend $"($env.WASMER_DIR)/bin"
-	| prepend $"($env.HOME)/zig/bin"
+	| prepend $"($env.HOME)/zig"
 	| prepend $"($env.HOME)/nim/bin"
 	| prepend $"($env.HOME)/dev/cni-plugins/bin"
 	| prepend $"($env.HOME)/nodejs/bin"
-	| prepend "/usr/local/dev/sysroot/current/bin"
+	| prepend "/usr/local/bin"
 )
+
+let-env PKG_CONFIG_PATH = $"($env.HOME)/.nix-profile/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/share/pkgconfig"
 
 let-env config = {
 	show_banner: false
 }
 
-source /home/theo/.config/broot/launcher/nushell/br
+source ~/.cache/starship/init.nu

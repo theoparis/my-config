@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	"modules-left": ["custom/launcher", "cpu", "memory", "custom/media", "tray"],
-	"modules-center": ["sway/workspaces"],
+	"modules-center": ["wlr/workspaces"],
 	"modules-right": [
 		"custom/updates",
 		"custom/wallpaper",

@@ -96,5 +96,5 @@ require('lazy').setup({
 	'simrat39/inlay-hints.nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
-	'zbirenbaum/copilot.lua',
+	'folke/trouble.nvim',
 })

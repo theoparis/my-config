@@ -115,7 +115,8 @@ lsp.gopls.setup(make_lsp_config({
 		},
 	},
 }))
-lsp.pylsp.setup(make_lsp_config({}))
+--lsp.pylsp.setup(make_lsp_config({}))
+lsp.pyright.setup(make_lsp_config({}))
 lsp.lua_ls.setup(make_lsp_config({
 	settings = {
 		Lua = {
@@ -234,7 +235,7 @@ lsp.clangd.setup(make_lsp_config({
 }))
 
 -- Treesitter
-require('nvim-treesitter.install').compilers = { 'clang' }
+require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'bash',
@@ -504,8 +505,4 @@ null_ls.setup({
 })
 
 require('fidget').setup({})
-require('copilot').setup({
-	suggestion = {
-		auto_trigger = true,
-	},
-})
+require('trouble').setup({})
