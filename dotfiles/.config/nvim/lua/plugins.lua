@@ -97,4 +97,5 @@ require('lazy').setup({
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
+	'razahai/web_presence.nvim',
 })

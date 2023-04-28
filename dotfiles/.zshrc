@@ -12,10 +12,6 @@ export fpath=(~/.zfunc "${fpath[@]}")
 zinit ice depth"1"
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
-zinit ice as"command" from"gh-r" \
-	atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-	atpull"%atclone" src"init.zsh"
-zinit light starship/starship
 
 zstyle ":completion:*" use-cache on
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/.zcompcache"
@@ -48,3 +44,5 @@ if [[ -d "$HOME/.pyenv" ]]; then
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
+
+eval $(starship init zsh)

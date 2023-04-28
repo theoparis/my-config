@@ -33,7 +33,7 @@ let-env GPG_TTY = (tty)
 let-env cg_clif_dir = $"($env.HOME)/dev/rustc_codegen_cranelift"
 
 let-env PATH = ($env.PATH 
-	| prepend "/mnt/data/share/projects/llvm-toolchain/build/sysroot/bin"
+	| prepend "/usr/local/bin"
 	| prepend $"($env.cg_clif_dir)/dist/bin"
 	| append "/run/current-system/sw/bin"
 	| append "/run/wrappers/bin"
@@ -49,8 +49,11 @@ let-env PATH = ($env.PATH
 	| prepend $"($env.HOME)/dev/cni-plugins/bin"
 	| prepend $"($env.HOME)/nodejs/bin"
 	| prepend "/usr/local/bin"
+	| prepend $"($env.HOME)/.deno/bin"
 )
-
+let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH
+	| prepend "/usr/local/lib"
+)
 let-env PKG_CONFIG_PATH = $"($env.HOME)/.nix-profile/lib/pkgconfig:/usr/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/share/pkgconfig"
 
 let-env config = {

@@ -1,5 +1,44 @@
 [[language]]
-name = "typescript"
+name = "javascript"
+scope = "source.js"
+file-types = ["js"]
+language-server = { command = "nc", args = ["-U", "/tmp/rome-socket"] }
+formatter = { command = "rome", args = ["format", "--stdin-file-path", "test.js"]}
 auto-format = true
-formatter = { command = "prettier", args = ["-"] }
-language-server = { command = "deno", args = ["lsp"] }
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+file-types = ["jsx"]
+language-server = { command = "nc", args = ["-U", "/tmp/rome-socket"] }
+formatter = { command = "rome", args = ["format", "--stdin-file-path", "test.jsx"]}
+auto-format = true
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts"]
+language-server = { command = "nc", args = ["-U", "/tmp/rome-socket"] }
+formatter = { command = "rome", args = ["format", "--stdin-file-path", "test.ts"]}
+auto-format = true
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+language-server = { command = "nc", args = ["-U", "/tmp/rome-socket"] }
+formatter = { command = "rome", args = ["format", "--stdin-file-path", "test.tsx"]}
+auto-format = true
+
+[[language]]
+name = "luau"
+scope = "source.luau"
+injection-regex = "^luau$"
+file-types = ["luau", "server.lua", "client.lua"]
+comment-token = "--"
+indent = { tab-width = 2, unit = "  "}
+language-server = { command = "luau-lsp", args = ["lsp"] }
+roots = [ "aftman.toml", "default.project.json", "wally.toml" ]
+
+[[grammar]]
+name = "luau"
+source = { git = "https://github.com/polychromatist/tree-sitter-luau", rev = "main" }

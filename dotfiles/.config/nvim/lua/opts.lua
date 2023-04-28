@@ -69,6 +69,12 @@ local make_lsp_config = function(config1)
 	return config
 end
 lsp.julials.setup(make_lsp_config({}))
+lsp.phpactor.setup(make_lsp_config({
+	init_options = {
+		['language_server_phpstan.enabled'] = false,
+		['language_server_psalm.enabled'] = false,
+	},
+}))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
 lsp.rnix.setup(make_lsp_config({}))
 lsp.fortls.setup(make_lsp_config({}))
@@ -96,6 +102,7 @@ lsp.csharp_ls.setup(make_lsp_config({}))
 lsp.nimls.setup(make_lsp_config({}))
 lsp.svelte.setup(make_lsp_config({}))
 lsp.typeprof.setup(make_lsp_config({}))
+lsp.mlir_lsp_server.setup({})
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
 lsp.jdtls.setup(make_lsp_config({ cmd = { 'jdtls', vim.fn.getcwd() } }))
@@ -195,6 +202,7 @@ lsp.jsonls.setup(make_lsp_config({
 	},
 }))
 
+lsp.rome.setup({})
 lsp.tsserver.setup({
 	cmd = {
 		'typescript-language-server',
@@ -488,3 +496,6 @@ null_ls.setup({
 
 require('fidget').setup({})
 require('trouble').setup({})
+require('presence').setup({
+	rpc_server = '/home/theo/dev/arrpc',
+})

@@ -149,7 +149,6 @@ input type:touchpad {
 	dwt disabled
 }
 
-exec nm-applet
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec wmname LG3D
 exec mako
@@ -158,19 +157,10 @@ exec ~/monitors
 exec pipewire
 exec wireplumber
 exec pipewire-pulse
-exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+exec xdg-desktop-portal -r & xdg-desktop-portal-wlr
 
 bar {
-    position top
-
-    status_command while ~/.config/sway/status.sh; do sleep 1; done
-
-    colors {
-        # Text color of status bar
-        statusline #ffffff
-        # Background of status bar
-        background #323232
-    }
-    font pango:FiraCode Nerd Font 16
+  swaybar_command waybar
+  workspace_buttons yes
 }
 
