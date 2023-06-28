@@ -122,8 +122,7 @@ lsp.gopls.setup(make_lsp_config({
 		},
 	},
 }))
---lsp.pylsp.setup(make_lsp_config({}))
-lsp.pyright.setup(make_lsp_config({}))
+lsp.pylsp.setup(make_lsp_config({}))
 lsp.lua_ls.setup(make_lsp_config({
 	settings = {
 		Lua = {
