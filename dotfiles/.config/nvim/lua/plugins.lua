@@ -98,4 +98,9 @@ require('lazy').setup({
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
 	'razahai/web_presence.nvim',
+	{
+		'sourcegraph/sg.nvim',
+		build = 'mold -run cargo +nightly build --workspace --release',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+	},
 })
