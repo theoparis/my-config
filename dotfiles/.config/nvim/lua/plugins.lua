@@ -67,7 +67,6 @@ require('lazy').setup({
 	},
 
 	-- Theme
-	'navarasu/onedark.nvim',
 	'numToStr/Comment.nvim',
 	'ThePrimeagen/git-worktree.nvim',
 	{ 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap' } },
@@ -94,7 +93,15 @@ require('lazy').setup({
 	'udalov/kotlin-vim',
 	'ggandor/lightspeed.nvim',
 	'stevearc/aerial.nvim',
-	'rcarriga/nvim-notify',
+	{
+		'folke/noice.nvim',
+		event = 'VeryLazy',
+		opts = {},
+		dependencies = {
+			'MunifTanjim/nui.nvim',
+			'rcarriga/nvim-notify',
+		},
+	},
 	'glepnir/dashboard-nvim',
 	'romgrk/barbar.nvim',
 	'simrat39/inlay-hints.nvim',

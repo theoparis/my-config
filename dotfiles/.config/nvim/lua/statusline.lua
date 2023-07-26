@@ -1,8 +1,8 @@
-require("lualine").setup({
+require('lualine').setup({
 	options = {
 		icons_enabled = true,
-		theme = "onedark",
-		component_separators = "|",
-		section_separators = "",
+		theme = 'tokyonight',
+		component_separators = '|',
+		section_separators = '',
 	},
 })

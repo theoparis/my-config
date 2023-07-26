@@ -280,11 +280,8 @@ vim.o.updatetime = 300
 vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
 
 -- Color scheme
-require('onedark').setup({
-	transparent = true,
-})
 vim.o.termguicolors = true
-vim.cmd([[colorscheme onedark]])
+vim.cmd([[colorscheme tokyonight-night]])
 
 -- File types
 --vim.api.nvim_command(
@@ -347,7 +344,8 @@ vim.g.barbar_auto_setup = false
 
 local dashboard = require('dashboard')
 dashboard.setup({
-	theme = 'doom',
+	theme = 'hyper',
+	header = {},
 	config = {
 		center = {
 			{
