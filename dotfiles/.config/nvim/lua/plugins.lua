@@ -17,10 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	'folke/which-key.nvim',
 	{
+		'j-hui/fidget.nvim',
+		tag = 'legacy',
+		opts = {},
+	},
+	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			'jose-elias-alvarez/null-ls.nvim',
-			'j-hui/fidget.nvim',
 		},
 	},
 
@@ -97,10 +101,5 @@ require('lazy').setup({
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
-	'razahai/web_presence.nvim',
-	{
-		'sourcegraph/sg.nvim',
-		build = 'mold -run cargo +nightly build --workspace --release',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-	},
+	'cuffedme/web_presence.nvim',
 })

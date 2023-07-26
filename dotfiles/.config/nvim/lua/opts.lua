@@ -106,7 +106,7 @@ lsp.mlir_lsp_server.setup({})
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
 lsp.jdtls.setup(make_lsp_config({ cmd = { 'jdtls', vim.fn.getcwd() } }))
---lsp.dockerls.setup(make_lsp_config({}))
+lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({
 	settings = {
 		gopls = {
@@ -123,23 +123,8 @@ lsp.gopls.setup(make_lsp_config({
 	},
 }))
 lsp.pylsp.setup(make_lsp_config({}))
-lsp.lua_ls.setup(make_lsp_config({
-	settings = {
-		Lua = {
-			runtime = { version = 'LuaJIT', path = runtime_path },
-			diagnostics = { globals = { 'vim' } },
-			workspace = {
-				library = vim.api.nvim_get_runtime_file('', true),
-				checkThirdParty = false,
-			},
-			telemetry = { enable = false },
-			hint = {
-				enable = true,
-			},
-		},
-	},
-}))
---lsp.tailwindcss.setup(make_lsp_config({}))
+lsp.tailwindcss.setup(make_lsp_config({}))
+lsp.luau_lsp.setup(make_lsp_config({}))
 lsp.jsonls.setup(make_lsp_config({
 	settings = {
 		json = {
@@ -201,7 +186,6 @@ lsp.jsonls.setup(make_lsp_config({
 	},
 }))
 
-lsp.rome.setup({})
 lsp.tsserver.setup({
 	cmd = {
 		'typescript-language-server',
@@ -461,17 +445,15 @@ local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.csharpier,
-		--null_ls.builtins.diagnostics.eslint,
-		--null_ls.builtins.formatting.eslint,
-		--null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.rome,
+		null_ls.builtins.diagnostics.eslint,
+		null_ls.builtins.formatting.eslint,
+		null_ls.builtins.formatting.prettier,
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.formatting.gofmt,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rufo,
 		null_ls.builtins.diagnostics.clang_check,
-		--null_ls.builtins.formatting.clang_format,
 		null_ls.builtins.formatting.zigfmt,
 	},
 	on_attach = function(client, bufnr)

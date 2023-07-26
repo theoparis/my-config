@@ -5,7 +5,6 @@ set $down j
 set $up k
 set $right l
 set $term foot
-set $menu bemenu-run
 
 ### Key bindings
 
@@ -16,7 +15,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec $menu
+bindsym $mod+d exec pw-v4l2 pw-jack tofi-drun | fish 
+bindsym $mod+r exec pw-v4l2 pw-jack tofi-run | fish 
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -140,7 +140,6 @@ bindsym Right resize grow width 10px
 bindsym Return mode "default"
 bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
 
 # Screenshot
 bindsym $mod+y exec slurp | grim -g - - | wl-copy -t image/png
@@ -152,15 +151,12 @@ input type:touchpad {
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec wmname LG3D
 exec mako
-exec swaybg -i ~/wallpapers/3119826.webp
 exec ~/monitors
-exec pipewire
-exec wireplumber
-exec pipewire-pulse
-exec xdg-desktop-portal -r & xdg-desktop-portal-wlr
+exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
 
 bar {
-  swaybar_command waybar
+  swaybar_command echo
   workspace_buttons yes
 }
 
+gaps inner 10

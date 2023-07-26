@@ -1,20 +1,26 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export BUN_INSTALL:/home/theo/\x2ebun
+SETUVAR --export CC:clang
 SETUVAR --export CPM_SOURCE_CACHE:/home/theo/\x2ecache/CPM
 SETUVAR --export CPM_USE_LOCAL_PACKAGES:true
 SETUVAR --export --path CRYSTAL_PATH:/mnt/data/projects/crystal/src\x1elib
 SETUVAR --export CRYSTAL_ROOT:/mnt/data/projects/crystal
+SETUVAR --export CXX:clang\x2b\x2b
 SETUVAR --export DOCKER_CLI_EXPERIMENTAL:enabled
 SETUVAR --export EDITOR:nvim
-SETUVAR --export GPG_TTY:/dev/pts/3
-SETUVAR --export --path LD_LIBRARY_PATH:/usr/local/lib\x1e/usr/lib\x1e/usr/lib64\x1e/lib\x1e/lib64\x1e/src/sysroot/lib\x1e/src/sysroot/lib/x86_64\x2dunknown\x2dlinux\x2dgnu
+SETUVAR --export GPG_TTY:not\x20a\x20tty
+SETUVAR --export LDFLAGS:\x2drtlib\x3dcompiler\x2drt\x20\x2dunwindlib\x3dlibunwind\x20\x2dOz\x20\x2dflto\x3dthin\x20\x2dfuse\x2dld\x3dlld\x20\x2dL/usr/local/lib\x20\x2dL/usr/local/lib64
+SETUVAR --export --path LD_LIBRARY_PATH:/usr/lib/jvm/java\x2d20\x2dopenjdk/lib/server\x1e/usr/local/lib\x1e/usr/local/lib/x86_64\x2dunknown\x2dlinux\x2dgnu\x1e/usr/lib\x1e/usr/lib64\x1e/lib\x1e/lib64
+SETUVAR --export --path LIBRARY_PATH:/usr/local/lib\x1e/usr/local/lib/x86_64\x2dunknown\x2dlinux\x2dgnu\x1e/usr/lib\x1e/usr/lib64\x1e/lib\x1e/lib64\x1e/usr/local/lib/clang/17/lib/linux
 SETUVAR --export --path LIB_ICU_PATH:/home/theo/webkit\x2dbuild/lib
+SETUVAR --export MAKEFLAGS:\x2dj12
 SETUVAR --export MOZ_ENABLE_WAYLAND:1
-SETUVAR --export --path PATH:/home/theo/\x2elocal/share/pnpm\x1e/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin\x1e/usr/local/dev/sysroot/current/bin\x1e/home/theo/dev/cni\x2dplugins/bin\x1e/home/theo/nim/bin\x1e/home/theo/\x2elocal/share/wasmer/bin\x1e/home/theo/dev/rustc_codegen_cranelift/dist/bin\x1e/mnt/data/share/projects/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/home/theo/\x2ebun/bin\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
-SETUVAR --export --path PKG_CONFIG_PATH:/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/local/dev/obs/lib/pkgconfig\x1e/usr/local/dev/python/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/local/dev/obs/lib/pkgconfig\x1e/usr/local/dev/python/lib/pkgconfig\x1e
+SETUVAR --export --path PATH:/home/theo/\x2elocal/share/pnpm\x1e/usr/local/bin\x1e/opt/maven/bin\x1e/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin\x1e/home/theo/\x2epyenv/shims\x1e/home/theo/\x2epyenv/bin\x1e/home/theo/\x2epyenv/shims\x1e/home/theo/\x2epyenv/bin\x1e/usr/local/sbin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl
+SETUVAR --export --path PKG_CONFIG_PATH:/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/lib/pkgconfig\x1e/usr/local/lib/pkgconfig\x1e/usr/local/dev/obs/lib/pkgconfig\x1e/usr/local/dev/python/lib/pkgconfig\x1e
 SETUVAR --export PNPM_HOME:/home/theo/\x2elocal/share/pnpm
 SETUVAR --export SDL_VIDEODRIVER:wayland
+SETUVAR --export SHELL:/usr/bin/fish
 SETUVAR --export XDG_CURRENT_DESKTOP:sway
 SETUVAR --export XDG_CURRENT_SESSION:sway
 SETUVAR --export XZ_OPT:\x2dT0
@@ -48,4 +54,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin
+SETUVAR fish_user_paths:/usr/local/bin\x1e/opt/maven/bin\x1e/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin
