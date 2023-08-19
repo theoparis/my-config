@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env fish
 
-chromium --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=Vulkan,UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode "$@"
+brave-browser --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode "$@"
+

@@ -54,4 +54,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:cyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/usr/local/bin\x1e/opt/maven/bin\x1e/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin
+SETUVAR fish_user_paths:/usr/local/musl/bin\x1e/usr/local/bin\x1e/opt/maven/bin\x1e/src/sysroot/bin\x1e/home/theo/dev/llvm\x2dtoolchain/build/sysroot/bin\x1e/home/theo/zig/bin\x1e/home/theo/nodejs/bin\x1e/mnt/data/share/projects/theos\x2dcore/depot_tools\x1e/home/theo/\x2ebun/bin\x1e/home/theo/zig\x1e/home/theo/\x2elocal/bin\x1e/home/theo/\x2ecargo/bin\x1e/home/theo/my\x2dconfig/scripts/bin\x1e/home/theo/go/bin\x1e/home/theo/\x2edeno/bin

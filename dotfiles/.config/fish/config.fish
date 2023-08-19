@@ -1,14 +1,15 @@
 if status is-interactive
-	# Commands to run in interactive sessions can go here
-	starship init fish | source
+	if type -q oh-my-posh
+		oh-my-posh init fish --config ~/.config/fish/theme.json | source
+	end
 end
 
-fish_add_path /usr/local/bin ~/.bun/bin ~/zig/bin ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin /src/sysroot/bin
+fish_add_path /usr/local/bin ~/.bun/bin ~/zig/bin ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin /usr/local/musl/bin
 
 set -g -x SHELL (which fish)
 set -g -x EDITOR nvim
 set -g -x GPG_TTY (tty)
-set -g -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/lib/pkgconfig $PKG_CONFIG_PATH
+set -g -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/lib/pkgconfig $HOME/.nix-profile/lib/pkgconfig $PKG_CONFIG_PATH
 set -g -x LD_LIBRARY_PATH /usr/lib/jvm/java-20-openjdk/lib /usr/lib/jvm/java-20-openjdk/lib/server /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64 
 set -g -x LIBRARY_PATH /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64 /usr/local/lib/clang/17/lib/linux
 set -g -x XZ_OPT "-T0"
@@ -32,7 +33,7 @@ set -g -x XDG_CURRENT_SESSION sway
 
 # pnpm
 set -g -x PNPM_HOME "/home/theo/.local/share/pnpm"
-set -g -x PATH "$PNPM_HOME" $PATH
+fish_add_path "$PNPM_HOME"
 
 # cmake
 set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
@@ -43,5 +44,4 @@ set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
 set -g -x CPM_USE_LOCAL_PACKAGES true
 
 set PYENV_ROOT $HOME/.pyenv
-set -x PATH $PYENV_ROOT/shims $PYENV_ROOT/bin $PATH
-pyenv rehash
+fish_add_path $PYENV_ROOT/shims $PYENV_ROOT/bin

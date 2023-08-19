@@ -109,4 +109,8 @@ require('lazy').setup({
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
 	'cuffedme/web_presence.nvim',
+	{
+		'sourcegraph/sg.nvim',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+	},
 })
