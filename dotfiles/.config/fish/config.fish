@@ -1,3 +1,5 @@
+set fish_greeting
+
 if status is-interactive
 	if type -q oh-my-posh
 		oh-my-posh init fish --config ~/.config/fish/theme.json | source
