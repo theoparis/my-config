@@ -12,7 +12,7 @@ set -g -x SHELL (which fish)
 set -g -x EDITOR nvim
 set -g -x GPG_TTY (tty)
 set -g -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/lib/pkgconfig $HOME/.nix-profile/lib/pkgconfig $PKG_CONFIG_PATH
-set -g -x LD_LIBRARY_PATH /usr/lib/jvm/java-20-openjdk/lib /usr/lib/jvm/java-20-openjdk/lib/server /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64 
+#set -g -x LD_LIBRARY_PATH /usr/lib/jvm/java-20-openjdk/lib /usr/lib/jvm/java-20-openjdk/lib/server /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64  $HOME/.nix-profile/lib
 set -g -x LIBRARY_PATH /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64 /usr/local/lib/clang/17/lib/linux
 set -g -x XZ_OPT "-T0"
 
@@ -46,4 +46,4 @@ set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
 set -g -x CPM_USE_LOCAL_PACKAGES true
 
 set PYENV_ROOT $HOME/.pyenv
-fish_add_path $PYENV_ROOT/shims $PYENV_ROOT/bin
+fish_add_path $PYENV_ROOT/shims $PYENV_ROOT/bin $PYENV_ROOT/versions/3.13-dev/bin

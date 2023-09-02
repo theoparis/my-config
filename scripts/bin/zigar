@@ -1,3 +1,4 @@
 #!/usr/bin/env fish
 
-minizip-ng -x $args
+zig ar $argv
+
