@@ -475,6 +475,3 @@ null_ls.setup({
 
 require('fidget').setup({})
 require('trouble').setup({})
-require('presence').setup({
-	rpc_server = '/home/theo/dev/arrpc',
-})

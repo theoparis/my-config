@@ -45,5 +45,7 @@ set -g -x GPG_TTY $(tty)
 set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
 set -g -x CPM_USE_LOCAL_PACKAGES true
 
+set -gx XDG_RUNTIME_DIR $HOME/.local/state
+
 set PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/shims $PYENV_ROOT/bin $PYENV_ROOT/versions/3.13-dev/bin

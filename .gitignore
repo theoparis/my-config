@@ -6,3 +6,4 @@ dotfiles/.config/gtk-3.0/bookmarks
 history.txt
 dotfiles/.config/helix/runtime
 dotfiles/.config/fish/fish_variables
+*.lock
