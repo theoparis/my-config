@@ -81,12 +81,8 @@ require('lazy').setup({
 	'nvim-lua/lsp-status.nvim',
 	'neoclide/jsonc.vim',
 	'fhill2/floating.nvim',
-	-- use "creepinson/nvim-proj"
-	-- use "~/Documents/Code/nvim-proj"
-	'earthly/earthly.vim',
 	'simrat39/rust-tools.nvim',
 	'kyazdani42/nvim-web-devicons',
-	'LhKipp/nvim-nu',
 	'dstein64/vim-startuptime',
 	'edluffy/specs.nvim',
 	'mfussenegger/nvim-jdtls',
@@ -108,4 +104,5 @@ require('lazy').setup({
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
+	'IogaMaster/neocord',
 })

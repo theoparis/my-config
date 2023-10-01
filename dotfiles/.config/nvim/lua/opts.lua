@@ -475,3 +475,5 @@ null_ls.setup({
 
 require('fidget').setup({})
 require('trouble').setup({})
+
+require("neocord").setup({})
