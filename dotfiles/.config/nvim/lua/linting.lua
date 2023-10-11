@@ -5,6 +5,8 @@ require('conform').setup({
 		javascript = { { 'prettierd', 'prettier' } },
 		rust = { 'rustfmt' },
 		zig = { 'zigfmt' },
+		c = { 'clang_format' },
+		cpp = { 'clang_format' },
 	},
 	format_on_save = {
 		timeout_ms = 500,
