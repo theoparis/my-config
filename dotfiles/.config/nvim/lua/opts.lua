@@ -49,9 +49,9 @@ local make_lsp_config = function(config1)
 			--ih.on_attach(client, buf)
 
 			--vim.notify(
-			--string.format("[lsp] %s\n[cwd] %s", client.name, vim.fn.getcwd()),
-			--"info",
-			--{ title = "Lsp Active", timeout = 1000 },
+			--string.format('[lsp] %s\n[cwd] %s', client.name, vim.fn.getcwd()),
+			--'info',
+			--{ title = 'Lsp Active', timeout = 1000 },
 			--true
 			--)
 		end,
@@ -68,6 +68,8 @@ local make_lsp_config = function(config1)
 
 	return config
 end
+
+lsp.sourcekit.setup(make_lsp_config({}))
 lsp.julials.setup(make_lsp_config({}))
 lsp.phpactor.setup(make_lsp_config({
 	init_options = {
@@ -298,7 +300,7 @@ vim.cmd([[colorscheme tokyonight-night]])
 --'autocmd BufNewFile,BufRead *.jsonc,*.json,*.json5 setfiletype jsonc'
 --)
 --vim.api.nvim_command(
---"autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()"
+--'autocmd BufRead,BufNewFile *.java lua require'jdtls_setup'.setup()'
 --)
 
 -- Status bar
@@ -323,8 +325,8 @@ lsp_status.config({
 
 lsp_status.register_progress()
 
--- vim.api.nvim_command("autocmd BufEnter * :lua require('proj').LoadConfig()")
--- vim.api.nvim_command("autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()")
+-- vim.api.nvim_command('autocmd BufEnter * :lua require('proj').LoadConfig()')
+-- vim.api.nvim_command('autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()')
 vim.api.nvim_command(
 	'autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile'
 )
@@ -350,7 +352,7 @@ dashboard.setup({
 		center = {
 			{
 				icon = ' ',
-				desc = 'New File            ',
+				desc = 'New File						',
 				action = 'tabnew',
 				shortcut = 'SPC o',
 			},
@@ -430,50 +432,31 @@ function LspRename()
 					changed_instances_count == 1 and '' or 's',
 					changed_files_count,
 					changed_files_count == 1 and '' or 's',
-					changed_files_count > 1 and "To save them run ':wa'" or ''
+					changed_files_count > 1 and "To save them run ':wa'' or '"
 				)
 			)
 		end
 	)
 end
 
-local null_ls = require('null-ls')
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.csharpier,
-		null_ls.builtins.diagnostics.eslint,
-		null_ls.builtins.formatting.eslint,
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.formatting.black,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.rufo,
-		null_ls.builtins.diagnostics.clang_check,
-		null_ls.builtins.formatting.zigfmt,
-	},
-	on_attach = function(client, bufnr)
-		if client.supports_method('textDocument/formatting') then
-			vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-			vim.api.nvim_create_autocmd('BufWritePre', {
-				group = augroup,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({
-						bufnr = bufnr,
-						filter = function(client)
-							return client.name == 'null-ls'
-						end,
-					})
-				end,
-			})
-		end
-	end,
-})
-
 require('fidget').setup({})
 require('trouble').setup({})
 
-require("neocord").setup({})
+require('noice').setup({
+	lsp = {
+		override = {
+			['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+			['vim.lsp.util.stylize_markdown'] = true,
+			['cmp.entry.get_documentation'] = true,
+		},
+	},
+	presets = {
+		bottom_search = true,
+		command_palette = true,
+		long_message_to_split = true,
+		inc_rename = false,
+		lsp_doc_border = false,
+	},
+})
+
+--require('neocord').setup({})

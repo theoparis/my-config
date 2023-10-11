@@ -1,36 +1,19 @@
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		'mkdir',
-		'-p',
-		lazypath,
-	})
-	vim.fn.system({
-		'gix',
-		'clone',
-		'https://github.com/folke/lazy.nvim.git',
-		lazypath,
-	})
-end
+
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	'folke/which-key.nvim',
+	'https://code.flowtr.dev/nvim-plugins/which-key.nvim',
 	{
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
 		opts = {},
 	},
-	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			'jose-elias-alvarez/null-ls.nvim',
-		},
-	},
+	'https://code.flowtr.dev/nvim-plugins/nvim-lspconfig',
 
 	-- Highlighting
 	{
-		'nvim-treesitter/nvim-treesitter',
+		'https://code.flowtr.dev/nvim-plugins/nvim-treesitter',
 		build = function()
 			pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 		end,
@@ -90,9 +73,8 @@ require('lazy').setup({
 	'ggandor/lightspeed.nvim',
 	'stevearc/aerial.nvim',
 	{
-		'folke/noice.nvim',
+		'https://code.flowtr.dev/nvim-plugins/noice.nvim',
 		event = 'VeryLazy',
-		opts = {},
 		dependencies = {
 			'MunifTanjim/nui.nvim',
 			'rcarriga/nvim-notify',
@@ -105,4 +87,7 @@ require('lazy').setup({
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
 	'IogaMaster/neocord',
+
+	'https://code.flowtr.dev/nvim-plugins/nvim-lint',
+	'https://code.flowtr.dev/nvim-plugins/conform.nvim',
 })

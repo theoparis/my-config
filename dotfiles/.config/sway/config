@@ -152,7 +152,11 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec wmname LG3D
 exec mako
 exec ~/monitors
-exec /usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr
+exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
+exec waybar -c ~/.config/waybar/config.json
+exec pipewire
+exec pipewire-pulse
+exec wireplumber
 
 bar {
   swaybar_command echo

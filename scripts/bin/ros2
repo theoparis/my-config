@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+podman run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix --net=host --ipc=host --pid=host code.flowtr.dev/theoparis/ros2 ros2 "$@"
+

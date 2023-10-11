@@ -8,15 +8,7 @@ if not type -q git
 	exit 1
 end
 
-git clone https://github.com/folke/lazy.nvim ~/.local/share/nvim/lazy/lazy.nvim
-
-if type -q go
-	echo Setting up oh-my-posh...
-	git clone --depth 1 https://github.com/JanDeDobbeleer/oh-my-posh ~/.local/share/oh-my-posh
-	pushd ~/.local/share/oh-my-posh/src
-	CGO_ENABLED=0 go build -ldflags="-s -w" -o ~/.local/bin/oh-my-posh .
-	popd
-else
+git clone https://code.flowtr.dev/nvim-plugins/lazy.nvim ~/.local/share/nvim/lazy/lazy.nvim
 
 end
 

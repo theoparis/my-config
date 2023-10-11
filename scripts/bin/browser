@@ -1,4 +1,4 @@
 #!/usr/bin/env fish
 
-brave --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode $argv
+~/chrome-linux/chrome --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode $argv
 
