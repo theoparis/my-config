@@ -154,6 +154,7 @@ exec mako
 exec ~/monitors
 exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
 exec waybar -c ~/.config/waybar/config.json
+#exec swaybg -i ~/wallpaper
 exec pipewire
 exec pipewire-pulse
 exec wireplumber

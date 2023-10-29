@@ -6,7 +6,7 @@ if status is-interactive
 	end
 end
 
-fish_add_path /usr/local/bin ~/.bun/bin ~/zig/bin ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin ~/zig ~/jdtls/bin
+fish_add_path /usr/local/bin ~/.bun/bin ~/zig/bin ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin ~/zig ~/jdtls/bin ~/cmake/bin ~/maven/bin ~/llvm/bin
 
 set -g -x SHELL (which fish)
 set -g -x EDITOR nvim
@@ -42,7 +42,6 @@ fish_add_path "$PNPM_HOME"
 set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
 
 set -g -x DOCKER_CLI_EXPERIMENTAL enabled
-set -g -x GPG_TTY $(tty)
 set -g -x CPM_SOURCE_CACHE $HOME/.cache/CPM
 set -g -x CPM_USE_LOCAL_PACKAGES true
 

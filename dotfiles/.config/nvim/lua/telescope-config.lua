@@ -1,12 +1,12 @@
 local M = {}
 
-local telescope = require("telescope")
+local telescope = require('telescope')
 telescope.setup({
 	defaults = {
-		mappings = { n = { ["o"] = require("telescope.actions").select_default } },
-		initial_mode = "normal",
+		mappings = { n = { ['o'] = require('telescope.actions').select_default } },
+		initial_mode = 'normal',
 		hidden = true,
-		file_ignore_patterns = { ".git/", "node_modules/", "target/" },
+		file_ignore_patterns = { '.git/', 'node_modules/', 'target/' },
 	},
 	extensions = {
 		--fzf = {
@@ -17,16 +17,16 @@ telescope.setup({
 		--},
 	},
 })
-telescope.load_extension("git_worktree")
+telescope.load_extension('git_worktree')
 --telescope.load_extension('fzf')
 
 M.project_files = function()
 	local opts = {
 		show_untracked = true,
 	}
-	local ok = pcall(require("telescope.builtin").git_files, opts)
+	local ok = pcall(require('telescope.builtin').git_files, opts)
 	if not ok then
-		require("telescope.builtin").find_files(opts)
+		require('telescope.builtin').find_files(opts)
 	end
 end
 

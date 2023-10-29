@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+ffmpeg -device /dev/dri/card1 -f kmsgrab -i - -vaapi_device /dev/dri/renderD128 -filter:v hwmap,scale_vaapi=w=1920:h=1200:format=nv12,hwdownload -vframes 1 -f webp "$@"
+

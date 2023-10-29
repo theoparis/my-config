@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
 
-discord --enable-features=UseOzonePlatform --ozone-platform=wayland --ignore-gpu-blocklist
+discord --enable-quic --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer "$@"
 

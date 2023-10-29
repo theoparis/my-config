@@ -1,4 +1,3 @@
-#!/usr/bin/env fish
+#!/bin/sh
 
-~/chrome-linux/chrome --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode $argv
-
+~/chrome-linux/chrome --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode --force-dark-mode --ignore-certificate-errors-spki-list=0gEORbhG6A7GD6QGdpdY9mH9nC1rFSfj8DJyHa1vsEc= "$@"
