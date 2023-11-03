@@ -3,17 +3,17 @@ local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	'https://code.flowtr.dev/nvim-plugins/which-key.nvim',
+	'https://github.com/folke/which-key.nvim',
 	{
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
 		opts = {},
 	},
-	'https://code.flowtr.dev/nvim-plugins/nvim-lspconfig',
+	'https://github.com/neovim/nvim-lspconfig',
 
 	-- Highlighting
 	{
-		'https://code.flowtr.dev/nvim-plugins/nvim-treesitter',
+		'https://github.com/nvim-treesitter/nvim-treesitter',
 		build = function()
 			pcall(require('nvim-treesitter.install').update({ with_sync = true }))
 		end,
@@ -36,7 +36,7 @@ require('lazy').setup({
 	},
 
 	-- File browser
-	'https://code.flowtr.dev/nvim-plugins/neo-tree.nvim',
+	'https://github.com/nvim-neo-tree/neo-tree.nvim',
 
 	-- Autocompletion
 	{
@@ -74,20 +74,14 @@ require('lazy').setup({
 	'udalov/kotlin-vim',
 	'ggandor/lightspeed.nvim',
 	'stevearc/aerial.nvim',
-	{
-		'https://code.flowtr.dev/nvim-plugins/noice.nvim',
-		event = 'VeryLazy',
-		dependencies = {
-			'MunifTanjim/nui.nvim',
-			'rcarriga/nvim-notify',
-		},
-	},
+	'MunifTanjim/nui.nvim',
+	'rcarriga/nvim-notify',
 	'glepnir/dashboard-nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
 	'IogaMaster/neocord',
-
-	'https://code.flowtr.dev/nvim-plugins/nvim-lint',
-	'https://code.flowtr.dev/nvim-plugins/conform.nvim',
+	'https://github.com/mfussenegger/nvim-lint',
+	'https://github.com/stevearc/conform.nvim',
+	'https://github.com/David-Kunz/gen.nvim',
 })
