@@ -45,4 +45,10 @@ if [[ -d "$HOME/.pyenv" ]]; then
 	eval "$(pyenv init -)"
 fi
 
-eval $(starship init zsh)
+
+UID="$(id -u)"
+export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
+if ! test -d "${XDG_RUNTIME_DIR}"; then
+		mkdir "${XDG_RUNTIME_DIR}"
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+fi

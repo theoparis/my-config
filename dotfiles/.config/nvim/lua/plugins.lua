@@ -80,7 +80,10 @@ require('lazy').setup({
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
-	'IogaMaster/neocord',
+	{ 
+		'IogaMaster/neocord',
+		event = "VeryLazy"
+	},
 	'https://github.com/mfussenegger/nvim-lint',
 	'https://github.com/stevearc/conform.nvim',
 	'https://github.com/David-Kunz/gen.nvim',

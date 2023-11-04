@@ -1,0 +1,14 @@
+{
+	"pyprland": {
+		"plugins": ["scratchpads", "magnify"]
+	},
+	"scratchpads": {
+		"btop": {
+			"command": "foot -T 'BTop' --override 'font=JetBrainsMono Nerd Font:size=10' -- btop",
+			"margin": 50,
+			"animation": "fromTop",
+			"unfocus": "hide",
+			"lazy": true
+		}
+	}
+}

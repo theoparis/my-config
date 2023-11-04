@@ -442,6 +442,6 @@ end
 require('fidget').setup({})
 require('trouble').setup({})
 
-require('neocord').setup({})
+--require('neocord').setup({})
 
 require('neo-tree').setup({})
