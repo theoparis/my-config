@@ -45,10 +45,4 @@ if [[ -d "$HOME/.pyenv" ]]; then
 	eval "$(pyenv init -)"
 fi
 
-
-UID="$(id -u)"
-export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
-if ! test -d "${XDG_RUNTIME_DIR}"; then
-		mkdir "${XDG_RUNTIME_DIR}"
-		chmod 0700 "${XDG_RUNTIME_DIR}"
-fi
+export XDG_RUNTIME_DIR=/run/user/$(id -u)

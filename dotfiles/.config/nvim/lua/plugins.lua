@@ -36,7 +36,7 @@ require('lazy').setup({
 	},
 
 	-- File browser
-	'https://github.com/nvim-neo-tree/neo-tree.nvim',
+	'https://github.com/stevearc/oil.nvim',
 
 	-- Autocompletion
 	{
@@ -80,9 +80,9 @@ require('lazy').setup({
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
 	'folke/trouble.nvim',
-	{ 
+	{
 		'IogaMaster/neocord',
-		event = "VeryLazy"
+		event = 'VeryLazy',
 	},
 	'https://github.com/mfussenegger/nvim-lint',
 	'https://github.com/stevearc/conform.nvim',

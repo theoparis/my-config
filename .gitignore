@@ -7,3 +7,12 @@ history.txt
 dotfiles/.config/helix/runtime
 dotfiles/.config/fish/fish_variables
 *.lock
+dotfiles/.config/.wrangler
+dotfiles/.config/incus/
+dotfiles/.config/rclone/
+dotfiles/.config/brinkervii/
+dotfiles/.config/configstore
+dotfiles/.config/chromium
+dotfiles/.config/VencordDesktop/
+dotfiles/.config/go/
+dotfiles/.config/jgit/

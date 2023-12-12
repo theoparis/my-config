@@ -15,8 +15,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
 
 # Start your launcher
-bindsym $mod+d exec pw-v4l2 pw-jack tofi-drun | fish 
-bindsym $mod+r exec pw-v4l2 pw-jack tofi-run | fish 
+bindsym $mod+d exec bemenu-run | zsh
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -154,7 +153,7 @@ exec mako
 exec ~/monitors
 exec /usr/libexec/xdg-desktop-portal -r & /usr/libexec/xdg-desktop-portal-wlr
 exec waybar -c ~/.config/waybar/config.json
-#exec swaybg -i ~/wallpaper
+exec swaybg -i ~/wallpaper
 exec pipewire
 exec pipewire-pulse
 exec wireplumber

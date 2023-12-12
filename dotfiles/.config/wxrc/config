@@ -1,0 +1,46 @@
+input {
+	hand-tracking enable
+	hands {
+		left "assets/input/hands/valve/left.glb"
+		right "assets/input/hands/valve/right.glb"
+	}
+	controllers {
+		left "assets/input/controllers/valve/left.glb"
+		right "assets/input/controllers/valve/right.glb"
+
+		haptic enable
+
+		profile valve/index_controller {
+			action system {
+				type click
+			}
+			action a {
+				type click
+			}
+			action b {
+				type click
+			}
+			action squeeze {
+				type value
+			}
+			action trigger {
+				type value
+			}
+			action thumbstick {
+				type position
+			}
+			action trackpad {
+				type position
+			}
+		}
+	}
+}
+
+skybox {
+	right "assets/background/right.jpg"
+	left "assets/background/left.jpg"
+	top "assets/background/top.jpg"
+	bottom "assets/background/bottom.jpg"
+	front "assets/background/front.jpg"
+	back "assets/background/back.jpg"
+}
