@@ -10,7 +10,6 @@ require('lazy').setup({
 		opts = {},
 	},
 	'https://github.com/neovim/nvim-lspconfig',
-
 	-- Highlighting
 	{
 		'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -22,6 +21,7 @@ require('lazy').setup({
 
 	-- Status Bar
 	'nvim-lualine/lualine.nvim',
+	'https://github.com/romgrk/barbar.nvim',
 
 	'lewis6991/gitsigns.nvim',
 
@@ -87,4 +87,5 @@ require('lazy').setup({
 	'https://github.com/mfussenegger/nvim-lint',
 	'https://github.com/stevearc/conform.nvim',
 	'https://github.com/David-Kunz/gen.nvim',
+	'https://github.com/zbirenbaum/copilot.lua',
 })

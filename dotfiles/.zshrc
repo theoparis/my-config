@@ -46,3 +46,14 @@ if [[ -d "$HOME/.pyenv" ]]; then
 fi
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+export PATH=$HOME/llvm/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/llvm/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
+export LLVM_SYS_PREFIX=$HOME/llvm
+
+export PAGER=bat
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# bun completions
+[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"

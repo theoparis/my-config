@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:FiraCode Nerd Font 14
+font pango:JetBrainsMono Nerd Font 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -11,17 +11,16 @@ font pango:FiraCode Nerd Font 14
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 #exec --no-startup-id trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --tint 0x222222 &
 exec --no-startup-id dunst
 exec --no-startup-id picom -f
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id a2jmidid -e
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec --no-startup-id pipewire
+exec --no-startup-id pipewire-pulse
+exec --no-startup-id wireplumber
+exec --no-startup-id ~/monitors
+exec --no-startup-id QT_QPA_PLATFORM=xcb flameshot
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -34,13 +33,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec wezterm 
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id bemenu-run 
 # A more modern dmenu replacement is rofi:
 #bindsym $mod+d exec "rofi -combi-modi drun,ssh -modi combi -show combi"
 

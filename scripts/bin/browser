@@ -1,4 +1,4 @@
 #!/bin/sh
 
-"$@" --enable-unsafe-webgpu --enable-quic --enable-gpu --ozone-platform=wayland --enable-vulkan --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode,Vulkan,SkiaGraphite --force-dark-mode --ignore-certificate-errors-spki-list=0gEORbhG6A7GD6QGdpdY9mH9nC1rFSfj8DJyHa1vsEc= --enable-dawn-features=allow_unsafe_apis
+"$@" --enable-unsafe-webgpu --enable-quic --enable-gpu --enable-vulkan --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer,WebUIDarkMode,Vulkan,SkiaGraphite --force-dark-mode --ignore-certificate-errors-spki-list=0gEORbhG6A7GD6QGdpdY9mH9nC1rFSfj8DJyHa1vsEc= --enable-dawn-features=allow_unsafe_apis
 
