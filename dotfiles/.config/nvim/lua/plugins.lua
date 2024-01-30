@@ -4,11 +4,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 	'https://github.com/folke/which-key.nvim',
-	{
-		'j-hui/fidget.nvim',
-		tag = 'legacy',
-		opts = {},
-	},
 	'https://github.com/neovim/nvim-lspconfig',
 	-- Highlighting
 	{
@@ -64,18 +59,16 @@ require('lazy').setup({
 	},
 	'ray-x/lsp_signature.nvim',
 	'nvim-lua/lsp-status.nvim',
-	'neoclide/jsonc.vim',
 	'fhill2/floating.nvim',
 	'simrat39/rust-tools.nvim',
 	'kyazdani42/nvim-web-devicons',
-	'dstein64/vim-startuptime',
 	'edluffy/specs.nvim',
-	'mfussenegger/nvim-jdtls',
-	'udalov/kotlin-vim',
-	'ggandor/lightspeed.nvim',
-	'stevearc/aerial.nvim',
-	'MunifTanjim/nui.nvim',
-	'rcarriga/nvim-notify',
+	'https://github.com/mfussenegger/nvim-jdtls',
+	'https://github.com/ggandor/lightspeed.nvim',
+	'https://github.com/stevearc/aerial.nvim',
+	'https://github.com/MunifTanjim/nui.nvim',
+	'https://github.com/rcarriga/nvim-notify',
+	'https://github.com/folke/noice.nvim',
 	'glepnir/dashboard-nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',

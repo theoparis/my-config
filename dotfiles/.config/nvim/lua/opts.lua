@@ -39,22 +39,7 @@ end
 local make_lsp_config = function(config1)
 	local config2 = {
 		capabilities = capabilities,
-		on_attach = function(client, bufnr)
-
-			--vim.api.nvim_create_autocmd('BufWritePre', {
-			--command = ':lua vim.lsp.buf.format({}, 1000)',
-			--group = group,
-			--})
-			-- inlay hints
-			--ih.on_attach(client, buf)
-
-			--vim.notify(
-			--string.format('[lsp] %s\n[cwd] %s', client.name, vim.fn.getcwd()),
-			--'info',
-			--{ title = 'Lsp Active', timeout = 1000 },
-			--true
-			--)
-		end,
+		on_attach = function(client, bufnr) end,
 	}
 
 	local config = {}
@@ -439,7 +424,39 @@ function LspRename()
 	)
 end
 
-require('fidget').setup({})
 require('trouble').setup({})
 require('neocord').setup({})
 require('oil').setup()
+require('copilot').setup({
+	suggestion = {
+		auto_trigger = true,
+	},
+})
+
+require('noice').setup({
+	lsp = {
+		override = {
+			['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+			['vim.lsp.util.stylize_markdown'] = true,
+			['cmp.entry.get_documentation'] = true,
+		},
+	},
+	presets = {
+		bottom_search = true,
+		command_palette = true,
+		long_message_to_split = true,
+		inc_rename = false,
+		lsp_doc_border = false,
+	},
+})
+notify = vim.notify
+vim.notify = function(msg, ...)
+	if
+		msg:match(
+			'warning: multiple different client offset_encodings detected for buffer, this is not supported yet'
+		)
+	then
+		return
+	end
+	notify(msg, ...)
+end
