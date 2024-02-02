@@ -2,8 +2,8 @@ require('conform').setup({
 	formatters_by_ft = {
 		lua = { 'stylua' },
 		python = { 'isort', 'yapf' },
-		javascript = { { 'prettier' } },
-		json = { { 'prettier' } },
+		javascript = { { 'biome' } },
+		json = { { 'biome' } },
 		rust = { 'rustfmt' },
 		zig = { 'zigfmt' },
 		kotlin = { 'ktlint' },
@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 require('lint').linters_by_ft = {
-	javascript = { 'eslint' },
+	javascript = { 'biome' },
 	glsl = { 'glslc' },
 	kotlin = { 'ktlint' },
 }

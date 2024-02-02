@@ -109,7 +109,7 @@ lsp.gopls.setup(make_lsp_config({
 		},
 	},
 }))
-lsp.pylsp.setup(make_lsp_config({}))
+lsp.jedi_language_server.setup(make_lsp_config({}))
 lsp.tailwindcss.setup(make_lsp_config({}))
 lsp.luau_lsp.setup(make_lsp_config({}))
 lsp.jsonls.setup(make_lsp_config({
@@ -427,11 +427,6 @@ end
 require('trouble').setup({})
 require('neocord').setup({})
 require('oil').setup()
-require('copilot').setup({
-	suggestion = {
-		auto_trigger = true,
-	},
-})
 
 require('noice').setup({
 	lsp = {

@@ -24,10 +24,6 @@ compinit
 export GPG_TTY=$(tty)
 
 
-[ -s "$HOME/bun/_bun" ] && source "$HOME/bun/_bun"
-
-[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile"
-
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Modules 
@@ -36,10 +32,10 @@ source "$HOME/.config/zsh/aliases.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 
 # User Configuration
-[[ -f $HOME/config/zsh/user.zsh ]] && source "$HOME/.config/zsh/user.zsh"
+test -f $HOME/config/zsh/user.zsh && source "$HOME/.config/zsh/user.zsh"
 
 # Try to load pyenv
-if [[ -d "$HOME/.pyenv" ]]; then
+if test -d "$HOME/.pyenv"; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
@@ -49,11 +45,12 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export PATH=$HOME/llvm/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/llvm/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
 export LLVM_SYS_PREFIX=$HOME/llvm
-
 export PAGER=bat
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-# bun completions
-[ -s "/home/theo/.bun/_bun" ] && source "/home/theo/.bun/_bun"
+test -s "/home/theo/.bun/_bun" && source "/home/theo/.bun/_bun"
+
+eval "$(oh-my-posh init zsh)"
+

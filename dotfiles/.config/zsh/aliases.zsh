@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+alias paru="/usr/bin/paru --pacman powerpill"
+
 # aliases
 # 256 color support
 alias tmux="tmux -2 -u" # for 256color
