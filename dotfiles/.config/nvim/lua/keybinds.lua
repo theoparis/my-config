@@ -25,7 +25,7 @@ map('n', '<leader>fr', require('telescope.builtin').oldfiles)
 map('n', '<leader>fs', require('telescope.builtin').grep_string)
 map('n', '<leader>fg', require('telescope.builtin').live_grep)
 map('n', '<leader>fd', require('telescope.builtin').diagnostics)
-map('n', '<leader>t', ':TroubleToggle<CR>')
+map('n', '<leader>t', ':Trouble diagnostics toggle<CR>')
 map('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
 map(
 	'n',
