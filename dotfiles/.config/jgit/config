@@ -4,3 +4,6 @@
 [filesystem "N/A|21|/dev/sdb3"]
 	timestampResolution = 3160 nanoseconds
 	minRacyThreshold = 6235 microseconds
+[filesystem "Ubuntu|21.0.4|/dev/sda2"]
+	timestampResolution = 6520 nanoseconds
+	minRacyThreshold = 1703 microseconds

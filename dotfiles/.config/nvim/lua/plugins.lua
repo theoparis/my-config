@@ -46,7 +46,6 @@ require('lazy').setup({
 		},
 	},
 
-	-- Theme
 	'numToStr/Comment.nvim',
 	'ThePrimeagen/git-worktree.nvim',
 	{ 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap' } },
@@ -60,7 +59,7 @@ require('lazy').setup({
 	'ray-x/lsp_signature.nvim',
 	'nvim-lua/lsp-status.nvim',
 	'fhill2/floating.nvim',
-	'simrat39/rust-tools.nvim',
+	'https://github.com/mrcjkb/rustaceanvim',
 	'kyazdani42/nvim-web-devicons',
 	'edluffy/specs.nvim',
 	'https://github.com/mfussenegger/nvim-jdtls',
@@ -68,7 +67,6 @@ require('lazy').setup({
 	'https://github.com/stevearc/aerial.nvim',
 	'https://github.com/MunifTanjim/nui.nvim',
 	'https://github.com/rcarriga/nvim-notify',
-	'https://github.com/folke/noice.nvim',
 	'glepnir/dashboard-nvim',
 	'folke/tokyonight.nvim',
 	'ThePrimeagen/harpoon',
@@ -80,5 +78,5 @@ require('lazy').setup({
 	'https://github.com/mfussenegger/nvim-lint',
 	'https://github.com/stevearc/conform.nvim',
 	'https://github.com/David-Kunz/gen.nvim',
-	'https://github.com/zbirenbaum/copilot.lua',
+	'https://github.com/nvim-neotest/nvim-nio',
 })

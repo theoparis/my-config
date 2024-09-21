@@ -54,3 +54,5 @@ test -s "/home/theo/.bun/_bun" && source "/home/theo/.bun/_bun"
 
 eval "$(oh-my-posh init zsh)"
 
+
+source /home/theo/.config/broot/launcher/bash/br

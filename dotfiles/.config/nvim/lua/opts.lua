@@ -63,28 +63,11 @@ lsp.phpactor.setup(make_lsp_config({
 	},
 }))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
-lsp.rnix.setup(make_lsp_config({}))
+lsp.nil_ls.setup(make_lsp_config({}))
 lsp.fortls.setup(make_lsp_config({}))
 --lsp.ls_emmet.setup(make_lsp_config({}))
 lsp.vala_ls.setup(make_lsp_config({}))
 lsp.html.setup(make_lsp_config({}))
-lsp.rust_analyzer.setup(make_lsp_config({
-	settings = {
-		['rust-analyzer'] = {
-			checkOnSave = {
-				allFeatures = true,
-				overrideCommand = {
-					'cargo',
-					'clippy',
-					'--workspace',
-					'--message-format=json',
-					'--all-targets',
-					'--all-features',
-				},
-			},
-		},
-	},
-}))
 lsp.csharp_ls.setup(make_lsp_config({}))
 lsp.nimls.setup(make_lsp_config({}))
 lsp.svelte.setup(make_lsp_config({}))
@@ -173,37 +156,8 @@ lsp.jsonls.setup(make_lsp_config({
 	},
 }))
 
-lsp.tsserver.setup({
-	cmd = {
-		'typescript-language-server',
-		'--stdio',
-	},
-	settings = {
-		javascript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all';
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-		typescript = {
-			inlayHints = {
-				includeInlayEnumMemberValueHints = true,
-				includeInlayFunctionLikeReturnTypeHints = true,
-				includeInlayFunctionParameterTypeHints = true,
-				includeInlayParameterNameHints = 'all',
-				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-				includeInlayPropertyDeclarationTypeHints = true,
-				includeInlayVariableTypeHints = true,
-			},
-		},
-	},
-})
---lsp.denols.setup(make_lsp_config({}))
+lsp.denols.setup({})
+
 lsp.yamlls.setup(
 	make_lsp_config({ capabilities = capabilities, format = { enable = false } })
 )
@@ -323,7 +277,6 @@ require('todo-comments').setup()
 require('dapui').setup({})
 require('aerial').setup()
 require('git-worktree').setup({})
-require('orgmode').setup_ts_grammar()
 require('orgmode').setup({})
 
 -- Tab bar
@@ -428,30 +381,25 @@ require('trouble').setup({})
 require('neocord').setup({})
 require('oil').setup()
 
-require('noice').setup({
-	lsp = {
-		override = {
-			['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-			['vim.lsp.util.stylize_markdown'] = true,
-			['cmp.entry.get_documentation'] = true,
+vim.g.rustaceanvim = {
+	tools = {},
+	server = {
+		on_attach = function(client, bufnr) end,
+		default_settings = {
+			['rust-analyzer'] = {
+				checkOnSave = {
+					allFeatures = true,
+					overrideCommand = {
+						'cargo',
+						'clippy',
+						'--workspace',
+						'--message-format=json',
+						'--all-targets',
+						'--all-features',
+					},
+				},
+			},
 		},
 	},
-	presets = {
-		bottom_search = true,
-		command_palette = true,
-		long_message_to_split = true,
-		inc_rename = false,
-		lsp_doc_border = false,
-	},
-})
-notify = vim.notify
-vim.notify = function(msg, ...)
-	if
-		msg:match(
-			'warning: multiple different client offset_encodings detected for buffer, this is not supported yet'
-		)
-	then
-		return
-	end
-	notify(msg, ...)
-end
+	dap = {},
+}
