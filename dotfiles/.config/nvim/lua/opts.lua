@@ -1,32 +1,32 @@
-local lsp = require('lspconfig')
-local configs = require('lspconfig.configs')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp = require("lspconfig")
+local configs = require("lspconfig.configs")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
+local runtime_path = vim.split(package.path, ";")
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 if not configs.ls_emmet then
 	configs.ls_emmet = {
 		default_config = {
-			cmd = { 'emmet-ls', '--stdio' },
+			cmd = { "emmet-ls", "--stdio" },
 			filetypes = {
-				'html',
-				'css',
-				'scss',
-				'javascriptreact',
-				'typescriptreact',
-				'haml',
-				'xml',
-				'xsl',
-				'pug',
-				'slim',
-				'sass',
-				'stylus',
-				'less',
-				'sss',
-				'hbs',
-				'handlebars',
+				"html",
+				"css",
+				"scss",
+				"javascriptreact",
+				"typescriptreact",
+				"haml",
+				"xml",
+				"xsl",
+				"pug",
+				"slim",
+				"sass",
+				"stylus",
+				"less",
+				"sss",
+				"hbs",
+				"handlebars",
 			},
 			root_dir = function()
 				return vim.loop.cwd()
@@ -58,8 +58,8 @@ end
 lsp.julials.setup(make_lsp_config({}))
 lsp.phpactor.setup(make_lsp_config({
 	init_options = {
-		['language_server_phpstan.enabled'] = false,
-		['language_server_psalm.enabled'] = false,
+		["language_server_phpstan.enabled"] = false,
+		["language_server_psalm.enabled"] = false,
 	},
 }))
 lsp.kotlin_language_server.setup(make_lsp_config({}))
@@ -75,7 +75,7 @@ lsp.typeprof.setup(make_lsp_config({}))
 lsp.mlir_lsp_server.setup({})
 lsp.crystalline.setup(make_lsp_config({}))
 lsp.zls.setup(make_lsp_config({}))
-lsp.jdtls.setup(make_lsp_config({ cmd = { 'jdtls', vim.fn.getcwd() } }))
+lsp.jdtls.setup(make_lsp_config({ cmd = { "jdtls", vim.fn.getcwd() } }))
 lsp.dockerls.setup(make_lsp_config({}))
 lsp.gopls.setup(make_lsp_config({
 	settings = {
@@ -100,56 +100,56 @@ lsp.jsonls.setup(make_lsp_config({
 		json = {
 			schemas = {
 				{
-					description = 'TypeScript compiler configuration file',
-					fileMatch = { 'tsconfig.json', 'tsconfig.*.json' },
-					url = 'http://json.schemastore.org/tsconfig',
+					description = "TypeScript compiler configuration file",
+					fileMatch = { "tsconfig.json", "tsconfig.*.json" },
+					url = "http://json.schemastore.org/tsconfig",
 				},
 				{
-					description = 'Lerna config',
-					fileMatch = { 'lerna.json' },
-					url = 'http://json.schemastore.org/lerna',
+					description = "Lerna config",
+					fileMatch = { "lerna.json" },
+					url = "http://json.schemastore.org/lerna",
 				},
 				{
-					description = 'Babel configuration',
+					description = "Babel configuration",
 					fileMatch = {
-						'.babelrc.json',
-						'.babelrc',
-						'babel.config.json',
+						".babelrc.json",
+						".babelrc",
+						"babel.config.json",
 					},
-					url = 'http://json.schemastore.org/lerna',
+					url = "http://json.schemastore.org/lerna",
 				},
 				{
-					description = 'ESLint config',
-					fileMatch = { '.eslintrc.json', '.eslintrc' },
-					url = 'http://json.schemastore.org/eslintrc',
+					description = "ESLint config",
+					fileMatch = { ".eslintrc.json", ".eslintrc" },
+					url = "http://json.schemastore.org/eslintrc",
 				},
 				{
-					description = 'Bucklescript config',
-					fileMatch = { 'bsconfig.json' },
-					url = 'https://bucklescript.github.io/bucklescript/docson/build-schema.json',
+					description = "Bucklescript config",
+					fileMatch = { "bsconfig.json" },
+					url = "https://bucklescript.github.io/bucklescript/docson/build-schema.json",
 				},
 				{
-					description = 'Prettier config',
+					description = "Prettier config",
 					fileMatch = {
-						'.prettierrc',
-						'.prettierrc.json',
-						'prettier.config.json',
+						".prettierrc",
+						".prettierrc.json",
+						"prettier.config.json",
 					},
-					url = 'http://json.schemastore.org/prettierrc',
+					url = "http://json.schemastore.org/prettierrc",
 				},
 				{
-					description = 'Vercel Now config',
-					fileMatch = { 'now.json' },
-					url = 'http://json.schemastore.org/now',
+					description = "Vercel Now config",
+					fileMatch = { "now.json" },
+					url = "http://json.schemastore.org/now",
 				},
 				{
-					description = 'Stylelint config',
+					description = "Stylelint config",
 					fileMatch = {
-						'.stylelintrc',
-						'.stylelintrc.json',
-						'stylelint.config.json',
+						".stylelintrc",
+						".stylelintrc.json",
+						"stylelint.config.json",
 					},
-					url = 'http://json.schemastore.org/stylelintrc',
+					url = "http://json.schemastore.org/stylelintrc",
 				},
 			},
 		},
@@ -158,37 +158,35 @@ lsp.jsonls.setup(make_lsp_config({
 
 lsp.denols.setup({})
 
-lsp.yamlls.setup(
-	make_lsp_config({ capabilities = capabilities, format = { enable = false } })
-)
+lsp.yamlls.setup(make_lsp_config({ capabilities = capabilities, format = { enable = false } }))
 -- lsp.sumneko_lua.setup({})
 lsp.clangd.setup(make_lsp_config({
-	cmd = { 'clangd', '--completion-style=detailed' },
+	cmd = { "clangd", "--completion-style=detailed" },
 }))
 
 -- Treesitter
-require('nvim-treesitter.install').compilers = { 'clang', 'gcc' }
-require('nvim-treesitter.configs').setup({
+require("nvim-treesitter.install").compilers = { "clang", "gcc" }
+require("nvim-treesitter.configs").setup({
 	ensure_installed = {
-		'bash',
-		'cpp',
-		'comment',
-		'css',
-		'graphql',
-		'html',
-		'javascript',
-		'jsdoc',
-		'json',
-		'lua',
-		'python',
-		'regex',
-		'tsx',
-		'vue',
-		'typescript',
-		'kotlin',
-		'java',
-		'zig',
-		'rust',
+		"bash",
+		"cpp",
+		"comment",
+		"css",
+		"graphql",
+		"html",
+		"javascript",
+		"jsdoc",
+		"json",
+		"lua",
+		"python",
+		"regex",
+		"tsx",
+		"vue",
+		"typescript",
+		"kotlin",
+		"java",
+		"zig",
+		"rust",
 	},
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
@@ -197,9 +195,9 @@ require('nvim-treesitter.configs').setup({
 
 -- Global options
 vim.g.neovide_transparency = 0.65
-vim.o.guifont = 'JetBrainsMono Nerd Font:h14'
-vim.g.mapleader = ' '
-vim.o.clipboard = 'unnamedplus'
+vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+vim.g.mapleader = " "
+vim.o.clipboard = "unnamedplus"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.softtabstop = 2
@@ -208,8 +206,7 @@ vim.o.tabstop = 2
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
-vim.o.expandtab = false
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 vim.o.hlsearch = false
 vim.o.undofile = true
 vim.o.autoindent = true
@@ -218,11 +215,11 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 vim.o.updatetime = 300
-vim.o.whichwrap = vim.o.whichwrap .. '<,>,h,l,[,]'
+vim.o.whichwrap = vim.o.whichwrap .. "<,>,h,l,[,]"
 
 -- Color scheme
 vim.o.termguicolors = true
-vim.cmd([[colorscheme tokyonight-night]])
+vim.cmd("colorscheme github_dark_default")
 
 -- File types
 --vim.api.nvim_command(
@@ -246,84 +243,80 @@ vim.cmd([[colorscheme tokyonight-night]])
 
 function LspStatus()
 	if vim.lsp.buf_get_clients() > 0 then
-		return require('lsp-status').status()
+		return require("lsp-status").status()
 	end
 
-	return ''
+	return ""
 end
 
-local lsp_status = require('lsp-status')
+local lsp_status = require("lsp-status")
 
 lsp_status.config({
-	indicator_errors = '❌',
-	indicator_warnings = '⚠️',
-	indicator_info = 'ℹ️',
-	indicator_hint = '❔',
-	indicator_ok = '👌',
+	indicator_errors = "❌",
+	indicator_warnings = "⚠️",
+	indicator_info = "ℹ️",
+	indicator_hint = "❔",
+	indicator_ok = "👌",
 })
 
 lsp_status.register_progress()
 
 -- vim.api.nvim_command('autocmd BufEnter * :lua require('proj').LoadConfig()')
 -- vim.api.nvim_command('autocmd BufEnter *.ts :lua require('proj.deno').DetectDeno()')
-vim.api.nvim_command(
-	'autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile'
-)
-vim.api.nvim_command(
-	'autocmd BufRead,BufNewFile build.earth set filetype=Earthfile'
-)
+vim.api.nvim_command("autocmd BufRead,BufNewFile Earthfile set filetype=Earthfile")
+vim.api.nvim_command("autocmd BufRead,BufNewFile build.earth set filetype=Earthfile")
 
-require('todo-comments').setup()
-require('dapui').setup({})
-require('aerial').setup()
-require('git-worktree').setup({})
-require('orgmode').setup({})
+require("todo-comments").setup()
+require("dapui").setup({})
+require("aerial").setup()
+require("git-worktree").setup({})
+require("orgmode").setup({})
 
 -- Tab bar
 vim.g.barbar_auto_setup = false
 
-local dashboard = require('dashboard')
+local dashboard = require("dashboard")
 dashboard.setup({
-	theme = 'hyper',
+	theme = "hyper",
 	header = {},
 	config = {
 		center = {
 			{
-				icon = ' ',
-				desc = 'New File						',
-				action = 'tabnew',
-				shortcut = 'SPC o',
+				icon = " ",
+				desc = "New File						",
+				action = "tabnew",
+				shortcut = "SPC o",
 			},
 			{
-				icon = ' ',
-				desc = 'Browse Files',
-				action = 'Telescope file_browser',
-				shortcut = 'SPC fb',
+				icon = " ",
+				desc = "Browse Files",
+				action = "Telescope file_browser",
+				shortcut = "SPC fb",
 			},
 			{
-				icon = ' ',
-				desc = 'Find File',
-				action = 'Telescope find_files',
-				shortcut = 'SPC f',
+				icon = " ",
+				desc = "Find File",
+				action = "Telescope find_files",
+				shortcut = "SPC f",
 			},
 			{
-				icon = ' ',
-				desc = 'Recent Files',
-				action = 'Telescope oldfiles',
-				shortcut = 'SPC re',
+				icon = " ",
+				desc = "Recent Files",
+				action = "Telescope oldfiles",
+				shortcut = "SPC re",
 			},
 			{
-				icon = ' ',
-				desc = 'Exit Neovim',
-				action = 'quit',
+				icon = " ",
+				desc = "Exit Neovim",
+				action = "quit",
 			},
 		},
 	},
 })
 
 function LspRename()
-	local curr_name = vim.fn.expand('<cword>')
-	local value = vim.fn.input('LSP Rename: ', curr_name)
+	local curr_name = vim.fn.expand("<cword>")
+	local value = vim.fn.input("LSP Rename: ", curr_name)
 	local lsp_params = vim.lsp.util.make_position_params()
 
 	if not value or #value == 0 or curr_name == value then
@@ -332,74 +325,41 @@ function LspRename()
 
 	-- request lsp rename
 	lsp_params.newName = value
-	vim.lsp.buf_request(
-		0,
-		'textDocument/rename',
-		lsp_params,
-		function(_, res, ctx, _)
-			if not res then
-				return
-			end
-
-			-- apply renames
-			local client = vim.lsp.get_client_by_id(ctx.client_id)
-			vim.lsp.util.apply_workspace_edit(res, client.offset_encoding)
-
-			-- print renames
-			local changed_files_count = 0
-			local changed_instances_count = 0
-
-			if res.documentChanges then
-				for _, changed_file in pairs(res.documentChanges) do
-					changed_files_count = changed_files_count + 1
-					changed_instances_count = changed_instances_count
-						+ #changed_file.edits
-				end
-			elseif res.changes then
-				for _, changed_file in pairs(res.changes) do
-					changed_instances_count = changed_instances_count + #changed_file
-					changed_files_count = changed_files_count + 1
-				end
-			end
-
-			-- compose the right print message
-			print(
-				string.format(
-					'renamed %s instance%s in %s file%s. %s',
-					changed_instances_count,
-					changed_instances_count == 1 and '' or 's',
-					changed_files_count,
-					changed_files_count == 1 and '' or 's',
-					changed_files_count > 1 and "To save them run ':wa'' or '"
-				)
-			)
+	vim.lsp.buf_request(0, "textDocument/rename", lsp_params, function(_, res, ctx, _)
+		if not res then
+			return
 		end
-	)
+
+		-- apply renames
+		local client = vim.lsp.get_client_by_id(ctx.client_id)
+		vim.lsp.util.apply_workspace_edit(res, client.offset_encoding)
+
+		-- print renames
+		local changed_files_count = 0
+		local changed_instances_count = 0
+
+		if res.documentChanges then
+			for _, changed_file in pairs(res.documentChanges) do
+				changed_files_count = changed_files_count + 1
+				changed_instances_count = changed_instances_count + #changed_file.edits
+			end
+		elseif res.changes then
+			for _, changed_file in pairs(res.changes) do
+				changed_instances_count = changed_instances_count + #changed_file
+				changed_files_count = changed_files_count + 1
+			end
+		end
+
+		-- compose the right print message
+		print(
+			string.format(
+				"renamed %s instance%s in %s file%s. %s",
+				changed_instances_count,
+				changed_instances_count == 1 and "" or "s",
+				changed_files_count,
+				changed_files_count == 1 and "" or "s",
+				changed_files_count > 1 and "To save them run ':wa'' or '"
+			)
+		)
+	end)
 end
-
-require('trouble').setup({})
-require('neocord').setup({})
-require('oil').setup()
-
-vim.g.rustaceanvim = {
-	tools = {},
-	server = {
-		on_attach = function(client, bufnr) end,
-		default_settings = {
-			['rust-analyzer'] = {
-				checkOnSave = {
-					allFeatures = true,
-					overrideCommand = {
-						'cargo',
-						'clippy',
-						'--workspace',
-						'--message-format=json',
-						'--all-targets',
-						'--all-features',
-					},
-				},
-			},
-		},
-	},
-	dap = {},
-}

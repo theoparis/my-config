@@ -63,7 +63,7 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/src/rustp
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.local/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.deno/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.nix-profile/bin")
-$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/src/llvm-builds/install/bin")
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/src/llvm-project/out/bin")
 $env.PATH = ($env.PATH | split row (char esep) | append "/nix/store/k4m31q5ralky3z58b37jsr8hlc4ccarj-lix-2.91.0/bin")
 $env.PATH = ($env.PATH | split row (char esep) | append "/usr/lib/llvm-20/bin")
 

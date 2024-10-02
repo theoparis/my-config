@@ -1,7 +1,1 @@
-require('plugins')
-require('opts')
-require('telescope-config')
-require('cmp-config')
-require('keybinds')
-require('statusline')
-require('linting')
+require("config.lazy")

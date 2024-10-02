@@ -1,0 +1,16 @@
+[editor]
+program = "hx"
+args = []
+
+[fonts]
+size = 18
+family = "ComicShannsMono Nerd Font"
+
+[fonts.emoji]
+family = "Noto Color Emoji"
+
+[window]
+opacity = 0.75
+decorations = "enabled"
+blur = true
+
