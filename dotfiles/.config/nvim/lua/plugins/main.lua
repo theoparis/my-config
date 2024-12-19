@@ -1,6 +1,19 @@
 return {
 	'https://github.com/folke/which-key.nvim',
 	{
+		'folke/snacks.nvim',
+		priority = 1000,
+		lazy = false,
+		opts = {
+			bigfile = { enabled = true },
+			notifier = { enabled = true },
+			quickfile = { enabled = true },
+			statuscolumn = { enabled = true },
+			words = { enabled = true },
+			terminal = {},
+		},
+	},
+	{
 		'neovim/nvim-lspconfig',
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
@@ -34,11 +47,6 @@ return {
 			local lsp = require('lspconfig')
 			lsp.bacon_ls.setup({
 				enable = true,
-				settings = {},
-			})
-
-			lsp.rust_analyzer.setup({
-				enable = false,
 				settings = {},
 			})
 
@@ -157,7 +165,7 @@ return {
 		'https://github.com/mfussenegger/nvim-lint',
 		config = function()
 			require('lint').linters_by_ft = {
-				javascript = { 'biome' },
+				javascript = { 'eslint' },
 				glsl = { 'glslc' },
 				kotlin = { 'ktlint' },
 			}
@@ -176,10 +184,9 @@ return {
 				formatters_by_ft = {
 					lua = { 'stylua' },
 					python = { 'isort', 'yapf' },
-					javascript = { { 'biome' } },
-					json = { { 'biome' } },
+					javascript = { 'prettier' },
+					json = { 'prettier' },
 					rust = { 'rustfmt' },
-					zig = { 'zigfmt' },
 					kotlin = { 'ktlint' },
 					c = { 'clang_format' },
 					cpp = { 'clang_format' },
