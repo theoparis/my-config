@@ -11,3 +11,6 @@ select = "underline"
 [editor.lsp]
 display-messages = true
 
+[editor.soft-wrap]
+enable = true
+

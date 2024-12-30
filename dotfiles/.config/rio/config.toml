@@ -10,7 +10,6 @@ family = "ComicShannsMono Nerd Font"
 family = "Noto Color Emoji"
 
 [window]
-opacity = 0.75
-decorations = "enabled"
-blur = true
+opacity = 0.8
+blur = false
 

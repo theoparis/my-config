@@ -1,29 +1,20 @@
 set fish_greeting
 
 if status is-interactive
-	if type -q oh-my-posh
-		oh-my-posh init fish --config ~/.config/fish/theme.json | source
-	end
+    if type -q oh-my-posh
+        oh-my-posh init fish --config ~/.config/fish/theme.json | source
+    end
 end
-
-fish_add_path /usr/local/bin ~/.bun/bin ~/zig/bin ~/.local/bin ~/.cargo/bin ~/.zigmod/bin ~/my-config/scripts/bin ~/go/bin ~/.deno/bin /opt/rocm-5.0.0/hip/bin ~/.local/share/gem/ruby/3.0.0/bin ~/.nimble/bin ~/nim/bin /usr/local/cross/amd64/bin /opt/gradle/bin /opt/maven/bin /opt/prism/bin ~/nodejs/bin ~/zig ~/jdtls/bin ~/cmake/bin ~/maven/bin ~/llvm/bin
 
 set -g -x SHELL (which fish)
 set -g -x EDITOR nvim
 set -g -x GPG_TTY (tty)
-set -g -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/lib/pkgconfig $HOME/.nix-profile/lib/pkgconfig $PKG_CONFIG_PATH
-#set -g -x LD_LIBRARY_PATH /usr/lib/jvm/java-20-openjdk/lib /usr/lib/jvm/java-20-openjdk/lib/server /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64  $HOME/.nix-profile/lib
-set -g -x LIBRARY_PATH /usr/local/lib /usr/local/lib/x86_64-unknown-linux-gnu /usr/lib /usr/lib64 /lib /lib64 /usr/local/lib/clang/17/lib/linux
-set -g -x XZ_OPT "-T0"
+set -g -x XZ_OPT -T0
 set -gx GOPROXY https://proxy.golang.org/
 
 alias l "exa -la"
 alias s "kitty +kitten ssh"
-alias pwease "doas"
-
-# bun
-set -g -x BUN_INSTALL "$HOME/.bun"
-fish_add_path "$BUN_INSTALL/bin"
+alias pwease doas
 
 # wayland
 set -g -x MOZ_ENABLE_WAYLAND 1
@@ -47,3 +38,7 @@ set -g -x CPM_USE_LOCAL_PACKAGES true
 
 set PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/shims $PYENV_ROOT/bin $PYENV_ROOT/versions/3.13-dev/bin
+
+fish_add_path /Applications/jdk-24.jdk/Contents/Home/bin /usr/local/bin
+
+set -gx DYLD_LIBRARY_PATH /usr/local/lib

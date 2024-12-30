@@ -1,4 +1,12 @@
 return {
+	{
+		'catppuccin/nvim',
+		name = 'catppuccin',
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme('catppuccin-mocha')
+		end,
+	},
 	'https://github.com/folke/which-key.nvim',
 	{
 		'folke/snacks.nvim',
@@ -88,7 +96,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = true,
-				theme = 'github_dark_default',
+				theme = 'catppuccin-mocha',
 				component_separators = '|',
 				section_separators = '',
 			},
@@ -183,7 +191,7 @@ return {
 			require('conform').setup({
 				formatters_by_ft = {
 					lua = { 'stylua' },
-					python = { 'isort', 'yapf' },
+					python = { 'isort', 'ruff' },
 					javascript = { 'prettier' },
 					json = { 'prettier' },
 					rust = { 'rustfmt' },
