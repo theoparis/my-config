@@ -18,3 +18,5 @@ dotfiles/.config/go/
 dotfiles/.config/jgit/
 dotfiles/.config/pulse
 dotfiles/.emacs.d/eln-cache
+dotfiles/.config/pulse/cookie
+dotfiles/.config/dconf/user
