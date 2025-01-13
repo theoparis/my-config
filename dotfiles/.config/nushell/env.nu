@@ -67,6 +67,8 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/src/llvm-
 $env.PATH = ($env.PATH | split row (char esep) | append "/nix/store/k4m31q5ralky3z58b37jsr8hlc4ccarj-lix-2.91.0/bin")
 $env.PATH = ($env.PATH | split row (char esep) | append "/usr/lib/llvm-20/bin")
 
+zoxide init nushell | save -f ~/.zoxide.nu
+
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 

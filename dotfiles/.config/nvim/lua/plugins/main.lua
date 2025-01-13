@@ -62,6 +62,8 @@ return {
 				filetypes = { 'lua', 'luau' },
 			})
 
+			lsp.basedpyright.setup({})
+
 			lsp.clangd.setup({})
 		end,
 	},
@@ -129,8 +131,13 @@ return {
 		end,
 	},
 
-	-- File browser
-	'https://github.com/stevearc/oil.nvim',
+	{
+		'echasnovski/mini.nvim',
+		version = '*',
+		config = function()
+			require('mini.files').setup()
+		end,
+	},
 
 	'numToStr/Comment.nvim',
 

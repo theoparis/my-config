@@ -1,5 +1,5 @@
 [editor]
-program = "hx"
+program = "nvim"
 args = []
 
 [fonts]

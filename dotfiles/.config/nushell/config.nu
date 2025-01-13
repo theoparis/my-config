@@ -4,7 +4,7 @@ $env.WASMER_CACE_DIR = $"($env.WASMER_DIR)/cache"
 $env.EDITOR = "nvim"
 $env.LANG = "en_US.UTF-8"
 $env.MANPAGER = "nvim"
-$env.SHELL = $"($env.HOME)/.cargo/bin/nu"
+$env.SHELL = "nu"
 $env.PNPM_HOME = $"($env.HOME)/.local/share/pnpm"
 
 alias l = xplr
@@ -46,8 +46,5 @@ $env.config = {
 }
 
 # Zoxide
-zoxide add -- (shells | where active == true | get path | get 0)
-		
-
-use '/home/theo/.config/broot/launcher/nushell/br' *
+source ~/.zoxide.nu
 use ~/.cache/starship/init.nu
