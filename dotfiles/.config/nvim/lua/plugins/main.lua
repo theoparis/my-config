@@ -22,6 +22,43 @@ return {
 		},
 	},
 	{
+		'rachartier/tiny-inline-diagnostic.nvim',
+		event = 'LspAttach',
+		dependencies = {
+			'neovim/nvim-lspconfig',
+			'mrcjkb/rustaceanvim',
+		},
+		init = function()
+			require('tiny-inline-diagnostic').setup({
+				options = {
+					throttle = 20,
+					multiple_diag_under_cursor = true,
+					show_all_diags_on_cursorline = true,
+					enable_on_insert = true,
+					multilines = {
+						enabled = true,
+						always_show = true,
+					},
+				},
+			})
+			vim.diagnostic.config({ virtual_text = false })
+		end,
+	},
+	{
+		'mrcjkb/rustaceanvim',
+		init = function()
+			vim.g.rustaceanvim = {
+				default_settings = {
+					['rust-analyzer'] = {
+						diagnostics = { enable = false },
+						checkOnSave = { enable = false },
+					},
+				},
+			}
+		end,
+		lazy = false,
+	},
+	{
 		'neovim/nvim-lspconfig',
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = {
@@ -55,31 +92,18 @@ return {
 			local lsp = require('lspconfig')
 			lsp.bacon_ls.setup({
 				enable = true,
-				settings = {},
 			})
 
 			lsp.luau_lsp.setup({
 				filetypes = { 'lua', 'luau' },
 			})
 
+			lsp.nil_ls.setup({})
+
 			lsp.basedpyright.setup({})
 
 			lsp.clangd.setup({})
 		end,
-	},
-	{
-		'mrcjkb/rustaceanvim',
-		init = function()
-			vim.g.rustaceanvim = {
-				default_settings = {
-					['rust-analyzer'] = {
-						diagnostics = { enable = false },
-						checkOnSave = { enable = false },
-					},
-				},
-			}
-		end,
-		lazy = false,
 	},
 	-- Highlighting
 	{

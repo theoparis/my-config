@@ -14,3 +14,7 @@ display-messages = true
 [editor.soft-wrap]
 enable = true
 
+[editor.inline-diagnostics]
+cursor-line = "hint"
+other-lines = "error"
+

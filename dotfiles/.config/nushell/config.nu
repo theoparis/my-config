@@ -4,7 +4,6 @@ $env.WASMER_CACE_DIR = $"($env.WASMER_DIR)/cache"
 $env.EDITOR = "nvim"
 $env.LANG = "en_US.UTF-8"
 $env.MANPAGER = "nvim"
-$env.SHELL = "nu"
 $env.PNPM_HOME = $"($env.HOME)/.local/share/pnpm"
 
 alias l = xplr
