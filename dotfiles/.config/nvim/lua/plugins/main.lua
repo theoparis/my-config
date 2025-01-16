@@ -221,6 +221,7 @@ return {
 		config = function()
 			require('conform').setup({
 				formatters_by_ft = {
+					nix = { 'nixfmt' },
 					lua = { 'stylua' },
 					python = { 'isort', 'ruff' },
 					javascript = { 'prettier' },
