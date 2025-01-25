@@ -3,7 +3,7 @@
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if test ! -d "$ZINIT_HOME"; then
 	mkdir -p "$(dirname $ZINIT_HOME)"
-	git clone -j$(nproc) https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+	git clone -j$(coreutils nproc) https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -23,7 +23,6 @@ compinit
 
 export GPG_TTY=$(tty)
 
-
 export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 
 # Modules 
@@ -42,17 +41,12 @@ if test -d "$HOME/.pyenv"; then
 fi
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
-export PATH=$HOME/llvm/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/llvm/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
-export LLVM_SYS_PREFIX=$HOME/llvm
 export PAGER=bat
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-test -s "/home/theo/.bun/_bun" && source "/home/theo/.bun/_bun"
+. ~/.profile
+eval "$(starship init zsh)"
 
-eval "$(oh-my-posh init zsh)"
-
-
-source /home/theo/.config/broot/launcher/bash/br

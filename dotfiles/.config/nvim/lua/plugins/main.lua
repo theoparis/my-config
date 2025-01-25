@@ -8,6 +8,7 @@ return {
 		end,
 	},
 	'https://github.com/folke/which-key.nvim',
+	'https://github.com/MeanderingProgrammer/render-markdown.nvim',
 	{
 		'folke/snacks.nvim',
 		priority = 1000,
@@ -354,9 +355,9 @@ return {
 
 			lsp.nil_ls.setup({})
 
-			lsp.basedpyright.setup({})
+			lsp.sourcekit.setup({})
 
-			lsp.clangd.setup({})
+			lsp.basedpyright.setup({})
 		end,
 	},
 	-- Highlighting
