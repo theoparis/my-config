@@ -4,7 +4,7 @@ args = []
 
 [fonts]
 size = 18
-family = "ComicShannsMono Nerd Font"
+family = "SeriousShanns Nerd Font"
 
 [fonts.emoji]
 family = "Noto Color Emoji"

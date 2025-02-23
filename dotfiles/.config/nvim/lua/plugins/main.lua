@@ -10,6 +10,14 @@ return {
 	'https://github.com/folke/which-key.nvim',
 	'https://github.com/MeanderingProgrammer/render-markdown.nvim',
 	{
+		'MagicDuck/grug-far.nvim',
+		config = function()
+			require('grug-far').setup({
+				engine = 'astgrep',
+			})
+		end,
+	},
+	{
 		'folke/snacks.nvim',
 		priority = 1000,
 		lazy = false,
@@ -349,13 +357,17 @@ return {
 				enable = true,
 			})
 
+			lsp.zls.setup({})
+
 			lsp.luau_lsp.setup({
 				filetypes = { 'lua', 'luau' },
 			})
 
+			lsp.denols.setup({})
+
 			lsp.nil_ls.setup({})
 
-			lsp.sourcekit.setup({})
+			lsp.clangd.setup({})
 
 			lsp.basedpyright.setup({})
 		end,
@@ -464,11 +476,12 @@ return {
 				formatters_by_ft = {
 					nix = { 'nixfmt' },
 					lua = { 'stylua' },
-					python = { 'isort', 'ruff' },
+					python = { 'isort', 'ruff_format' },
 					javascript = { 'prettier' },
 					json = { 'prettier' },
 					rust = { 'rustfmt' },
 					kotlin = { 'ktlint' },
+					zig = { 'zigfmt' },
 					c = { 'clang_format' },
 					cpp = { 'clang_format' },
 				},
@@ -486,5 +499,6 @@ return {
 		end,
 	},
 	'https://github.com/David-Kunz/gen.nvim',
+	'https://github.com/IogaMaster/neocord',
 	'https://github.com/nvim-neotest/nvim-nio',
 }

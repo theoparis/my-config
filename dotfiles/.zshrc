@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/theo/.zsh/completions:"* ]]; then export FPATH="/Users/theo/.zsh/completions:$FPATH"; fi
 #!/usr/bin/env zsh
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -48,5 +50,6 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 . ~/.profile
+. ~/.zprofile
 eval "$(starship init zsh)"
 
