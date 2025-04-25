@@ -23,7 +23,6 @@
   "lsp_signature.nvim": { "branch": "master", "commit": "a793d02b6a5e639fa9d3f2a89a839fa688ab2d0a" },
   "lualine.nvim": { "branch": "master", "commit": "15884cee63a8c205334ab13ab1c891cd4d27101a" },
   "mini.nvim": { "branch": "main", "commit": "0420076298c4457f200c2de468f65d080597a347" },
-  "neocodeium": { "branch": "main", "commit": "511ae8a76561a6352f845169bcb6c906fd1892bb" },
   "neocord": { "branch": "main", "commit": "41bacd44e9d36f5e36e0271672ac2c02f6fa355a" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "nui.nvim": { "branch": "main", "commit": "8d5b0b568517935d3c84f257f272ef004d9f5a59" },
